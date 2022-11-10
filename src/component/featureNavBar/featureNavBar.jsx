@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { withRouter } from "./withRouter";
+import { withRouter } from "../withRouter";
 
 class FeatureNavBar extends Component {
   state = {};
