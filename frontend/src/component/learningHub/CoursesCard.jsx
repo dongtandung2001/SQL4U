@@ -1,6 +1,5 @@
 import React, { Component} from "react";
 import { coursesCard } from "./data"
-import { ButtonGroup } from "./ButtonGroup"
 import "./learningHub.css"
 
 const ButtonsGroup = () => {
@@ -14,7 +13,6 @@ const ButtonsGroup = () => {
       <button className='topic-button'>SQL Queries</button>
       <button className='topic-button'>Relational Model</button>
       <button className='topic-button'>NoSQL</button>
-  \
     </div>
     <div>&nbsp;</div> 
 
@@ -77,7 +75,8 @@ class CoursesCard extends Component {
                 </div>
               </div>
               
-              <button className='outline-btn'>ENROLL NOW !</button>            </div>
+              <button className='outline-btn'>ENROLL NOW !</button>       
+           </div>
           ))}
         </div>
       </section>
