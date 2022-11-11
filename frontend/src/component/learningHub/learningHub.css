@@ -82,4 +82,60 @@
 
 .button{
   argin-right: 20px;
+  color: #2788E4;
 }
+
+.btn .btn-secondary{
+  color: #2788E4;
+}
+
+.outline-btn{
+  color: #ffffff;
+  background-color: #2788E4;
+}
+
+.topic {
+  border: 2px solid #4891d5;
+  background-color: #89b3da;
+  padding: 20px;
+  border-radius: 50px 20px;
+  
+}
+
+.topic-button{
+  position: relative;
+  background-color: #2788E4;
+  border: none;
+  font-size: 15px;
+  color: #FFFFFF;
+  padding: 50px;
+  width: 200px;
+  text-align: center;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  margin-right:10px;
+  border-radius: 25px
+}
+
+.topic-button:after {
+  content: "";
+  background: #f1f1f1;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
+
+.topic-button:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+}
+
