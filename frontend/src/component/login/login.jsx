@@ -7,24 +7,17 @@ class Login extends Form {
     data: {
       username: "",
       password: "",
-      skill: "",
     },
-    skills: [
-      { name: "beginner", label: "Beginner" },
-      { name: "intermediate", label: "Intermediate" },
-      { name: "professional", label: "Professional" },
-    ],
     errors: {},
   };
 
   schema = Joi.object({
     username: Joi.string().min(5).max(50).required().label("Username"),
     password: Joi.string().min(5).max(255).required().label("Password"),
-    skill: Joi.string().required(),
   });
 
   doSubmit = () => {
-    console.log("Login button called", this.state.data);
+    console.log("Login called", this.state.data);
   };
   render() {
     return (
@@ -33,6 +26,7 @@ class Login extends Form {
           style={{ background: "#68BBE3" }}
           className='row text-center shadow-sm'
         >
+          <div className='col'></div>
           <div
             style={{
               background: "#F2F3F1",
@@ -40,17 +34,14 @@ class Login extends Form {
             }}
             className='col-4 flex-column d-flex justify-content-center align-items-center shadow rounded'
           >
-            <i className='fa fa-user-o fa-5x'></i>
-            <h2>Let's start to learn!</h2>
+            <i className='fa fa-user-o fa-5x mb-5'></i>
+            <h2 className='mb-4'>Welcome Back!</h2>
             <form onSubmit={this.handleSumbit}>
               {this.renderInput("username", "UserName")}
               {this.renderInput("password", "Password")}
-              <p className='mt-3'>How strong is your database skill</p>
-              {this.renderRadio("skill", this.state.skills)}
-              {this.renderButton("Create Account")}
+              <div className='d-grid'>{this.renderButton("Login")}</div>
             </form>
           </div>
-          <div className='col'></div>
         </div>
       </div>
     );
