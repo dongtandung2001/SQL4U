@@ -1,6 +1,5 @@
 import React, { Component} from "react";
 import { coursesCard } from "./data"
-import { ButtonGroup } from "./ButtonGroup"
 import "./learningHub.css"
 
 const ButtonsGroup = () => {
