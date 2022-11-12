@@ -8,6 +8,7 @@ import Dashboard from "./component/dashboard/dashboard";
 import About from "./component/about/about";
 import InterviewQuestion from "./component/interview/interview";
 import RecommendProject from "./component/project/recommendProject";
+import ProjectPage from './component/project/ProjectPage';
 import QnA from "./component/qna/q&a";
 import LearningHub from "./component/learningHub/learningHub";
 import Contact from "./component/contact/contact";
@@ -18,7 +19,7 @@ import Profile from "./component/profile/profile";
 import NotFound from "./component/not-found/notFound";
 
 class App extends Component {
-  state = {};
+  state = {user:{}};
   render() {
     return (
       <main className='container'>
@@ -36,6 +37,7 @@ class App extends Component {
 
           <Route path='/interview' element={<InterviewQuestion />} />
           <Route path='/project' element={<RecommendProject />} />
+          <Route path='/project/projectpage/:id' element={<ProjectPage />}/>
           <Route path='/qna' element={<QnA />} />
           <Route path='/hub' element={<LearningHub />} />
           <Route path='/not-found' element={<NotFound />} />

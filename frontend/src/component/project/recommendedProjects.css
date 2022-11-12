@@ -1,6 +1,6 @@
 :root {
     --transition: 300ms all ease;
-    --color-primary: ##0D6EFD;
+    --color-primary: #0D6EFD;
 }
 
 .projects-container {
@@ -26,6 +26,9 @@
 }
 .project-title {
     align-self: center;
+    text-decoration: none;
+    color: #000;
+    font-size: 1.2rem;
 }
 
 .project-title:hover {
