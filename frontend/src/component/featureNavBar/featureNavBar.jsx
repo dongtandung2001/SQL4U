@@ -13,7 +13,6 @@ class FeatureNavBar extends Component {
     }
   }
   render() {
-    console.log(this.props.location.pathname);
     return (
       <nav className='navbar navbar-expand-sm'>
         <div className='container-fluid'>
