@@ -1,0 +1,141 @@
+.container {
+    max-width: 85%;
+    margin: auto;
+  }
+
+.grid2 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+  }
+
+.coursesCard {
+    padding: 50px 0;
+  }
+  .coursesCard .items {
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid #2788E4;
+    border-radius: 10px;
+
+  }
+  .coursesCard .img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #2788E4;
+    padding: 15px;
+  }
+  .coursesCard img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .coursesCard .text {
+    margin-left: 10px;
+    text-align: left;
+  }
+  .coursesCard .text h1 {
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 45px;
+  }
+  .coursesCard .rate {
+    margin: 20px 0;
+    color: #1eb2a6;
+  }
+  .coursesCard .rate i {
+    font-size: 13px;
+    margin-right: 5px;
+  }
+  .coursesCard .details .dimg img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  .coursesCard .details .box {
+    display: flex;
+    align-items: center;
+    color: grey;
+  }
+  .coursesCard .details span {
+    color: #2788E4;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  .coursesCard .price {
+    margin: 30px 0;
+    background-color: #f8f8f8;
+    padding: 10px;
+  }
+  .coursesCard h3 {
+    font-weight: 500;
+    color: #2788E4;
+  }
+
+
+.fa-star {
+  color:#2788E4;
+}
+
+.button{
+  argin-right: 20px;
+  color: #2788E4;
+}
+
+.btn .btn-secondary{
+  color: #2788E4;
+}
+
+.outline-btn{
+  color: #ffffff;
+  background-color: #2788E4;
+}
+
+.topic {
+  border: 2px solid #4891d5;
+  background-color: #89b3da;
+  padding: 20px;
+  border-radius: 50px 20px;
+  
+}
+
+.topic-button{
+  position: relative;
+  background-color: #2788E4;
+  border: none;
+  font-size: 15px;
+  color: #FFFFFF;
+  padding: 50px;
+  width: 200px;
+  text-align: center;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  margin-right:10px;
+  border-radius: 25px
+}
+
+.topic-button:after {
+  content: "";
+  background: #f1f1f1;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
+
+.topic-button:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+}
+
