@@ -10,6 +10,7 @@ import InterviewQuestion from "./component/interview/interview";
 import RecommendProject from "./component/project/recommendProject";
 import QnA from "./component/qna/q&a";
 import LearningHub from "./component/learningHub/learningHub";
+import CoursesCard from "./component/learningHub/CourseCatalog";
 import Contact from "./component/contact/contact";
 import Login from "./component/login/login";
 import Register from "./component/register/register";
@@ -18,12 +19,12 @@ import Profile from "./component/profile/profile";
 import NotFound from "./component/not-found/notFound";
 
 class App extends Component {
-  state = {};
+  state = {user:{}};
   render() {
     return (
       <main className='container'>
         <NavBar />
-        <FeatureNavBar />
+        {this.state.user && <FeatureNavBar />}
 
         <Routes>
           <Route path='/' element={<Dashboard />} />
@@ -38,6 +39,7 @@ class App extends Component {
           <Route path='/project' element={<RecommendProject />} />
           <Route path='/qna' element={<QnA />} />
           <Route path='/hub' element={<LearningHub />} />
+          <Route path='/catalog' element={<CoursesCard/>}/>
           <Route path='/not-found' element={<NotFound />} />
 
           <Route path='/' element={<Navigate to={"/"} />} />

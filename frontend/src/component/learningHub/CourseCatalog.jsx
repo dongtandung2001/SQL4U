@@ -1,5 +1,6 @@
 import React, { Component} from "react";
 import { coursesCard } from "./data"
+
 import "./learningHub.css"
 
 const ButtonsGroup = () => {
@@ -20,10 +21,9 @@ const ButtonsGroup = () => {
 
     <div>
     <button className='topic-button'>File Organizations</button>
-    <button className='topic-button'>Basic Concepts</button>
-      <button className='topic-button'>SQL Queries</button>
-      <button className='topic-button'>Relational Model</button>
-      <button className='topic-button'>NoSQL</button>
+      <button className='topic-button'>SQL and NoSQL</button>
+      <button className='topic-button'>Indexing, B and B+ trees</button>
+      <button className='topic-button'>Transactions & Concurrency Control</button>
     </div>
     </p>
     
@@ -87,3 +87,4 @@ class CoursesCard extends Component {
   }
 }
 export default CoursesCard
+

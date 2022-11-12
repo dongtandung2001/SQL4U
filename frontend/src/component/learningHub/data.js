@@ -17,7 +17,7 @@ export const coursesCard = [
       coursesName: "Database Foundations: Data Structures",
       courTeacher: [
         {
-            dcover: "./images/team/t1.webp",
+            dcover: "./images/team/t2.webp",
             name: "by Adam Wilbert",
           totalTime: "30 lectures (2h 55m)",
         },
@@ -29,7 +29,7 @@ export const coursesCard = [
       coursesName: "Database Foundations: Database Management",
       courTeacher: [
         {
-            dcover: "./images/team/t1.webp",
+            dcover: "./images/team/t3.webp",
             name: "by Adam Wilbert",
           totalTime: "50 lectures (2h 14m)",
         },
@@ -41,7 +41,7 @@ export const coursesCard = [
       coursesName: "Database Foundations: Administration",
       courTeacher: [
         {
-            dcover: "./images/team/t1.webp",
+            dcover: "./images/team/t4.webp",
             name: "by Adam Wilbert",
           totalTime: "20 lectures (2h 7m)",
         },
@@ -53,57 +53,57 @@ export const coursesCard = [
       coursesName: "Database Foundations: Application Development",
       courTeacher: [
         {
-            dcover: "./images/team/t1.webp",
+            dcover: "./images/team/t5.webp",
             name: "by Adam Wilbert",
-          totalTime: "100 lectures (1h 49m)",
+          totalTime: "10 lectures (1h 49m)",
         },
       ],
     },
     {
       id: 6,
       cover: "../images/courses/c6.png",
-      coursesName: "Learn Frontend Programming Language",
+      coursesName: "Learn SQL",
       courTeacher: [
         {
-          dcover: "./images/back.webp",
+          dcover: "./images/team/t6.webp",
           name: "by Sunil Bishowkaram",
-          totalTime: "200 lectures (300 hrs)",
+          totalTime: "20 lectures (2h 22m)",
         },
       ],
     },
     {
       id: 7,
       cover: "../images/courses/c7.png",
-      coursesName: "Introducing to with HTML / CSS",
+      coursesName: "MySQL Essential Training",
       courTeacher: [
         {
-          dcover: "./images/back.webp",
+          dcover: "./images/team/t7.webp",
           name: "by Price",
-          totalTime: "20 lectures (50 hrs)",
+          totalTime: "20 lectures (1h 11m)",
         },
       ],
     },
     {
       id: 8,
       cover: "../images/courses/c8.png",
-      coursesName: "Introducing to with JAVA",
+      coursesName: "Learning Relational Databases",
       courTeacher: [
         {
-          dcover: "./images/back.webp",
+          dcover: "./images/team/t8.webp",
           name: "by Petter",
-          totalTime: "80 lectures (200 hrs)",
+          totalTime: "25 lectures (3h 33m)",
         },
       ],
     },
     {
       id: 9,
       cover: "../images/courses/c9.png",
-      coursesName: "Introducing to with HTML / CSS / JAVASCRIPT",
+      coursesName: "Intermedaite SQL for Data Scientists",
       courTeacher: [
         {
-          dcover: "./images/back.webp",
+          dcover: "./images/team/t1.webp",
           name: "by Petter",
-          totalTime: "50 lectures (50 hrs)",
+          totalTime: "50 lectures (5h 05m)",
         },
       ],
     },
