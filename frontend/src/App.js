@@ -18,7 +18,7 @@ import Profile from "./component/profile/profile";
 import NotFound from "./component/not-found/notFound";
 
 class App extends Component {
-  state = {};
+  state = {user:{}};
   render() {
     return (
       <main className='container'>

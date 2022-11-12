@@ -1,16 +1,15 @@
 import React, { Component} from "react";
-import { coursesCard } from "./data"
-import { ButtonGroup } from "./ButtonGroup"
+import { coursesCard } from "./data";
+import showHide from "./showHide";
 import "./learningHub.css"
 
 const ButtonsGroup = () => {
   return (
     <>
-    
     <p className='topic'>
       <h2>TOPIC</h2>
     <div>
-      <button className='topic-button'>Basic Concepts</button>
+      <button className='topic-button' onclick="myFunction()"> Basic Concepts</button>
       <button className='topic-button'>SQL Queries</button>
       <button className='topic-button'>Relational Model</button>
       <button className='topic-button'>NoSQL</button>
