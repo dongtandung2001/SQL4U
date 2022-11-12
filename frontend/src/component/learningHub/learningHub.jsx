@@ -1,9 +1,18 @@
 import React, { Component } from "react";
+import CoursesCard from "./CoursesCard";
+import OnlineCourses from "./OnlineCourses";
+
+
 
 class LearningHub extends Component {
   state = {};
   render() {
-    return <h1>Learning Hub</h1>;
+    return (
+   <>
+   <CoursesCard/>
+   <OnlineCourses/>
+   </>
+    );
   }
 }
 

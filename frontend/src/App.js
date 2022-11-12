@@ -23,7 +23,7 @@ class App extends Component {
     return (
       <main className='container'>
         <NavBar />
-        <FeatureNavBar />
+        {this.state.user && <FeatureNavBar />}
 
         <Routes>
           <Route path='/' element={<Dashboard />} />
