@@ -1,6 +1,5 @@
 import React, { Component} from "react";
 import { coursesCard } from "./data";
-import showHide from "./showHide";
 import "./learningHub.css"
 
 const ButtonsGroup = () => {
@@ -25,9 +24,7 @@ const ButtonsGroup = () => {
       <button className='topic-button'>Relational Model</button>
       <button className='topic-button'>NoSQL</button>
     </div>
-    </p>
-    
-      
+    </p>   
     </>
   );
 };

@@ -1,9 +1,8 @@
 import React, { Component, useState} from "react";
-// import { coursesCard } from "./data";
 import "./learningHub.css";
 
 
-const myArray = ['basic_concepts', 'sql_queries', 'relational_model'];
+const myArray = ['all', 'basic_concepts', 'sql_queries', 'relational_model'];
 const basic_concepts = [
   {
     id: 1,
@@ -117,158 +116,89 @@ const relational_model =[{
   ],
 }];
 
+function Show({arr}){
+  return (
+    <section className='coursesCard'>
+    <div></div>
+    <div className='container grid2'>
+      {arr.map((val) => (
+        <div key={val.id} className='items'>
+          <div className='content flex'>
+            <div className='left'>
+              <div className='img'>
+                <img src={val.cover} alt='' />
+              </div>
+            </div>
+            <div className='text'>
+              <h1>{val.coursesName}</h1>
+              <div className='rate'>
+                <i className='fa fa-star blue'></i>
+                <i className='fa fa-star blue'></i>
+                <i className='fa fa-star blue'></i>
+                <i className='fa fa-star blue'></i>
+                <i className='fa fa-star blue'></i>
+                <label htmlFor=''  >(5.0)</label>
+              </div>
+              <div className='details'>
+                {val.courTeacher.map((details) => (
+                  <>
+                    <div className='box'>
+                      <div className='dimg'>
+                        <img src={details.dcover} alt='' />
+                      </div>
+                      <div className='para'>
+                        <h4>{details.name}</h4>
+                      </div>
+                    </div>
+                    <span>{details.totalTime}</span>
+                  </>
+                ))}
+              </div>
+            </div>
+          </div>
+          <button className='outline-btn'>ENROLL NOW !</button>            </div>
+      ))}
+    </div>
+  </section>
+  );
+}
 
 function App() {
   const [isShown, setIsShown] = useState(myArray[0]);
   return (
     <div>
-      <button className='topic-button' onClick={() => setIsShown(myArray[0])}>Basic Concepts</button>
-      <button className='topic-button' onClick={() => setIsShown(myArray[1])}>SQL Queries</button>
-      <button className='topic-button' onClick={() => setIsShown(myArray[2])}>Relational Model</button>
+      <button className='topic-button' onClick={() => setIsShown(myArray[0])}>All</button>
+      <button className='topic-button' onClick={() => setIsShown(myArray[1])}>Basic Concepts</button>
+      <button className='topic-button' onClick={() => setIsShown(myArray[2])}>SQL Queries</button>
+      <button className='topic-button' onClick={() => setIsShown(myArray[3])}>Relational Model</button>
       {/* 👇️ show elements on click */}
       {isShown===myArray[0] && (
         <div>
-          <section className='coursesCard'>
-        <div></div>
-        <div className='container grid2'>
-          {basic_concepts.map((val) => (
-            <div key={val.id} className='items'>
-              <div className='content flex'>
-                <div className='left'>
-                  <div className='img'>
-                    <img src={val.cover} alt='' />
-                  </div>
-                </div>
-                <div className='text'>
-                  <h1>{val.coursesName}</h1>
-                  <div className='rate'>
-                    <i className='fa fa-star blue'></i>
-                    <i className='fa fa-star blue'></i>
-                    <i className='fa fa-star blue'></i>
-                    <i className='fa fa-star blue'></i>
-                    <i className='fa fa-star blue'></i>
-                    <label htmlFor=''  >(5.0)</label>
-                  </div>
-                  <div className='details'>
-                    {val.courTeacher.map((details) => (
-                      <>
-                        <div className='box'>
-                          <div className='dimg'>
-                            <img src={details.dcover} alt='' />
-                          </div>
-                          <div className='para'>
-                            <h4>{details.name}</h4>
-                          </div>
-                        </div>
-                        <span>{details.totalTime}</span>
-                      </>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <button className='outline-btn'>ENROLL NOW !</button>            </div>
-          ))}
-        </div>
-      </section>
+          <Show arr={basic_concepts} />
+          <Show arr={sql_queries} />
+          <Show arr={relational_model} />
         </div>
       )}
-
-{isShown===myArray[1] && (
+      {isShown===myArray[1] && (
         <div>
-          <section className='coursesCard'>
-        <div></div>
-        <div className='container grid2'>
-          {sql_queries.map((val) => (
-            <div key={val.id} className='items'>
-              <div className='content flex'>
-                <div className='left'>
-                  <div className='img'>
-                    <img src={val.cover} alt='' />
-                  </div>
-                </div>
-                <div className='text'>
-                  <h1>{val.coursesName}</h1>
-                  <div className='rate'>
-                    <i className='fa fa-star blue'></i>
-                    <i className='fa fa-star blue'></i>
-                    <i className='fa fa-star blue'></i>
-                    <i className='fa fa-star blue'></i>
-                    <i className='fa fa-star blue'></i>
-                    <label htmlFor=''  >(5.0)</label>
-                  </div>
-                  <div className='details'>
-                    {val.courTeacher.map((details) => (
-                      <>
-                        <div className='box'>
-                          <div className='dimg'>
-                            <img src={details.dcover} alt='' />
-                          </div>
-                          <div className='para'>
-                            <h4>{details.name}</h4>
-                          </div>
-                        </div>
-                        <span>{details.totalTime}</span>
-                      </>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <button className='outline-btn'>ENROLL NOW !</button>            </div>
-          ))}
+          <Show arr={basic_concepts} />
         </div>
-      </section>
+      )}
+{isShown===myArray[2] && (
+        <div>
+         <Show arr={sql_queries} />
         </div>
       )}
       
-      {isShown===myArray[2] && (
+      {isShown===myArray[3] && (
         <div>
-          <section className='coursesCard'>
-        <div></div>
-        <div className='container grid2'>
-          {relational_model.map((val) => (
-            <div key={val.id} className='items'>
-              <div className='content flex'>
-                <div className='left'>
-                  <div className='img'>
-                    <img src={val.cover} alt='' />
-                  </div>
-                </div>
-                <div className='text'>
-                  <h1>{val.coursesName}</h1>
-                  <div className='rate'>
-                    <i className='fa fa-star blue'></i>
-                    <i className='fa fa-star blue'></i>
-                    <i className='fa fa-star blue'></i>
-                    <i className='fa fa-star blue'></i>
-                    <i className='fa fa-star blue'></i>
-                    <label htmlFor=''  >(5.0)</label>
-                  </div>
-                  <div className='details'>
-                    {val.courTeacher.map((details) => (
-                      <>
-                        <div className='box'>
-                          <div className='dimg'>
-                            <img src={details.dcover} alt='' />
-                          </div>
-                          <div className='para'>
-                            <h4>{details.name}</h4>
-                          </div>
-                        </div>
-                        <span>{details.totalTime}</span>
-                      </>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <button className='outline-btn'>ENROLL NOW !</button>            </div>
-          ))}
-        </div>
-      </section>
+        <Show arr={relational_model} />
         </div>
       )}
     </div>
   );
 }
+
 class CoursesCard extends Component {
   render() {
     return (
@@ -276,12 +206,9 @@ class CoursesCard extends Component {
       <div className='topic'>
       <h2>TOPIC</h2>
       <App/>
-
     </div>
-    
     </>
     )
-    
   }
 }
 export default CoursesCard
