@@ -18,12 +18,20 @@ import Logout from "./component/logout/logout";
 import Profile from "./component/profile/profile";
 import NotFound from "./component/not-found/notFound";
 
+import auth from "./services/authService";
+
+
 class App extends Component {
+  state = {};
+  async componentDidMount() {
+    const user = auth.getCurrentUser();
+    this.setState({ user });
+  }
   state = {user:{}};
   render() {
     return (
       <main className='container'>
-        <NavBar user={this.state.user}/>
+        <NavBar user={this.state.user} />
         {this.state.user && <FeatureNavBar />}
 
         <Routes>

@@ -1,0 +1,4 @@
+{
+  "jwtPrivateKey": "sql4u_jwtPrivateKey",
+  "db": "sql4u_db"
+}
