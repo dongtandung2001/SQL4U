@@ -1,4 +1,4 @@
 {
-  "db": "mongodb://localhost/sql4u",
+  "db": "mongodb://localhost:27017/sql4u",
   "port": "3900"
 }
