@@ -23,7 +23,7 @@ class App extends Component {
   render() {
     return (
       <main className='container'>
-        <NavBar />
+        <NavBar user={this.state.user}/>
         {this.state.user && <FeatureNavBar />}
 
         <Routes>

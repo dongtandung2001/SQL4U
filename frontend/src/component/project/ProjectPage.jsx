@@ -1,6 +1,5 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import data from './projects';
 
 export default function ProjectPage() {
     const location = useLocation();
