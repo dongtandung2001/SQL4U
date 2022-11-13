@@ -97,97 +97,61 @@ color:#132f4a;
 }
 
 .button{
-argin-right: 20px;
-color: #2788E4;
+  argin-right: 20px;
+  color: #2788E4;
 }
 
 .btn .btn-secondary{
-color: #2788E4;
+  color: #2788E4;
 }
 
 .outline-btn{
-color: #ffffff;
-background-color: #2788E4;
+  color: #ffffff;
+  background-color: #2788E4;
 }
 
 .topic {
-border: 2px solid #4891d5;
-background-color: #89b3da;
-padding: 20px;
-border-radius: 50px 20px;
-
+  border: 2px solid #4891d5;
+  background-color: #89b3da;
+  padding: 20px;
+  border-radius: 50px 20px;
+  
 }
 
 .topic-button{
-position: relative;
-background-color: #2788E4;
-border: none;
-font-size: 15px;
-color: #FFFFFF;
-padding: 50px;
-width: 200px;
-text-align: center;
-transition-duration: 0.4s;
-text-decoration: none;
-overflow: hidden;
-cursor: pointer;
-margin-right:10px;
-border-radius: 25px
+  position: relative;
+  background-color: #2788E4;
+  border: none;
+  font-size: 15px;
+  color: #FFFFFF;
+  padding: 50px;
+  width: 200px;
+  text-align: center;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  margin-right:10px;
+  border-radius: 25px
 }
 
 .topic-button:after {
-content: "";
-background: #f1f1f1;
-display: block;
-position: absolute;
-padding-top: 300%;
-padding-left: 350%;
-margin-left: -20px !important;
-margin-top: -120%;
-opacity: 0;
-transition: all 0.8s
+  content: "";
+  background: #f1f1f1;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
 }
 
 .topic-button:active:after {
-padding: 0;
-margin: 0;
-opacity: 1;
-transition: 0s
-}
-
-.flex-parent-element {
-  display: flex;
-  width: 150%;
-}
-
-.flex-child-element {
-  flex: 1;
-  margin: 10px;
-}
-
-.flex-child-element:second-child {
-  margin-left: 20px;
-}
-
-.catalog-button{
-  border: 2px solid #4891d5;
-background-color: #89b3da;
-padding: 25px;
-border-radius: 50px;
-font-size: 20px;
-}
-
-.course-button{
-  background-color: #6ca8e7; 
-  border: 1px solid green; 
-  color: #ffffff; 
-  padding: 15px 30px; 
-  cursor: pointer; 
-  width: 70%; 
-  display: block;
-  margin:15px;
-  border-radius: 30px;
-  font-size: 30px;
- text-align: left;
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
 }
 

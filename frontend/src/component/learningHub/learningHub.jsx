@@ -7,10 +7,8 @@ class LearningHub extends Component {
   render() {
     return (
    <>
-
 <div className="hub">
-<h1>My Course!</h1>
-
+<h1>My Course</h1>
 <div className="flex-parent-element">
   <div className="flex-child-element"><h2>Enrolled Courses</h2></div>
   <div className="flex-child-element">
