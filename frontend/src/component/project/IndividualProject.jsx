@@ -18,7 +18,7 @@ export default function IndividualProject(props) {
     content: props.content
   }
 
-  console.log(state.admin)
+
   return (
     <div className='project-title-div'>
       <Link
@@ -26,16 +26,20 @@ export default function IndividualProject(props) {
         state={{ content: thisProject }}
         className='project-title'
       >
-        <span style={{ marginRight: "10px" }}>{props.count}.</span>
+        <span style={{ marginRight: "10px" }}>{props.id + 1}.</span>
         {props.title}
       </Link>
       {state.admin ? 
-        <button type='button' className="check-button">
+        <button 
+          type='button' 
+          className="check-button"
+          onClick={e => props.handleDelete(props.id, e)}
+        >
           <AiFillDelete className='check-icon' />
         </button>
       :
-      <button type='button' className="check-button">
-          <BsFillCheckCircleFill className='check-icon' />
+      <button type='button' className="check-button" >
+          <BsFillCheckCircleFill className='check-icon'  />
         </button>
       
       }
