@@ -8,7 +8,7 @@ const ButtonsGroup = () => {
     <p className='topic'>
       <h2>TOPIC</h2>
     <div>
-      <button className='topic-button' onclick="myFunction()"> Basic Concepts</button>
+      <button className='topic-button'> Basic Concepts</button>
       <button className='topic-button'>SQL Queries</button>
       <button className='topic-button'>Relational Model</button>
       <button className='topic-button'>NoSQL</button>

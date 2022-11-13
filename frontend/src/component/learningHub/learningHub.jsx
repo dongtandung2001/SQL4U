@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import {Link} from "react-router-dom";
+import {coursesCard} from "./data";
 
 import "./learningHub.css"
 class LearningHub extends Component {
-  state = {};
+  state = {data: coursesCard};
   render() {
     return (
    <>
@@ -13,7 +14,7 @@ class LearningHub extends Component {
   <div className="flex-child-element"><h2>Enrolled Courses</h2></div>
   <div className="flex-child-element">
     <nav>
-    <Link to="/catalog">
+    <Link to="/catalog" state={{data:this.state.data}}>
       <button className="catalog-button">Course Catalog</button>
     </Link>
   </nav>

@@ -1,7 +1,6 @@
 import "./App.css";
 import { Routes, Route, Navigate } from "react-router-dom";
 import React, { Component } from "react";
-
 import NavBar from "./component/navbar/navbar";
 import FeatureNavBar from "./component/featureNavBar/featureNavBar";
 import Dashboard from "./component/dashboard/dashboard";
@@ -17,8 +16,9 @@ import Register from "./component/register/register";
 import Logout from "./component/logout/logout";
 import Profile from "./component/profile/profile";
 import NotFound from "./component/not-found/notFound";
-
+import CourseForm from "./component/learningHub/CourseForm";
 import auth from "./services/authService";
+
 
 
 class App extends Component {
@@ -46,6 +46,7 @@ state = {};
           <Route path='/project' element={<RecommendProject />} />
           <Route path='/qna' element={<QnA />} />
           <Route path='/hub' element={<LearningHub />} />
+          <Route path='/catalog/:id' element={<CourseForm/>}/>
           <Route path='/catalog' element={<CoursesCard/>}/>
           <Route path='/not-found' element={<NotFound />} />
 
