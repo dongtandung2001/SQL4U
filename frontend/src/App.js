@@ -21,7 +21,7 @@ import auth from "./services/authService";
 
 
 class App extends Component {
-  state = {};
+state = {};
   async componentDidMount() {
     const user = auth.getCurrentUser();
     this.setState({ user });
