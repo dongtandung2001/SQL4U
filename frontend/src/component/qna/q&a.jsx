@@ -30,12 +30,12 @@ class QnA extends Component {
           </div>
           <QuestionPost />
 
-          
+
         </div>
         <div className="col-sm-2"> content
         </div>
       </div>
-        
+
     </div>);
   }
 }
