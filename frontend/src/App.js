@@ -7,9 +7,12 @@ import Dashboard from "./component/dashboard/dashboard";
 import About from "./component/about/about";
 import InterviewQuestion from "./component/interview/interview";
 import RecommendProject from "./component/project/recommendProject";
+import ProjectPage from './component/project/ProjectPage';
 import QnA from "./component/qna/q&a";
 import LearningHub from "./component/learningHub/learningHub";
 import CoursesCard from "./component/learningHub/CourseCatalog";
+import IndividualCourse from "./component/learningHub/IndividualCourse";
+import TutorialPage from "./component/learningHub/TutorialPage";
 import Contact from "./component/contact/contact";
 import Login from "./component/login/login";
 import Register from "./component/register/register";
@@ -21,12 +24,14 @@ import auth from "./services/authService";
 
 
 
+
 class App extends Component {
-state = {};
+  state = {};
   async componentDidMount() {
     const user = auth.getCurrentUser();
     this.setState({ user });
   }
+  state = { user: {} };
   render() {
     return (
       <main className='container'>
@@ -44,10 +49,16 @@ state = {};
 
           <Route path='/interview' element={<InterviewQuestion />} />
           <Route path='/project' element={<RecommendProject />} />
+          <Route path='/project/projectpage/:id' element={<ProjectPage />} />
           <Route path='/qna' element={<QnA />} />
           <Route path='/hub' element={<LearningHub />} />
-          <Route path='/catalog/:id' element={<CourseForm/>}/>
-          <Route path='/catalog' element={<CoursesCard/>}/>
+
+          <Route path='/catalog/add/:id' element={<CourseForm />} />
+          <Route path='/catalog/:courseId' element={<IndividualCourse/>}/>
+          <Route path='/catalog/:courseId/:tutorialId' element={<TutorialPage/>}/>
+
+
+          <Route path='/catalog' element={<CoursesCard />} />
           <Route path='/not-found' element={<NotFound />} />
 
           <Route path='/' element={<Navigate to={"/"} />} />

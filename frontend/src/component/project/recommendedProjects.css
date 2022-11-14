@@ -1,0 +1,54 @@
+:root {
+    --transition: 300ms all ease;
+    --color-primary: #0D6EFD;
+}
+
+.projects-container {
+    width: 100%;
+}
+
+.project-title-div {
+    height: 2rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 1rem;
+    margin-bottom: 0.8rem;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.project-title-div:hover {
+    background: rgba(0,0,0,0.05);
+}
+.project-title {
+    align-self: center;
+    text-decoration: none;
+    color: #000;
+    font-size: 1.2rem;
+}
+
+.project-title:hover {
+    color: var(--color-primary);
+}
+
+.check-button {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background: none;
+    border: none;
+}
+
+.check-icon {
+    font-size: 1.3rem;
+    color: rgba(0,0,0,0.3);
+}
+
+.check-icon:hover {
+    fill: var(--color-primary);
+}
+
