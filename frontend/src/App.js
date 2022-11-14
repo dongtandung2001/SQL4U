@@ -1,7 +1,6 @@
 import "./App.css";
 import { Routes, Route, Navigate } from "react-router-dom";
 import React, { Component } from "react";
-
 import NavBar from "./component/navbar/navbar";
 import FeatureNavBar from "./component/featureNavBar/featureNavBar";
 import Dashboard from "./component/dashboard/dashboard";
@@ -11,14 +10,16 @@ import RecommendProject from "./component/project/recommendProject";
 import ProjectPage from './component/project/ProjectPage';
 import QnA from "./component/qna/q&a";
 import LearningHub from "./component/learningHub/learningHub";
+import CoursesCard from "./component/learningHub/CourseCatalog";
 import Contact from "./component/contact/contact";
 import Login from "./component/login/login";
 import Register from "./component/register/register";
 import Logout from "./component/logout/logout";
 import Profile from "./component/profile/profile";
 import NotFound from "./component/not-found/notFound";
-
+import CourseForm from "./component/learningHub/CourseForm";
 import auth from "./services/authService";
+
 
 
 class App extends Component {
@@ -48,6 +49,8 @@ state = {};
           <Route path='/project/projectpage/:id' element={<ProjectPage />}/>
           <Route path='/qna' element={<QnA />} />
           <Route path='/hub' element={<LearningHub />} />
+          <Route path='/catalog/:id' element={<CourseForm/>}/>
+          <Route path='/catalog' element={<CoursesCard/>}/>
           <Route path='/not-found' element={<NotFound />} />
 
           <Route path='/' element={<Navigate to={"/"} />} />
