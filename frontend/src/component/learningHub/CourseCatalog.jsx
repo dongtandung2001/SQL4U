@@ -53,46 +53,28 @@ function Show({arr}){
 function App({location}) {
   const [isShown, setIsShown] = useState("all");
   console.log(location);
+  const [active, setActive] = useState(false);
+  const handleClick = () => {
+    setActive(!active);
+  };
   return (
     <div>
-      <button className='topic-button' onClick={() => setIsShown("all")}>All</button>
-      <button className='topic-button' onClick={() => setIsShown("basic")}>Basic Concepts</button>
-      <button className='topic-button' onClick={() => setIsShown("all")}>SQL Queries</button>
-      <button className='topic-button' onClick={() => setIsShown("all")}>Relational Model</button>
+    <button className='topic-button' onClick={() => {setIsShown("all"); handleClick()}}  style={{ backgroundColor: active ? "black" : "white" }}>All</button>
+      <button className='topic-button' onClick={() => {setIsShown("basic"); handleClick()}}  style={{ backgroundColor: active ? "black" : "white" }}>Basic Concepts</button>
+      <button className='topic-button' onClick={() => setIsShown("sql")}>SQL Queries</button>
+      <button className='topic-button' onClick={() => setIsShown("relational_model")}>Relational Model</button>
       {/* 👇️ show elements on click */}
-
       {isShown==="all" && (
         <div>
           <Show arr={location}/>
-          {/* <Show arr={sql_queries} />
-          <Show arr={relational_model} /> */}
         </div>
       )}
 
       {isShown==="basic" && (
         <div>
           <Show arr={location.filter( course => course.topic ==="basic_concepts" )}/>
-          {/* <Show arr={sql_queries} />
-          <Show arr={relational_model} /> */}
         </div>
       )}
-      {/* {isShown===myArray[1] && (
-        <div>
-          <Show arr={coursesCard} />
-        </div>
-      )}
-      
-      {isShown===myArray[2] && (
-        <div>
-         <Show arr={coursesCard} />
-        </div>
-      )}
-      
-      {isShown===myArray[3] && (
-        <div>
-        <Show arr={coursesCard} />
-        </div>
-      )} */}
     </div>
   );
 }
@@ -106,7 +88,7 @@ class CoursesCard extends Component {
     return (
       <>
       <div className='topic'>
-      <h2>TOPIC</h2>
+      <h1>Courses Catalog</h1>
       <App location={this.state.data}/>
     </div>
     </>

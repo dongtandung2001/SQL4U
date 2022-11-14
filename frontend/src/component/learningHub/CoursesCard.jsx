@@ -32,7 +32,7 @@ class CoursesCard extends Component {
   render() {
     return (
       <>
-      
+      <h1>Course Catalog</h1>
       <ButtonsGroup/>
       <h2>COURSE CATALOG</h2>
       <section className='coursesCard'>
