@@ -1,16 +1,20 @@
 const { restart } = require("nodemon");
 const express = require("express");
-
+const cors = require("cors");
 const app = express();
 
 // startup
+// cors
+app.use(cors());
+require("./startup/cors")(app);
 // config
-require('./startup/config')();
+require("./startup/config")();
 // db
-require('./startup/db')();
+require("./startup/db")();
 // routes
-require('./startup/routes')(app);
-
+require("./startup/routes")(app);
+// production
+require("./startup/production")(app);
 
 app.get("/", (req, res) => {
   res.send({ message: "Welcome to SQL4U API" });
