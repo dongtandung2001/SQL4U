@@ -22,11 +22,11 @@ export default function IndividualProject(props) {
   return (
     <div className='project-title-div'>
       <Link
-        to={`/project/projectpage/${props.count}`}
+        to={`/project/projectpage/${props.id+1}`}
         state={{ content: thisProject }}
         className='project-title'
       >
-        <span style={{ marginRight: "10px" }}>{props.id + 1}.</span>
+        <span style={{ marginRight: "10px" }}>{props.id+1}.</span>
         {props.title}
       </Link>
       {state.admin ? 

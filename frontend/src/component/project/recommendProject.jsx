@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import IndividualProject from './IndividualProject';
 import './recommendedProjects.css';
-import { data } from './projects';
-import { useEffect } from "react";
 
 export default function RecommendProject() {
   const [projectData, setProjectData] = useState([{title: 'Project 1', content: 'Hello'},{title: 'Project 2', content: 'Hello'},{title: 'Project 3', content: 'Hello'}]);
