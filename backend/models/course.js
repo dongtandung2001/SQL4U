@@ -9,17 +9,42 @@ const courseSchema = new mongoose.Schema({
         minlength: 5,
         maxlength: 255,
     },
-    topic: {
+    name: {
         type: String,
         required: true,
         minlength: 5,
         maxlength: 255,
     },
-    topic: {
+    length: {
         type: String,
         required: true,
         minlength: 5,
         maxlength: 255,
+    },
+    teacher: {
+        type: String,
+        required: true,
+    }
+    ,
+    cover: {
+        type: String,
     },
 
 })
+
+const Course = mongoose.model('Course', courseSchema);
+
+function validateCourse(course) {
+    const schema = Joi.object({
+        topic: Joi.string().required().min(5).max(255),
+        name: Joi.string().required().min(5).max(255),
+        length: Joi.string().required().min(5).max(255),
+        teacher: Joi.string().required().min(5).max(255),
+        cover: Joi.string(),
+
+    })
+    return schema.validate(course);
+}
+
+exports.Course = Course;
+exports.validate = validateCourse;
