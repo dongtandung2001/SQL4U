@@ -1,0 +1,26 @@
+.interview-image {
+  width: 250px;
+  border-radius: 20px;
+}
+
+.sidebar-common-questions-btn {
+  border: none;
+  border-radius: 10px;
+}
+
+.question-header {
+  background-color: #C8DCEF;
+  width: 100%;
+  margin: 0;
+  display: table;
+}
+.question {
+  background-color: #D9D9D9;
+}
+.question-1 {
+  margin-top: 20px;
+}
+
+.answer-button {
+  border: none;
+}
