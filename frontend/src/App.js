@@ -23,12 +23,12 @@ import auth from "./services/authService";
 
 
 class App extends Component {
-state = {};
+  state = {};
   async componentDidMount() {
     const user = auth.getCurrentUser();
     this.setState({ user });
   }
-  state = {user:{}};
+  state = { user: {} };
   render() {
     return (
       <main className='container'>
@@ -46,11 +46,16 @@ state = {};
 
           <Route path='/interview' element={<InterviewQuestion />} />
           <Route path='/project' element={<RecommendProject />} />
-          <Route path='/project/projectpage/:id' element={<ProjectPage />}/>
+          <Route path='/project/projectpage/:id' element={<ProjectPage />} />
           <Route path='/qna' element={<QnA />} />
           <Route path='/hub' element={<LearningHub />} />
-          <Route path='/catalog/:id' element={<CourseForm/>}/>
-          <Route path='/catalog' element={<CoursesCard/>}/>
+
+          <Route path='/catalog/add/:id' element={<CourseForm />} />
+          {/* <Route path='/catalog/:id' element={<Tutorials/>}/>
+          <Route path='/catalog/:id/:tutorialId' element={<Tutorial/>}/> */}
+
+
+          <Route path='/catalog' element={<CoursesCard />} />
           <Route path='/not-found' element={<NotFound />} />
 
           <Route path='/' element={<Navigate to={"/"} />} />
