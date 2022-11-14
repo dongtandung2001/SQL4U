@@ -2,6 +2,7 @@ import React, { Component, useState } from "react";
 import "./learningHub.css";
 import { withRouter } from "../withRouter";
 import { coursesCard } from "./data";
+import { Link } from 'react-router-dom';
 
 function Show({ arr }) {
   return (
@@ -41,7 +42,13 @@ function Show({ arr }) {
                 </div>
               </div>
             </div>
-            <button className="outline-btn">ENROLL NOW !</button>{" "}
+            {/* Link to IndividualCourse component */}
+            <Link 
+              className="outline-btn"
+              to={`/catalog/${'course' + val.id}`}
+            >
+              ENROLL NOW !
+            </Link>{" "}
           </div>
         ))}
       </div>
@@ -51,7 +58,6 @@ function Show({ arr }) {
 
 function App({ location }) {
   const [isShown, setIsShown] = useState("all");
-  console.log(location);
   return (
     <div>
       <button className="topic-button" onClick={() => setIsShown("all")}>

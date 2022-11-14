@@ -11,6 +11,8 @@ import ProjectPage from './component/project/ProjectPage';
 import QnA from "./component/qna/q&a";
 import LearningHub from "./component/learningHub/learningHub";
 import CoursesCard from "./component/learningHub/CourseCatalog";
+import IndividualCourse from "./component/learningHub/IndividualCourse";
+import TutorialPage from "./component/learningHub/TutorialPage";
 import Contact from "./component/contact/contact";
 import Login from "./component/login/login";
 import Register from "./component/register/register";
@@ -19,6 +21,7 @@ import Profile from "./component/profile/profile";
 import NotFound from "./component/not-found/notFound";
 import CourseForm from "./component/learningHub/CourseForm";
 import auth from "./services/authService";
+
 
 
 
@@ -51,8 +54,8 @@ class App extends Component {
           <Route path='/hub' element={<LearningHub />} />
 
           <Route path='/catalog/add/:id' element={<CourseForm />} />
-          {/* <Route path='/catalog/:id' element={<Tutorials/>}/>
-          <Route path='/catalog/:id/:tutorialId' element={<Tutorial/>}/> */}
+          <Route path='/catalog/:courseId' element={<IndividualCourse/>}/>
+          <Route path='/catalog/:courseId/:tutorialId' element={<TutorialPage/>}/>
 
 
           <Route path='/catalog' element={<CoursesCard />} />
