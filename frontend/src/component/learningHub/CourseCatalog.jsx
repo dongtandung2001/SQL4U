@@ -47,7 +47,7 @@ function Show({ arr }) {
               className="outline-btn"
               to={`/catalog/${'course' + val.id}`}
             >
-              ENROLL NOW !
+              GO !
             </Link>{" "}
           </div>
         ))}
