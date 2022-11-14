@@ -7,7 +7,7 @@ import Dashboard from "./component/dashboard/dashboard";
 import About from "./component/about/about";
 import InterviewQuestion from "./component/interview/interview";
 import RecommendProject from "./component/project/recommendProject";
-import ProjectPage from './component/project/ProjectPage';
+import ProjectPage from "./component/project/ProjectPage";
 import QnA from "./component/qna/q&a";
 import LearningHub from "./component/learningHub/learningHub";
 import CoursesCard from "./component/learningHub/CourseCatalog";
@@ -22,16 +22,12 @@ import NotFound from "./component/not-found/notFound";
 import CourseForm from "./component/learningHub/CourseForm";
 import auth from "./services/authService";
 
-
-
-
 class App extends Component {
   state = {};
   async componentDidMount() {
     const user = auth.getCurrentUser();
     this.setState({ user });
   }
-  state = { user: {} };
   render() {
     return (
       <main className='container'>
@@ -54,9 +50,11 @@ class App extends Component {
           <Route path='/hub' element={<LearningHub />} />
 
           <Route path='/catalog/add/:id' element={<CourseForm />} />
-          <Route path='/catalog/:courseId' element={<IndividualCourse/>}/>
-          <Route path='/catalog/:courseId/:tutorialId' element={<TutorialPage/>}/>
-
+          <Route path='/catalog/:courseId' element={<IndividualCourse />} />
+          <Route
+            path='/catalog/:courseId/:tutorialId'
+            element={<TutorialPage />}
+          />
 
           <Route path='/catalog' element={<CoursesCard />} />
           <Route path='/not-found' element={<NotFound />} />
