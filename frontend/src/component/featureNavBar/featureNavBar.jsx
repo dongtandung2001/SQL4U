@@ -14,38 +14,38 @@ class FeatureNavBar extends Component {
   }
   render() {
     return (
-      <nav className='navbar navbar-expand-sm'>
-        <div className='container-fluid'>
-          <div className='navbar-nav ms-auto'>
+      <nav className="navbar navbar-expand-sm">
+        <div className="container-fluid">
+          <div className="navbar-nav ms-auto">
             <Link
-              className='nav-item nav-link mt-2 '
-              aria-current='page'
-              to='/hub'
+              className="nav-item nav-link mt-2 "
+              aria-current="page"
+              to="/catalog"
             >
               <span className={this.getCurrentPage("/hub")}>Learning Hub</span>
             </Link>
             <Link
-              className='nav-item nav-link mt-2 '
-              aria-current='page'
-              to='/interview'
+              className="nav-item nav-link mt-2 "
+              aria-current="page"
+              to="/interview"
             >
               <span className={this.getCurrentPage("/interview")}>
                 Interview Question
               </span>
             </Link>
             <Link
-              className='nav-item nav-link mt-2 '
-              aria-current='page'
-              to='/project'
+              className="nav-item nav-link mt-2 "
+              aria-current="page"
+              to="/project"
             >
               <span className={this.getCurrentPage("/project")}>
                 Recommend Project
               </span>
             </Link>
             <Link
-              className='nav-item nav-link mt-2 '
-              aria-current='page'
-              to='/qna'
+              className="nav-item nav-link mt-2 "
+              aria-current="page"
+              to="/qna"
             >
               <span className={this.getCurrentPage("/qna")}>Q&A</span>
             </Link>
