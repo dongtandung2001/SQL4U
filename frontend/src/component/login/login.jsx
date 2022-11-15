@@ -20,7 +20,6 @@ class Login extends Form {
   doSubmit = async () => {
     try {
       const { data } = this.state;
-      console.log(data);
       await auth.login(data.username, data.password);
       window.location = "/";
     } catch (error) {

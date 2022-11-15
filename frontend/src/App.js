@@ -51,8 +51,8 @@ class App extends Component {
           <Route path='/profile' element={<Profile />} />
 
           <Route path='/interview' element={<InterviewQuestion />} />
-          <Route path='/project' element={<RecommendProject />} />
-          <Route path='/project/projectpage/:id' element={<ProjectPage />} />
+          <Route path='/catalog/:courseId/project' element={<RecommendProject />} />
+          <Route path='/catalog/:courseId/project/projectpage/:id' element={<ProjectPage />} />
           <Route path='/qna' element={<QnA />} />
 
           <Route path='/hub' element={<LearningHub />} />

@@ -1,11 +1,14 @@
 import React, {useEffect, useState} from "react";
 import { BsFillCheckCircleFill } from 'react-icons/bs';
 import {AiFillDelete} from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './recommendedProjects.css';
 import auth from "../../services/authService";
 
 export default function IndividualProject(props) {
+  const location = useLocation();
+  console.log('hi nha', location);
+  const {courseId} = location.state;
   const [state, setState] = useState({});
 
   useEffect( () => {
@@ -22,7 +25,7 @@ export default function IndividualProject(props) {
   return (
     <div className='project-title-div'>
       <Link
-        to={`/project/projectpage/${props.id+1}`}
+        to={`/catalog/${courseId}/project/projectpage/${props.id+1}`}
         state={{ content: thisProject }}
         className='project-title'
       >

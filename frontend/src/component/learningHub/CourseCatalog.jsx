@@ -53,7 +53,7 @@ function Show({ arr }) {
             {/* Link to IndividualCourse component */}
             <Link 
               className="outline-btn"
-              to={`/catalog/${'course' + val.id}`} state= {{"tutorial" : val.tutorial}}
+              to={`/catalog/${'course' + val.id}`} state= {{"tutorial" : val.tutorial, "courseName": val.coursesName}}
             >
               GO !
             </Link>{" "}
@@ -110,7 +110,7 @@ class CoursesCard extends Component {
   }
   render() {
     const location = this.props.location;
-    console.log(location);
+    
     return (
       <>
         <div className="topic">
