@@ -56,7 +56,7 @@ class Register extends Form {
             <h2>Let's start to learn!</h2>
             <form onSubmit={this.handleSumbit}>
               {this.renderInput("username", "UserName")}
-              {this.renderInput("password", "Password")}
+              {this.renderInput("password", "Password", "password")}
               <p className="mt-3">How strong is your database skill</p>
               {this.renderRadio("skill", this.state.skills)}
               <div className="d-grid">
