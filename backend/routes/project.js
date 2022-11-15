@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
 });
 
 // post a new project
-router.post("/", async (req, res) => {
+router.post("/add", async (req, res) => {
   // validate input
   const { error } = validate(req.body);
   if (error) res.status(400).send(error.details[0].message);
@@ -19,6 +19,7 @@ router.post("/", async (req, res) => {
   let project = new Project({
     title: req.body.title,
     content: req.body.content,
+    // courseID: req.body.courseID,
     difficulty: req.body.difficulty,
   });
   project = await project.save();
