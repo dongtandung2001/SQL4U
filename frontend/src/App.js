@@ -22,6 +22,7 @@ import auth from "./services/authService";
 
 
 
+
 class App extends Component {
 state = {};
   async componentDidMount() {
@@ -48,6 +49,7 @@ state = {};
           <Route path='/project' element={<RecommendProject />} />
           <Route path='/project/projectpage/:id' element={<ProjectPage />}/>
           <Route path='/qna' element={<QnA />} />
+          
           <Route path='/hub' element={<LearningHub />} />
           <Route path='/catalog/:id' element={<CourseForm/>}/>
           <Route path='/catalog' element={<CoursesCard/>}/>
