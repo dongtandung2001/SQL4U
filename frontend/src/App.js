@@ -22,6 +22,9 @@ import NotFound from "./component/not-found/notFound";
 import CourseForm from "./component/learningHub/CourseForm";
 import auth from "./services/authService";
 
+
+
+
 class App extends Component {
   state = {};
   async componentDidMount() {
@@ -47,6 +50,7 @@ class App extends Component {
           <Route path='/project' element={<RecommendProject />} />
           <Route path='/project/projectpage/:id' element={<ProjectPage />} />
           <Route path='/qna' element={<QnA />} />
+          
           <Route path='/hub' element={<LearningHub />} />
 
           <Route path='/catalog/add/:id' element={<CourseForm />} />
