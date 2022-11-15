@@ -1,7 +1,13 @@
+/**
+ * Feature: Learning Hub
+ * Page: My Courses
+ * Note: Skip it for milestone 2 - just focus on course catalog
+ */
+
+
 import React, { Component } from "react";
 import {Link} from "react-router-dom";
 import {coursesCard} from "./data";
-
 import "./learningHub.css"
 class LearningHub extends Component {
   state = {data: coursesCard};

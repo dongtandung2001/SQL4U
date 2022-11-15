@@ -1,8 +1,16 @@
+/**
+ * Feature: Learning Hub
+ * Page: Course Catalog
+ * Note: Implemented for milestone 2
+ */
+
 import React, { Component, useState } from "react";
 import "./learningHub.css";
 import { withRouter } from "../withRouter";
 import { coursesCard } from "./data";
 import { Link } from 'react-router-dom';
+
+ {/*Using show() for showing each course card */}
 
 function Show({ arr }) {
   return (
@@ -45,7 +53,7 @@ function Show({ arr }) {
             {/* Link to IndividualCourse component */}
             <Link 
               className="outline-btn"
-              to={`/catalog/${'course' + val.id}`}
+              to={`/catalog/${'course' + val.id}`} state= {{"tutorial" : val.tutorial}}
             >
               GO !
             </Link>{" "}
@@ -56,6 +64,10 @@ function Show({ arr }) {
   );
 }
 
+
+{/*
+When user select a topic, it will pop-up courses related to selected topic
+*/}
 function App({ location }) {
   const [isShown, setIsShown] = useState("all");
   return (
