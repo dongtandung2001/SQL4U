@@ -9,14 +9,8 @@ class QnA extends Component {
   render() {
     return (<div className="container-fluid body">
       <div className="row g-4">
-        <div className="col-sm-3 topic-col">
-          <div className="topic-logo">
-            <img src="../images/qna/q&a.png" alt="question and answer pic" width="200px" height="100px" />
-          </div>
-          <TopicList />
 
-
-        </div>
+        <TopicList />
         <div className="col-sm-7">
 
           <CreatePost />
@@ -33,6 +27,21 @@ class QnA extends Component {
 
         </div>
         <div className="col-sm-2"> content
+          {/* <nav aria-label="...">
+            <ul class="pagination">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item active" aria-current="page">
+                <a class="page-link" href="#">2</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav> */}
         </div>
       </div>
 
