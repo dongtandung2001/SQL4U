@@ -8,7 +8,7 @@ export default function ProjectPage() {
         <div className="container">
             <h1>{location.state.content.title}</h1>
             <p>{location.state.content.content}</p>
-            <button type='submit'>Submit</button>
+            <button type='submit' className='btn btn-outline-primary'>Finished</button>
         </div>
     )
 }
