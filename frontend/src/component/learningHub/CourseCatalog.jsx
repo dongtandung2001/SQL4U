@@ -31,13 +31,13 @@ function Show({ arr }) {
                   <>
                     <div className="box">
                       <div className="dimg">
-                        <img src="./images/team/t4.webp" alt="" />
+                        <img src="./images/team/man-teacher.png" alt="" />
                       </div>
                       <div className="para">
                         <h4>{val.name}</h4>
                       </div>
                     </div>
-                    <span>{val.totalTime}</span>
+                    <span>{val.length}</span>
                   </>
                 </div>
               </div>
@@ -66,29 +66,25 @@ function App({ location }) {
       <button className="topic-button" onClick={() => setIsShown("basic")}>
         Basic Concepts
       </button>
-      <button className="topic-button" onClick={() => setIsShown("all")}>
-        SQL Queries
-      </button>
-      <button className="topic-button" onClick={() => setIsShown("all")}>
+      <button className="topic-button" onClick={() => setIsShown("relational")}>
         Relational Model
+      </button>
+      <button className="topic-button" onClick={() => setIsShown("sql")}>
+      SQL Queries
       </button>
       {/* 👇️ show elements on click */}
 
       {isShown === "all" && (
-        <div>
-          <Show arr={location} />
-          {/* <Show arr={sql_queries} />
-          <Show arr={relational_model} /> */}
-        </div>
+        <div><Show arr={location} /></div>
       )}
 
-      {isShown === "basic" && (
-        <div>
-          <Show
-            arr={location.filter((course) => course.topic === "basic_concepts")}
-          />
-          {/* <Show arr={sql_queries} />
-          <Show arr={relational_model} /> */}
+      {isShown === "basic" && ( <div><Show arr={location.filter((course) => course.topic === "basic")}/>
+        </div>
+      )}
+      {isShown === "relational" && ( <div><Show arr={location.filter((course) => course.topic === "relational")}/>
+        </div>
+      )}
+      {isShown === "sql" && ( <div><Show arr={location.filter((course) => course.topic === "sql")}/>
         </div>
       )}
     </div>

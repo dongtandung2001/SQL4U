@@ -11,7 +11,7 @@ class CourseForm extends Form {
     topic: "",
     coursesName: "",
     name: "",
-    totalTime:""
+    length:""
     },
     errors: {},
   };
@@ -20,7 +20,7 @@ class CourseForm extends Form {
     topic: Joi.string().min(5).max(50).required().label("Topic"),
     coursesName: Joi.string().min(5).max(50).required().label("Courses Name"),
     name: Joi.string().min(5).max(50).required().label("Teacher Name"),
-    totalTime: Joi.string().min(5).max(255).required().label("Total Time"),
+    length: Joi.string().min(5).max(255).required().label("Total Time"),
   });
 
   doSubmit = () => {
@@ -38,7 +38,7 @@ class CourseForm extends Form {
         {this.renderInput("topic","Topic")}
         {this.renderInput("coursesName","Course Name")}
         {this.renderInput("name","Teacher Name")}
-        {this.renderInput("totalTime","Total Time")}
+        {this.renderInput("length","Total Time")}
         {this.renderButton("Submit")}
       </form>
 </div>

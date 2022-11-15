@@ -1,15 +1,9 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-
+import {tutorial} from './ tutorial';
 export default function IndividualCourse() {
     const {courseId} = useParams();
-    const data = [
-                    {id: 1, title: 'SQL commands', content: 'Good Morning'},
-                    {id: 2, title: 'SQL theories', content: 'Good Morning'},
-                    {id: 3, title: 'SQL SQL', content: 'Good Morning'},
-                    {id: 4, title: 'SQL', content: 'Good Morning'},
-                ];
-    const tutorialList = data.map( (tutorial, index) => {
+    const tutorialList = tutorial.map( (tutorial, index) => {
         return (
             <div key={tutorial.id}>
                 <Link
