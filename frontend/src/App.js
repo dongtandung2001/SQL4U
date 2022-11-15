@@ -21,6 +21,7 @@ import Profile from "./component/profile/profile";
 import NotFound from "./component/not-found/notFound";
 import CourseForm from "./component/learningHub/CourseForm";
 import auth from "./services/authService";
+import PrivateRoutes from "./component/protectedRoutes";
 
 
 
@@ -38,7 +39,10 @@ class App extends Component {
         {this.state.user && <FeatureNavBar />}
 
         <Routes>
-          <Route path='/' element={<Dashboard />} />
+          <Route element={<PrivateRoutes />}>
+            <Route element={<Dashboard />} path='/' />
+          </Route>
+          {/* <Route path='/' element={<Dashboard />} /> */}
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/login' element={<Login />} />
@@ -50,7 +54,7 @@ class App extends Component {
           <Route path='/project' element={<RecommendProject />} />
           <Route path='/project/projectpage/:id' element={<ProjectPage />} />
           <Route path='/qna' element={<QnA />} />
-          
+
           <Route path='/hub' element={<LearningHub />} />
 
           <Route path='/catalog/add/:id' element={<CourseForm />} />
