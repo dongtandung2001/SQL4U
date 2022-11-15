@@ -12,6 +12,10 @@ const projectSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    // courseID: {
+    //     type: Number,
+    //     required: true
+    // },
     difficulty: {
         type: String,
         required: true,
@@ -24,6 +28,7 @@ function validateProject(project) {
     const schema = Joi.object({
         title: Joi.string().required().min(5).max(255),
         content: Joi.string().required(),
+        // courseID: Joi.number().required(),
         difficulty: Joi.string().required(),
 
     })
