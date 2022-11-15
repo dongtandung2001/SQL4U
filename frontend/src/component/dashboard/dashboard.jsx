@@ -29,7 +29,7 @@ const Dashboard = () => {
       <div className="dashboardSideBar">
         <DashboardSideBar
           icon={
-            <a href="#">
+            <a href="/profile">
               <i class="fa fa-user-circle" aria-hidden="true"></i>
             </a>
           }
@@ -75,7 +75,7 @@ const Dashboard = () => {
                 }
               />
             </div>
-            <div className="dashboardOverviewBoxBottom">
+            {/* <div className="dashboardOverviewBoxBottom">
               <DashboardBox
                 title={"Study Statisics"}
                 // content={
@@ -84,15 +84,18 @@ const Dashboard = () => {
                 //   </div>
                 // }
               />
-            </div>
+            </div> */}
           </DashboardSection>
         </div>
         <div className="dashboardInterviewQuestions">
-          <DashboardSection title={"INTERVIEW QUESTIONS"}>
+          <DashboardSection
+            title={<a href="/interview">INTERVIEW QUESTIONS</a>}
+          >
             <div className="dashboardInterviewBox">
               <DashboardBox
                 icon={<i class="fa fa-question-circle" aria-hidden="true"></i>}
                 title={"Questions you've viewed"}
+                textContent={"1. Define schema for ..."}
               />
             </div>
           </DashboardSection>
@@ -151,17 +154,18 @@ const Dashboard = () => {
           </DashboardSection>
         </div>
         <div className="dashboardFinishedProjects">
-          <DashboardSection title={"FINISHED PROJECTS"}>
+          <DashboardSection title={<a href="/project">FINISHED PROJECTS</a>}>
             <div className="dashboardFinishedProjectsBox">
               <DashboardBox
                 icon={<i class="fa fa-trophy" aria-hidden="true"></i>}
                 title={"Completed Projects"}
+                textContent={"1. Appointment Project"}
               />
             </div>
           </DashboardSection>
         </div>
         <div className="dashboardQuestions">
-          <DashboardSection title={"QUESTIONS"}>
+          <DashboardSection title={<a href="/qna">QUESTIONS</a>}>
             <div className="dashboardQuestionsBox">
               <DashboardBox
                 title={"Any Questions?"}
@@ -169,12 +173,14 @@ const Dashboard = () => {
                 icon={<img src={qaImage} height="80" width="100" />}
                 textContent={"You can post/find questions here:"}
                 button={
-                  <button
-                    type="button"
-                    class="btn btn-primary btn-lg btn-block"
-                  >
-                    Ask!
-                  </button>
+                  <a href="/qna">
+                    <button
+                      type="button"
+                      class="btn btn-primary btn-lg btn-block"
+                    >
+                      Ask!
+                    </button>
+                  </a>
                 }
                 // color={#fff}
               />
