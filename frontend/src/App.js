@@ -51,6 +51,7 @@ class App extends Component {
           <Route path='/project/projectpage/:id' element={<ProjectPage />} />
           <Route path='/qna' element={<QnA />} />
           
+          
           <Route path='/hub' element={<LearningHub />} />
 
           <Route path='/catalog/add/:id' element={<CourseForm />} />

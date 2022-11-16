@@ -4,6 +4,7 @@ import { info } from "./question&user";
 import { topics } from "./topics";
 import Joi from "joi";
 import { withRouter } from "../withRouter";
+import QuestionPost from "./QuestionPost";
 
 class CreatePost extends Form {
     state = {
@@ -12,12 +13,20 @@ class CreatePost extends Form {
             topic: "",
         },
 
+        // topics: [
+        //     { _id: "1", name: "Database Basic" },
+        //     { _id: "2", name: "Basic Data Query" },
+        //     { _id: "3", name: "Intermediate" },
+        //     { _id: "4", name: "Advance SQL" },
+        //     { _id: "5", name: "Technical problems" },
+
+        // ],
         topics: [
-            { _id: "1", name: "Database Basic" },
-            { _id: "2", name: "Basic Data Query" },
-            { _id: "3", name: "Intermediate" },
-            { _id: "4", name: "Advance SQL" },
-            { _id: "5", name: "Technical problems" },
+            {  name: "Database Basic" },
+            { name: "Basic Data Query" },
+            {  name: "Intermediate" },
+            {  name: "Advance SQL" },
+            { name: "Technical problems" },
 
         ],
 
@@ -55,10 +64,6 @@ class CreatePost extends Form {
                 {this.renderInput("questionInput", "Question")}
                 {this.renderSelect("topic", "Topic", this.state.topics)}
                 {this.renderButton("Post")}
-
-
-
-
 
             </form>
 
