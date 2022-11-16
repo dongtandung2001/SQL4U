@@ -54,7 +54,7 @@ class App extends Component {
           <Route path='/catalog/:courseId/project' element={<RecommendProject />} />
           <Route path='/catalog/:courseId/project/projectpage/:id' element={<ProjectPage />} />
           <Route path='/qna' element={<QnA />} />
-
+          
           <Route path='/hub' element={<LearningHub />} />
 
           <Route path='/catalog/add/:id' element={<CourseForm />} />
