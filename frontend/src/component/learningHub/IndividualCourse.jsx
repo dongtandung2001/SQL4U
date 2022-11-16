@@ -13,8 +13,9 @@ export default function IndividualCourse() {
     return (
       <div key={tutorial.id}>
         <Link
+          style={{ textDecoration: "none" }}
+          className="link-dark"
           to={`/catalog/${courseId}/tutorial/${tutorial.id}`}
-          state={tutorial}
         >
           <span style={{ marginRight: "10px" }}>{index + 1}.</span>
           {tutorial.title}
@@ -29,10 +30,7 @@ export default function IndividualCourse() {
       <div className="tutorial-project">
         <nav>
           <h3>Recommended Projects</h3>
-          <Link
-            to={`/catalog/${courseId}/project`}
-            state={{ courseId: courseId, courseName: courseName }}
-          >
+          <Link to={`/catalog/${courseId}/project`}>
             <button className="catalog-button">Recommend Project</button>
           </Link>
         </nav>
