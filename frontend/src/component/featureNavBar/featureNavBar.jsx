@@ -35,15 +35,6 @@ class FeatureNavBar extends Component {
                 Interview Question
               </span>
             </Link>
-            {/* <Link
-              className="nav-item nav-link mt-2 "
-              aria-current="page"
-              to="/project"
-            >
-              <span className={this.getCurrentPage("/project")}>
-                Recommend Project
-              </span>
-            </Link> */}
             <Link
               className="nav-item nav-link mt-2 "
               aria-current="page"

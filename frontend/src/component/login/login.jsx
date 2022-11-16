@@ -55,7 +55,7 @@ class Login extends Form {
             <h2 className="mb-4">Welcome Back!</h2>
             <form onSubmit={this.handleSumbit}>
               {this.renderInput("username", "UserName")}
-              {this.renderInput("password", "Password")}
+              {this.renderInput("password", "Password", "password")}
               <div className="d-grid">{this.renderButton("Login")}</div>
             </form>
           </div>
