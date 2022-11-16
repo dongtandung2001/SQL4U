@@ -75,9 +75,12 @@ export default function RecommendProject() {
   });
 
   return (
-    <div className="projects-container">
+    <div className="container">
       <h2>{course.coursesName}</h2>
-      {cards}
+      <div >
+        {cards}
+      </div>
+      
     </div>
   );
 }

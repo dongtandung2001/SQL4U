@@ -97,7 +97,7 @@ color:#132f4a;
 }
 
 .button{
-  argin-right: 20px;
+  margin-right: 20px;
   color: #2788E4;
 }
 
@@ -114,7 +114,7 @@ color:#132f4a;
   border: 2px solid #4891d5;
   background-color: #89b3da;
   padding: 20px;
-  border-radius: 50px 20px;
+  border-radius: 20px;
   
 }
 
@@ -122,9 +122,9 @@ color:#132f4a;
   position: relative;
   background-color: #2788E4;
   border: none;
-  font-size: 15px;
+  font-size: 20px;
   color: #FFFFFF;
-  padding: 50px;
+  padding: 20px;
   width: 200px;
   text-align: center;
   transition-duration: 0.4s;
@@ -132,7 +132,7 @@ color:#132f4a;
   overflow: hidden;
   cursor: pointer;
   margin-right:10px;
-  border-radius: 25px
+  border-radius: 16px
 }
 
 .topic-button:after {
@@ -145,7 +145,7 @@ color:#132f4a;
   margin-left: -20px !important;
   margin-top: -120%;
   opacity: 0;
-  transition: all 0.8s
+  transition: all 0.8s;
 }
 
 .topic-button:active:after {

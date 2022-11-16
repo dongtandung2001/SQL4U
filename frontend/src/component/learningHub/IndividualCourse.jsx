@@ -24,7 +24,7 @@ export default function IndividualCourse() {
     );
   });
   return (
-    <div>
+    <div className="container">
       <h2>{courseName}</h2>
       {tutorialList}
       <div className="tutorial-project">
