@@ -34,7 +34,7 @@ class App extends Component {
   }
   render() {
     return (
-      <main className='container'>
+      <main style={{paddingLeft: "0", paddingRight: "0"}} className='container-fluid'>
         <NavBar user={this.state.user} />
         {this.state.user && <FeatureNavBar />}
 

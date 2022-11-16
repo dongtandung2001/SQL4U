@@ -1,0 +1,29 @@
+.row-div {
+    background: rgba(104, 187, 227, 1);
+    
+}
+
+.backgroundPic {
+    width: 50%;
+    position: absolute;
+    opacity: 0.05;
+}
+.slogan-div {
+    color: #fff;
+    overflow: hidden;
+}
+
+.slogan-div h1, .slogan-div p {
+    margin-left: 4rem;
+}
+
+.slogan-div > h1 {
+    font-size: 64px;
+    font-weight: 800;
+    margin-bottom: 2rem;
+}
+
+.slogan-div > p {
+    font-size: 28px;
+    font-weight: 300;
+}
