@@ -123,7 +123,7 @@ class CoursesCard extends Component {
 
     return (
       <>
-        <div className="topic">
+        <div className="topic container">
           <h2>TOPIC</h2>
           <App location={this.state.data} />
         </div>
