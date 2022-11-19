@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
 
-const projectSchema = new mongoose.Schema({
+const tutorialSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
@@ -12,24 +12,18 @@ const projectSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    difficulty: {
-        type: String,
-        required: true,
-    }
 })
 
-const Project = mongoose.model('Project', projectSchema);
+const Tutorial = mongoose.model('Tutorial', tutorialSchema);
 
-function validateProject(project) {
+function validateProject(tutorial) {
     const schema = Joi.object({
         title: Joi.string().required().min(5).max(255),
         content: Joi.string().required(),
-        difficulty: Joi.string().required(),
-
     })
-    return schema.validate(project);
+    return schema.validate(tutorial);
 }
 
 
-exports.Project = Project;
+exports.Tutorial = Tutorial;
 exports.validate = validateProject;

@@ -3,6 +3,11 @@ const router = express.Router();
 
 const _ = require("lodash");
 const { Course, validate } = require("../models/course");
+const { Project } = require("../models/project");
+const { Tutorial } = require("../models/tutorial");
+
+const admin = require("../middleware/admin");
+const auth = require("../middleware/auth");
 
 // return all courses
 router.get("/", async (req, res) => {
@@ -14,7 +19,7 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   // validate input
   const { error } = validate(req.body);
-  if (error) res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).send(error.details[0].message);
 
   let course = new Course({
     topic: req.body.topic,
@@ -27,11 +32,11 @@ router.post("/", async (req, res) => {
   res.send(course);
 });
 
-// edit project
+// edit course information
 router.put("/:id", async (req, res) => {
   // validate input
   const { error } = validate(req.body);
-  if (error) res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).send(error.details[0].message);
 
   let course = await Course.findByIdAndUpdate(
     req.params.id,
@@ -45,8 +50,52 @@ router.put("/:id", async (req, res) => {
     { new: true }
   );
 
-  if (!course) res.status(404).send("There are no course with the given id");
+  if (!course) return res.status(404).send("There are no course with the given id");
   res.send(course);
 });
+
+// add project to course
+router.put('/project/:id', async (req, res) => {
+  console.log(req.body.project._id);
+  let course = await Course.findById(req.params.id);
+  if (!course) return res.status(404).send("There are no courses with the given id");
+
+  let project = await Project.findById(req.body.project._id);
+  // console.log(project);
+  if (!project) return res.status(404).send("There are no projects with the given id");
+
+  course.projects.push(req.body.project);
+  await course.save();
+
+  res.send(course);
+})
+
+// add tutorial to course
+router.put('/tutorial/:id', async (req, res) => {
+  let course = await Course.findById(req.params.id);
+  if (!course) return res.status(404).send("There are no courses with the given id");
+
+  let tutorial = await Tutorial.findById(req.body.tutorial._id);
+  if (!tutorial) return res.status(404).send("There are no tutorials with the given id");
+
+  course.tutorials.push(req.body.tutorial);
+  await course.save();
+
+  res.send(course);
+})
+
+router.delete('/:id', [auth, admin], async (req, res) => {
+  const course = Course.findByIdAndDelete(req.body.params);
+  if (!course) return res.status(404).send("Does not exist course with the given ID");
+  res.send(course);
+})
+
+// get specific course
+router.get('/:id', async (req, res) => {
+  const course = await Course.findById(req.params.id);
+  if (!course) return res.status(404).send('There are no course with the given ID');
+  res.send(course);
+})
+
 
 module.exports = router;
