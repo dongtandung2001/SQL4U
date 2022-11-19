@@ -52,7 +52,7 @@ class App extends Component {
 
           <Route path='/interview' element={<InterviewQuestion />} />
           <Route path='/catalog/:courseId/project' element={<RecommendProject />} />
-          <Route path='/catalog/:courseId/project/projectpage/:id' element={<ProjectPage />} />
+          <Route path='/catalog/:courseId/project/:projectId' element={<ProjectPage />} />
           <Route path='/qna' element={<QnA />} />
 
           <Route path='/hub' element={<LearningHub />} />
@@ -60,7 +60,7 @@ class App extends Component {
           <Route path='/catalog/add/:id' element={<CourseForm />} />
           <Route path='/catalog/:courseId' element={<IndividualCourse />} />
           <Route
-            path='/catalog/:courseId/:tutorialId'
+            path='/catalog/:courseId/tutorial/:tutorialId'
             element={<TutorialPage />}
           />
 

@@ -29,6 +29,18 @@ const courseSchema = new mongoose.Schema({
     cover: {
         type: String,
     },
+    projects: [new mongoose.Schema({
+        title: {
+            type: String,
+            required: true,
+        }
+    })],
+    tutorials: [new mongoose.Schema({
+        title: {
+            type: String,
+            required: true,
+        }
+    })]
 
 })
 
