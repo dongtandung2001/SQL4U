@@ -73,7 +73,7 @@ class Login extends Form {
                       color: "#0d6efd"
                     }}
             ></i>
-            <h2 className="mb-4">Welcome Back!</h2>
+            <h1 className="mb-4">Welcome Back!</h1>
             <form onSubmit={this.handleSumbit}>
               <div className="mb-3">
                 {this.renderInput("username", "UserName")}

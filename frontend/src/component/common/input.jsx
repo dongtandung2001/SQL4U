@@ -8,7 +8,7 @@ const Input = ({ name, label, error, ...rest }) => {
         name={name}
         id={name}
         placeholder={label}
-        className='form-control rounded-pill pl-3 pr-3 pd-2 pb-2'
+        className='form-control-lg rounded-pill pl-3 pr-3 pd-2 pb-2'
       />
       {error && <div className='alert alert-danger'>{error}</div>}
     </div>
