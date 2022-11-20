@@ -18,7 +18,7 @@ export default function TutorialPage() {
             {/* <ul className="tutorial-title">{tutorials[0].content}</ul> */}
             <div>
                 {tutorials[0].content.map((contents,index) => (
-                    <li key = {index} className="tutorial-title">{contents}</li>
+                    <li key = {index} className="tutorial-title">{contents.split("\n")}</li>
                 ))}
             </div>
 

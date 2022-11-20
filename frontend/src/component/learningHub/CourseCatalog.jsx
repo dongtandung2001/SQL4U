@@ -9,6 +9,7 @@ import "./learningHub.css";
 import { withRouter } from "../withRouter";
 import { coursesCard } from "./data";
 import { Link } from 'react-router-dom';
+import avatar from './man-teacher.png';
 
  {/*Using show() for showing each course card */}
 
@@ -39,7 +40,7 @@ function Show({ arr }) {
                   <>
                     <div className="box">
                       <div className="dimg">
-                        <img src="./images/team/man-teacher.png" alt="" />
+                        <img src={avatar} alt="" />
                       </div>
                       <div className="para">
                         <h4>{val.name}</h4>

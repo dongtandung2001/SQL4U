@@ -1,6 +1,6 @@
 export const tutorial = [
-    {id: "1", title: 'Introduction', 
-    content: ['An introduction to database foundations', 
+    {id: "1", title: "Introduction\nhello", 
+    content: ["An introduction to database foundations\nhello", 
     'What you should know',
 ]},
     {id: "2", title: 'Database Core Concepts', content: ['What is a database?', 
