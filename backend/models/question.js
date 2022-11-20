@@ -6,6 +6,10 @@ const qnaSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    topic: {
+        type: String,
+        required: true,
+    },
     title: {
         type: String,
         required: true,
@@ -19,7 +23,7 @@ const qnaSchema = new mongoose.Schema({
         required: true,
     },
     replies: [{
-        user: {
+        userName: {
             type: String,
             required: true,
         },
@@ -40,10 +44,11 @@ const QnA = mongoose.model('QnA', qnaSchema);
 function validateQnA(tutorial) {
     const schema = Joi.object({
         title: Joi.string().required(),
+        topic: Joi.string().required(),
         userName: Joi.string().required(),
         description: Joi.string().required(),
         reply: Joi.object({
-            user: Joi.string().required(),
+            userName: Joi.string().required(),
             reply: Joi.string().required(),
         })
     })
