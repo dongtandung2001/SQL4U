@@ -19,7 +19,7 @@ const DashboardBox = ({
       <div className="boxContent">{content}</div>
       {/* <p>hello</p> */}
       {/* This is a box */}
-      {/* <i class="fa fa-graduation-cap" aria-hidden="true"></i> */}
+      {/* <i className="fa fa-graduation-cap" aria-hidden="true"></i> */}
       <div style={{ backgroundColor: bgColor }}>{bgColor}</div>
       <div className="boxButton">{button}</div>
     </div>

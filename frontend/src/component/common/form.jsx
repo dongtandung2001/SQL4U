@@ -65,7 +65,7 @@ class Form extends Component {
     return (
       <button
         disabled={this.validate()}
-        className='btn btn-primary rounded-pill'
+        className='btn btn-primary rounded-pill custom-transition'
       >
         {label}
       </button>
