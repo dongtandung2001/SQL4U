@@ -95,6 +95,8 @@
 .three-dot {
     margin-top: 10px;
     margin-left: 10px;
+    border: none;
+    background-color: #2577C1;
 }
 
 .question-content {
@@ -157,14 +159,22 @@
     background-color: white;
 }
 
+.list-group-item:hover, .topic:hover{
+    cursor: pointer;
+    color: blue;
+}
+
+
 .dot-lists {
     list-style: none;
     padding: 0;
     margin: 0;
+    border: none;
 }
 
 .dot-list {
     padding: 8px 12px;
+    color: black;
 
 }
 
@@ -208,3 +218,21 @@
   }
   
   
+.question-answer{
+    
+    
+    background-color: #2577C1;
+    color: white;
+}
+.individual-question{
+    border: 2px solid #2577C1;
+    background-color: #fff;
+}
+.user-question{
+margin: 10px;
+}
+
+.answer{
+    border: 1px solid #2577C1;
+    margin-top: 10px;
+}
