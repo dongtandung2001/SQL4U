@@ -7,7 +7,7 @@ import Dashboard from "./component/dashboard/dashboard";
 import About from "./component/about/about";
 import InterviewQuestion from "./component/interview/interview";
 import RecommendProject from "./component/project/recommendProject";
-import ProjectPage from './component/project/ProjectPage';
+import ProjectPage from "./component/project/ProjectPage";
 import QnA from "./component/qna/q&a";
 import LearningHub from "./component/learningHub/learningHub";
 import CoursesCard from "./component/learningHub/CourseCatalog";
@@ -21,6 +21,7 @@ import Profile from "./component/profile/profile";
 import NotFound from "./component/not-found/notFound";
 import CourseForm from "./component/learningHub/CourseForm";
 import auth from "./services/authService";
+import PrivateRoutes from "./component/protectedRoutes";
 
 
 
@@ -31,15 +32,17 @@ class App extends Component {
     const user = auth.getCurrentUser();
     this.setState({ user });
   }
-  state = { user: {} };
   render() {
     return (
-      <main className='container'>
+      <main style={{paddingLeft: "0", paddingRight: "0"}} className='container-fluid'>
         <NavBar user={this.state.user} />
         {this.state.user && <FeatureNavBar />}
 
         <Routes>
-          <Route path='/' element={<Dashboard />} />
+          <Route element={<PrivateRoutes />}>
+            <Route element={<Dashboard />} path='/' />
+          </Route>
+          {/* <Route path='/' element={<Dashboard />} /> */}
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/login' element={<Login />} />
@@ -48,15 +51,18 @@ class App extends Component {
           <Route path='/profile' element={<Profile />} />
 
           <Route path='/interview' element={<InterviewQuestion />} />
-          <Route path='/project' element={<RecommendProject />} />
-          <Route path='/project/projectpage/:id' element={<ProjectPage />} />
+          <Route path='/catalog/:courseId/project' element={<RecommendProject />} />
+          <Route path='/catalog/:courseId/project/:projectId' element={<ProjectPage />} />
           <Route path='/qna' element={<QnA />} />
+
           <Route path='/hub' element={<LearningHub />} />
 
           <Route path='/catalog/add/:id' element={<CourseForm />} />
-          <Route path='/catalog/:courseId' element={<IndividualCourse/>}/>
-          <Route path='/catalog/:courseId/:tutorialId' element={<TutorialPage/>}/>
-
+          <Route path='/catalog/:courseId' element={<IndividualCourse />} />
+          <Route
+            path='/catalog/:courseId/tutorial/:tutorialId'
+            element={<TutorialPage />}
+          />
 
           <Route path='/catalog' element={<CoursesCard />} />
           <Route path='/not-found' element={<NotFound />} />

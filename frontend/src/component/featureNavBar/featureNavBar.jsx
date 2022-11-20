@@ -22,7 +22,9 @@ class FeatureNavBar extends Component {
               aria-current="page"
               to="/catalog"
             >
-              <span className={this.getCurrentPage("/hub")}>Learning Hub</span>
+              <span className={this.getCurrentPage("/catalog")}>
+                Learning Hub
+              </span>
             </Link>
             <Link
               className="nav-item nav-link mt-2 "
@@ -31,15 +33,6 @@ class FeatureNavBar extends Component {
             >
               <span className={this.getCurrentPage("/interview")}>
                 Interview Question
-              </span>
-            </Link>
-            <Link
-              className="nav-item nav-link mt-2 "
-              aria-current="page"
-              to="/project"
-            >
-              <span className={this.getCurrentPage("/project")}>
-                Recommend Project
               </span>
             </Link>
             <Link

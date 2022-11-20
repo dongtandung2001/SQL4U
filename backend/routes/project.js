@@ -4,6 +4,9 @@ const router = express.Router();
 const _ = require("lodash");
 const { Project, validate } = require("../models/project");
 
+const admin = require("../middleware/admin");
+const auth = require("../middleware/auth");
+
 // return all projects
 router.get("/", async (req, res) => {
   const projects = await Project.find().sort("title");
@@ -14,7 +17,7 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   // validate input
   const { error } = validate(req.body);
-  if (error) res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).send(error.details[0].message);
 
   let project = new Project({
     title: req.body.title,
@@ -29,7 +32,7 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   // validate input
   const { error } = validate(req.body);
-  if (error) res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).send(error.details[0].message);
 
   let project = await Project.findByIdAndUpdate(
     req.params.id,
@@ -41,8 +44,21 @@ router.put("/:id", async (req, res) => {
     { new: true }
   );
 
-  if (!project) res.status(404).send("There are no project with the given id");
+  if (!project) return res.status(404).send("There are no project with the given id");
   res.send(project);
 });
 
+// get specific project
+router.get('/:id', async (req, res) => {
+  const project = await Project.findById(req.params.id);
+  if (!project) return res.status(404).send('There are no projects with the given ID');
+  res.send(project);
+})
+
+// delete project
+router.delete("/id", [auth, admin], async (req, res) => {
+  const project = await Project.findOneAndDelete(req.params.id);
+  if (!project) return res.status(404).send("There are no project with the given id");
+  res.send(project);
+})
 module.exports = router;

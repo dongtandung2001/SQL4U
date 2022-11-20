@@ -9,9 +9,12 @@ import "./learningHub.css";
 import { withRouter } from "../withRouter";
 import { coursesCard } from "./data";
 import { Link } from 'react-router-dom';
+import logo from './c1.png';
 import avatar from './man-teacher.png';
 
- {/*Using show() for showing each course card */}
+{
+  /*Using show() for showing each course card */
+}
 
 function Show({ arr }) {
   return (
@@ -23,7 +26,7 @@ function Show({ arr }) {
             <div className="content flex">
               <div className="left">
                 <div className="img">
-                  <img src="../images/courses/c1.png" alt="" />
+                  <img src={logo} alt="" />
                 </div>
               </div>
               <div className="text">
@@ -52,10 +55,7 @@ function Show({ arr }) {
               </div>
             </div>
             {/* Link to IndividualCourse component */}
-            <Link 
-              className="outline-btn"
-              to={`/catalog/${'course' + val.id}`} state= {{"tutorial" : val.tutorial}}
-            >
+            <Link className="outline-btn" to={`/catalog/${val.id}`}>
               GO !
             </Link>{" "}
           </div>
@@ -65,10 +65,11 @@ function Show({ arr }) {
   );
 }
 
-
-{/*
+{
+  /*
 When user select a topic, it will pop-up courses related to selected topic
-*/}
+*/
+}
 function App({ location }) {
   const [isShown, setIsShown] = useState("all");
   return (
@@ -83,21 +84,31 @@ function App({ location }) {
         Relational Model
       </button>
       <button className="topic-button" onClick={() => setIsShown("sql")}>
-      SQL Queries
+        SQL Queries
       </button>
       {/* 👇️ show elements on click */}
 
       {isShown === "all" && (
-        <div><Show arr={location} /></div>
+        <div>
+          <Show arr={location} />
+        </div>
       )}
 
-      {isShown === "basic" && ( <div><Show arr={location.filter((course) => course.topic === "basic")}/>
+      {isShown === "basic" && (
+        <div>
+          <Show arr={location.filter((course) => course.topic === "basic")} />
         </div>
       )}
-      {isShown === "relational" && ( <div><Show arr={location.filter((course) => course.topic === "relational")}/>
+      {isShown === "relational" && (
+        <div>
+          <Show
+            arr={location.filter((course) => course.topic === "relational")}
+          />
         </div>
       )}
-      {isShown === "sql" && ( <div><Show arr={location.filter((course) => course.topic === "sql")}/>
+      {isShown === "sql" && (
+        <div>
+          <Show arr={location.filter((course) => course.topic === "sql")} />
         </div>
       )}
     </div>
@@ -111,10 +122,10 @@ class CoursesCard extends Component {
   }
   render() {
     const location = this.props.location;
-    console.log(location);
+
     return (
       <>
-        <div className="topic">
+        <div className="topic container">
           <h2>TOPIC</h2>
           <App location={this.state.data} />
         </div>

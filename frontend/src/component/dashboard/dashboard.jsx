@@ -29,21 +29,21 @@ const Dashboard = () => {
       <div className="dashboardSideBar">
         <DashboardSideBar
           icon={
-            <a href="#">
-              <i class="fa fa-user-circle" aria-hidden="true"></i>
+            <a href="/profile">
+              <i className="fa fa-user-circle" aria-hidden="true"></i>
             </a>
           }
         />
       </div>
       <div className="dashboardContent">
         {/* admin buttons */}
-        <button type="button" class="btn btn-secondary btn-sm">
+        <button type="button" className="btn btn-secondary btn-sm">
           Admin
         </button>
         <button
           onClick={() => handleEdit("bye")}
           type="button"
-          class="btn btn-secondary btn-sm"
+          className="btn btn-secondary btn-sm"
         >
           Edit {isEdit}
         </button>
@@ -55,10 +55,12 @@ const Dashboard = () => {
           <DashboardSection title={"OVERVIEW"}>
             <div className="dashboardOverviewBoxLeft">
               <DashboardBox
-                icon={<i class="fa fa-graduation-cap" aria-hidden="true"></i>}
+                icon={
+                  <i className="fa fa-graduation-cap" aria-hidden="true"></i>
+                }
                 title={"Courses in progress"}
                 displayContent={
-                  <div class="overviewProgress">
+                  <div className="overviewProgress">
                     <h5>5</h5>
                   </div>
                 }
@@ -66,16 +68,16 @@ const Dashboard = () => {
             </div>
             <div className="dashboardOverviewBoxRight">
               <DashboardBox
-                icon={<i class="fa fa-clock-o" aria-hidden="true"></i>}
+                icon={<i className="fa fa-clock-o" aria-hidden="true"></i>}
                 title={"Time Spent"}
                 displayContent={
-                  <div class="overviewProgress">
+                  <div className="overviewProgress">
                     <h5>1h 15m</h5>
                   </div>
                 }
               />
             </div>
-            <div className="dashboardOverviewBoxBottom">
+            {/* <div className="dashboardOverviewBoxBottom">
               <DashboardBox
                 title={"Study Statisics"}
                 // content={
@@ -84,15 +86,20 @@ const Dashboard = () => {
                 //   </div>
                 // }
               />
-            </div>
+            </div> */}
           </DashboardSection>
         </div>
         <div className="dashboardInterviewQuestions">
-          <DashboardSection title={"INTERVIEW QUESTIONS"}>
+          <DashboardSection
+            title={<a href="/interview">INTERVIEW QUESTIONS</a>}
+          >
             <div className="dashboardInterviewBox">
               <DashboardBox
-                icon={<i class="fa fa-question-circle" aria-hidden="true"></i>}
+                icon={
+                  <i className="fa fa-question-circle" aria-hidden="true"></i>
+                }
                 title={"Questions you've viewed"}
+                textContent={"1. Define schema for ..."}
               />
             </div>
           </DashboardSection>
@@ -101,49 +108,57 @@ const Dashboard = () => {
           <DashboardSection title={"MY COURSES"}>
             <div className="dashboardMyCoursesBoxTopLeft">
               <DashboardBox
-                icon={<i class="fa fa-graduation-cap" aria-hidden="true"></i>}
+                icon={
+                  <i className="fa fa-graduation-cap" aria-hidden="true"></i>
+                }
                 title={"Database basics"}
                 content={
-                  <div class="progress yellow">
-                    <span class="progress-left">
-                      <span class="progress-bar"></span>
+                  <div className="progress yellow">
+                    <span className="progress-left">
+                      <span className="progress-bar"></span>
                     </span>
-                    <span class="progress-right">
-                      <span class="progress-bar"></span>
+                    <span className="progress-right">
+                      <span className="progress-bar"></span>
                     </span>
-                    <div class="progress-value">37.5%</div>
+                    <div className="progress-value">37.5%</div>
                   </div>
                 }
-                // color={<div class="rcornersColor"></div>}
+                // color={<div className="rcornersColor"></div>}
               />
             </div>
             <div className="dashboardMyCoursesBoxTopRight">
               <DashboardBox
-                icon={<i class="fa fa-graduation-cap" aria-hidden="true"></i>}
+                icon={
+                  <i className="fa fa-graduation-cap" aria-hidden="true"></i>
+                }
                 title={"Basic Data Query"}
                 content={
-                  <div class="progress blue">
-                    <span class="progress-left">
-                      <span class="progress-bar"></span>
+                  <div className="progress blue">
+                    <span className="progress-left">
+                      <span className="progress-bar"></span>
                     </span>
-                    <span class="progress-right">
-                      <span class="progress-bar"></span>
+                    <span className="progress-right">
+                      <span className="progress-bar"></span>
                     </span>
-                    <div class="progress-value">90%</div>
+                    <div className="progress-value">90%</div>
                   </div>
                 }
               />
             </div>
             <div className="dashboardMyCoursesBoxBottomLeft">
               <DashboardBox
-                icon={<i class="fa fa-graduation-cap" aria-hidden="true"></i>}
+                icon={
+                  <i className="fa fa-graduation-cap" aria-hidden="true"></i>
+                }
                 title={"Intermediate SQL"}
                 textContent={<a href="#">Start now</a>}
               />
             </div>
             <div className="dashboardMyCoursesBoxBottomRight">
               <DashboardBox
-                icon={<i class="fa fa-graduation-cap" aria-hidden="true"></i>}
+                icon={
+                  <i className="fa fa-graduation-cap" aria-hidden="true"></i>
+                }
                 title={"Advanced SQL"}
                 textContent={<a href="#">Start now</a>}
               />
@@ -151,17 +166,18 @@ const Dashboard = () => {
           </DashboardSection>
         </div>
         <div className="dashboardFinishedProjects">
-          <DashboardSection title={"FINISHED PROJECTS"}>
+          <DashboardSection title={<a href="/project">FINISHED PROJECTS</a>}>
             <div className="dashboardFinishedProjectsBox">
               <DashboardBox
-                icon={<i class="fa fa-trophy" aria-hidden="true"></i>}
+                icon={<i className="fa fa-trophy" aria-hidden="true"></i>}
                 title={"Completed Projects"}
+                textContent={"1. Appointment Project"}
               />
             </div>
           </DashboardSection>
         </div>
         <div className="dashboardQuestions">
-          <DashboardSection title={"QUESTIONS"}>
+          <DashboardSection title={<a href="/qna">QUESTIONS</a>}>
             <div className="dashboardQuestionsBox">
               <DashboardBox
                 title={"Any Questions?"}
@@ -169,12 +185,14 @@ const Dashboard = () => {
                 icon={<img src={qaImage} height="80" width="100" />}
                 textContent={"You can post/find questions here:"}
                 button={
-                  <button
-                    type="button"
-                    class="btn btn-primary btn-lg btn-block"
-                  >
-                    Ask!
-                  </button>
+                  <a href="/qna">
+                    <button
+                      type="button"
+                      className="btn btn-primary btn-lg btn-block"
+                    >
+                      Ask!
+                    </button>
+                  </a>
                 }
                 // color={#fff}
               />
