@@ -32,10 +32,10 @@ router.post('/', async (req, res) => {
 
 // update password
 router.put("/:id", async (req, res) => {
-    const { error } = validate(req.body);
+    // const { error } = validate(req.body);
     let user = await User.findById(req.params.id);
     if (!user) {
-        res.status(404).send("User with the given ID does not exist");
+        return res.status(404).send("User with the given ID does not exist");
     }
     // encrypt passwor
     const salt = await bcrypt.genSalt(10);

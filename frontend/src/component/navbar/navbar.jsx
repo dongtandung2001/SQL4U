@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 
 const NavBar = ({ user }) => {
   return (
-    <nav className="navbar navbar-expand-sm">
+    <nav style={{margin: "auto 3rem"}} className="navbar navbar-expand-sm">
       <div className="container-fluid">
         <h1 className="mt-2">
           <Link
-            className="navbar-brand font-monospace text-primary fs-1 px-5"
+            style={{fontWeight: "900"}}
+            className="navbar-brand font-monospace text-primary fs-1"
             to="/"
           >
             SQL4U

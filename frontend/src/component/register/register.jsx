@@ -2,6 +2,8 @@ import React from "react";
 import Joi from "joi";
 
 import Form from "../common/form";
+import './registerCSS.css'
+import databasePic from '../login/loginPage/database-login.png'
 import * as userService from "../../services/userService";
 import * as authService from "../../services/authService";
 class Register extends Form {
@@ -43,28 +45,52 @@ class Register extends Form {
       <div className="container-fluid">
         <div
           style={{ background: "#68BBE3" }}
-          className="row text-center shadow-sm"
+          className="row--div row text-center shadow-sm"
         >
           <div
             style={{
-              background: "#F2F3F1",
-              minHeight: "85vh",
+              backgroundColor: 'rgba(242,243,241,0.5)',
+              minHeight: "95vh",
+              color: "#fff",
+              transparency: '',
+              borderRadius: '0px 20px 20px 0px',
+              boxShadow: '10px 2px 3px 1px rgba(255, 255, 255, .2)',
+              zIndex: '1'
             }}
-            className="col-4 flex-column d-flex justify-content-center align-items-center shadow rounded"
+            className="col-5 flex-column d-flex justify-content-center align-items-center"
           >
-            <i className="fa fa-user-o fa-5x"></i>
-            <h2>Let's start to learn!</h2>
-            <form onSubmit={this.handleSumbit}>
-              {this.renderInput("username", "UserName")}
-              {this.renderInput("password", "Password", "password")}
-              <p className="mt-3">How strong is your database skill</p>
-              {this.renderRadio("skill", this.state.skills)}
+            <i 
+              className="fa fa-user-circle mb-4" aria-hidden="true"
+              style={{ 
+                      fontSize:'4rem',
+                      color: "#0d6efd"
+                    }}
+            ></i>
+            <h2 className="mb-4">Let's start to learn!</h2>
+            <form onSubmit={this.handleSumbit} style={{ height: "15rem" }}>
+              <div className="mb-3">
+                {this.renderInput("username", "Username")}
+              </div>
+              <div className="mb-3">
+                {this.renderInput("password", "Password", "password")}
+              </div>
+              <div>
+                <p className="mt-3">How strong is your database skill?</p>
+                {this.renderRadio("skill", this.state.skills)}
+              </div>
               <div className="d-grid">
                 {this.renderButton("Create Account")}
               </div>
             </form>
           </div>
-          <div className="col"></div>
+          <div className="slogan--div col-7 flex-column d-flex justify-content-center align-items-end">
+            <img src={databasePic} alt="databasepic" className='background-Pic'/>
+            <h1>SQL & NoSQL</h1>
+            <p>When you are ahead in data</p>
+            <p>You are ahead in the corporate run.</p>
+            <p style={{fontWeight: '500'}}>Join us today!</p>
+            <p style={{fontWeight: '500'}}>To learn more about Database Management System</p>
+          </div>
         </div>
       </div>
     );
