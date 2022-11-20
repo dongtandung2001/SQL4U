@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
 
     let tutorial = new Tutorial({
         title: req.body.title,
-        content: req.body.content,
+        contents: req.body.contents,
     });
     tutorial = await tutorial.save();
     res.send(tutorial);
@@ -37,12 +37,16 @@ router.put("/:id", async (req, res) => {
         req.params.id,
         {
             title: req.body.title,
-            content: req.body.content,
         },
         { new: true }
     );
 
     if (!tutorial) return res.status(404).send("There are no project with the given id");
+
+    if (req.body.content) {
+        tutorial.contents.push(req.body.content)
+    }
+    await tutorial.save();
     res.send(tutorial);
 });
 

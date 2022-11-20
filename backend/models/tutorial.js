@@ -8,10 +8,16 @@ const tutorialSchema = new mongoose.Schema({
         minlength: 5,
         maxlength: 255,
     },
-    content: {
-        type: String,
-        required: true,
-    },
+    contents: [{
+        header: {
+            type: String,
+            required: true,
+        },
+        detail: {
+            type: String,
+            required: true,
+        }
+    }]
 })
 
 const Tutorial = mongoose.model('Tutorial', tutorialSchema);
@@ -19,7 +25,14 @@ const Tutorial = mongoose.model('Tutorial', tutorialSchema);
 function validateProject(tutorial) {
     const schema = Joi.object({
         title: Joi.string().required().min(5).max(255),
-        content: Joi.string().required(),
+        contents: Joi.array().items(Joi.object({
+            header: Joi.string().required(),
+            detail: Joi.string().required()
+        })),
+        content: Joi.object({
+            header: Joi.string().required(),
+            detail: Joi.string().required(),
+        })
     })
     return schema.validate(tutorial);
 }
