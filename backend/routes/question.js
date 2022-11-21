@@ -29,14 +29,14 @@ router.post("/", async (req, res) => {
     res.send(question);
 });
 
-// edit project
+// edit question
 router.put("/:id", async (req, res) => {
     // validate input
     const { error } = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
 
-    // update project information
+    // update question information
     let question = await QnA.findByIdAndUpdate(
         req.params.id,
         {
@@ -56,14 +56,14 @@ router.put("/:id", async (req, res) => {
     res.send(question);
 });
 
-// get specific project
+// get question project
 router.get('/:id', async (req, res) => {
     const question = await QnA.findById(req.params.id);
     if (!question) return res.status(404).send('There are no questions with the given ID');
     res.send(question);
 })
 
-// delete project, only admin can use this api
+// delete question, only admin can use this api
 router.delete("/:id", [auth, admin], async (req, res) => {
     const question = await QnA.findOneAndDelete(req.params.id);
     if (!question) return res.status(404).send("There are no questions with the given id");
