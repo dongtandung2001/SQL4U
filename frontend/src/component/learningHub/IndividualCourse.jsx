@@ -1,21 +1,23 @@
 import React from "react";
 import { Link, useParams, useLocation } from "react-router-dom";
 import { coursesCard } from "./data";
+import {tutorial} from "./tutorial1";
+import {Course} from "./data1";
 
 export default function IndividualCourse() {
   // get id of course
   const { courseId } = useParams();
   // get course information from database
-  const course = coursesCard.find((course) => course.id == courseId);
-  const courseName = course.coursesName;
+  const course = Course.find((course) => course._id == courseId);
+  const courseName = course.name;
   // render tutorials in this course
   const tutorialList = course.tutorial.map((tutorial, index) => {
     return (
-      <div key={tutorial.id}>
+      <div key={tutorial._id}>
         <Link
           style={{ textDecoration: "none" }}
           className="link-dark"
-          to={`/catalog/${courseId}/tutorial/${tutorial.id}`}
+          to={`/catalog/${courseId}/tutorial/${tutorial._id}`}
         >
           <span style={{ marginRight: "10px" }}>{index + 1}.</span>
           {tutorial.title}
