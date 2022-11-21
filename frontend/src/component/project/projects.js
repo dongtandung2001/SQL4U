@@ -3,11 +3,7 @@ const data = [
     {
         id: 1,
         title: "Project 1",
-        content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque vitae tempus quam pellentesque nec nam aliquam sem et. Donec massa sapien faucibus et molestie ac. Ac ut consequat semper viverra nam libero justo laoreet. Lorem mollis aliquam ut porttitor leo a. Semper quis lectus nulla at volutpat diam. Adipiscing elit ut aliquam purus sit amet luctus. Dui ut ornare lectus sit. Cras ornare arcu dui vivamus arcu felis bibendum. Tortor posuere ac ut consequat semper viverra.
-
-        Ultrices eros in cursus turpis massa tincidunt dui. Pellentesque habitant morbi tristique senectus et. Viverra tellus in hac habitasse platea dictumst vestibulum. Pellentesque diam volutpat commodo sed egestas egestas. Felis eget nunc lobortis mattis aliquam. Purus sit amet luctus venenatis lectus. Aenean et tortor at risus viverra. Cras sed felis eget velit. Blandit cursus risus at ultrices mi tempus imperdiet. Et leo duis ut diam quam nulla porttitor massa id. Volutpat lacus laoreet non curabitur gravida arcu ac. Dolor purus non enim praesent elementum facilisis leo vel fringilla.
-        
-        Dui accumsan sit amet nulla facilisi morbi tempus iaculis urna. Leo duis ut diam quam nulla porttitor massa id neque. Interdum velit laoreet id donec ultrices tincidunt arcu non. Massa id neque aliquam vestibulum morbi blandit. Volutpat blandit aliquam etiam erat velit scelerisque in dictum non. Id faucibus nisl tincidunt eget. Eu augue ut lectus arcu bibendum at. Laoreet sit amet cursus sit. Sem nulla pharetra diam sit amet nisl. Ante metus dictum at tempor commodo ullamcorper a. Arcu vitae elementum curabitur vitae nunc sed velit. Eu sem integer vitae justo eget magna fermentum iaculis. Vehicula ipsum a arcu cursus. Sed viverra ipsum nunc aliquet bibendum enim facilisis gravida. Sit amet nisl suscipit adipiscing bibendum est. Pellentesque eu tincidunt tortor aliquam. Est velit egestas dui id ornare arcu odio ut. Arcu vitae elementum curabitur vitae nunc. Porttitor leo a diam sollicitudin tempor id eu. Tortor posuere ac ut consequat semper viverra.`
+        content: "Lorem ipsum dolor \nsit amet"
     },
     {
         id: 2,
