@@ -95,12 +95,19 @@
 .three-dot {
     margin-top: 10px;
     margin-left: 10px;
+    border: none;
+    background-color: #2577C1;
 }
 
 .question-content {
     margin: 10px;
     background-color: rgb(211, 211, 211);
     height: 200px;
+}
+.topic-chosen{
+    margin-left:10px;
+    font-style: italic;
+    
 }
 
 .answer-content {
@@ -152,18 +159,80 @@
     background-color: white;
 }
 
+.list-group-item:hover, .topic:hover{
+    cursor: pointer;
+    color: blue;
+}
+
+
 .dot-lists {
     list-style: none;
     padding: 0;
     margin: 0;
+    border: none;
 }
 
 .dot-list {
     padding: 8px 12px;
+    color: black;
 
 }
 
 .dot-list:hover {
     background-color: rgba(0, 0, 0, 0.14);
     cursor: pointer;
+}
+
+.pagination{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    justify-content: center;
+}
+
+
+  
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 105%;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+  
+  
+.question-answer{
+    
+    
+    background-color: #2577C1;
+    color: white;
+}
+.individual-question{
+    border: 2px solid #2577C1;
+    background-color: #fff;
+}
+.user-question{
+margin: 10px;
+}
+
+.answer{
+    border: 1px solid #2577C1;
+    margin-top: 10px;
 }

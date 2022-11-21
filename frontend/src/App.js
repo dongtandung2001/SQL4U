@@ -22,6 +22,7 @@ import NotFound from "./component/not-found/notFound";
 import CourseForm from "./component/learningHub/CourseForm";
 import auth from "./services/authService";
 import PrivateRoutes from "./component/protectedRoutes";
+import QuestionAndAnswer from "./component/qna/QuestionAndAnswer";
 
 
 
@@ -54,7 +55,7 @@ class App extends Component {
           <Route path='/catalog/:courseId/project' element={<RecommendProject />} />
           <Route path='/catalog/:courseId/project/:projectId' element={<ProjectPage />} />
           <Route path='/qna' element={<QnA />} />
-
+          <Route path='/qna/:id' element={<QuestionAndAnswer/>}/>
           <Route path='/hub' element={<LearningHub />} />
 
           <Route path='/catalog/add/:id' element={<CourseForm />} />
