@@ -3,7 +3,7 @@ export const tutorial = [
     {
       _id: "80101",
       title: "Introduction",
-      content:[
+      contents:[
           { header: "Databases",
           detail: `Fields and records make up a table\nOne or more tables make up a database` },
   
@@ -28,7 +28,7 @@ export const tutorial = [
       _id: "80102",
       title: "Ask for Data from a Database",
   
-      content: [
+      contents: [
         { header: "Ask for data with SELECT", detail: ` ` },
         {
           header: "The SQL SELECT Statement",
@@ -128,7 +128,7 @@ export const tutorial = [
     },
     { _id : "80103",
   title: "Ask for Data from Two or More Tables",
-  content: [
+  contents: [
       {
           header: "SQL JOIN",
           detail: `A JOIN clause is used to combine rows from two or more tables, based on a related column between them.`
