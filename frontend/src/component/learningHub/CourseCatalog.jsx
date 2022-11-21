@@ -9,6 +9,9 @@ import "./learningHub.css";
 import { withRouter } from "../withRouter";
 import { coursesCard } from "./data";
 import { Link } from "react-router-dom";
+import logo from "./c1.png";
+import avatar from "./man-teacher.png";
+import { Course } from "./data1";
 import * as courseService from "../../services/courseService";
 
 {
@@ -21,15 +24,15 @@ function Show({ arr }) {
       <div></div>
       <div className='container grid2'>
         {arr.map((val) => (
-          <div key={val._id} className='items'>
+          <div key={val.id} className='items'>
             <div className='content flex'>
               <div className='left'>
                 <div className='img'>
-                  <img src='../images/courses/c1.png' alt='' />
+                  <img src={logo} alt='' />
                 </div>
               </div>
               <div className='text'>
-                <h1>{val.coursesName}</h1>
+                <h1>{val.name}</h1>
                 <div className='rate'>
                   <i className='fa fa-star blue'></i>
                   <i className='fa fa-star blue'></i>
@@ -42,10 +45,10 @@ function Show({ arr }) {
                   <>
                     <div className='box'>
                       <div className='dimg'>
-                        <img src='./images/team/man-teacher.png' alt='' />
+                        <img src={avatar} alt='' />
                       </div>
                       <div className='para'>
-                        <h4>{val.name}</h4>
+                        <h4>{val.teacher}</h4>
                       </div>
                     </div>
                     <span>{val.length}</span>
@@ -116,11 +119,9 @@ function App({ location }) {
 
 class CoursesCard extends Component {
   state = { data: [] };
-  componentDidMount = async () => {
-    const { data } = await courseService.getCourses();
-    console.log(data);
-    this.setState({ data });
-  };
+  componentDidMount() {
+    this.setState({ data: coursesCard });
+  }
   render() {
     const location = this.props.location;
 
