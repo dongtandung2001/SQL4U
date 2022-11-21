@@ -186,7 +186,7 @@ export const coursesCard = [
     ]
   },
   {
-    _id: 10,
+    id: 10,
     topic: "sql",
     coursesName: "SQL Essential Training",
     name: "by Bill Weinman",
@@ -207,7 +207,7 @@ export const coursesCard = [
     ]
   },
   {
-    _id: 11,
+    id: 11,
     topic: "sql",
     coursesName: "SQL for Data Analysis",
     name: "by Sunil Bishowkaram",

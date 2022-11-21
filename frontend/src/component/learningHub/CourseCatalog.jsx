@@ -11,6 +11,7 @@ import { coursesCard } from "./data";
 import { Link } from 'react-router-dom';
 import logo from './c1.png';
 import avatar from './man-teacher.png';
+import { Course} from './data1';
 
 {
   /*Using show() for showing each course card */
@@ -30,7 +31,7 @@ function Show({ arr }) {
                 </div>
               </div>
               <div className="text">
-                <h1>{val.coursesName}</h1>
+                <h1>{val.name}</h1>
                 <div className="rate">
                   <i className="fa fa-star blue"></i>
                   <i className="fa fa-star blue"></i>
@@ -46,7 +47,7 @@ function Show({ arr }) {
                         <img src={avatar} alt="" />
                       </div>
                       <div className="para">
-                        <h4>{val.name}</h4>
+                        <h4>{val.teacher}</h4>
                       </div>
                     </div>
                     <span>{val.length}</span>
@@ -55,7 +56,7 @@ function Show({ arr }) {
               </div>
             </div>
             {/* Link to IndividualCourse component */}
-            <Link className="outline-btn" to={`/catalog/${val.id}`}>
+            <Link className="outline-btn" to={`/catalog/${val._id}`}>
               GO !
             </Link>{" "}
           </div>
@@ -118,7 +119,7 @@ function App({ location }) {
 class CoursesCard extends Component {
   state = { data: [] };
   componentDidMount() {
-    this.setState({ data: coursesCard });
+    this.setState({ data: Course});
   }
   render() {
     const location = this.props.location;
