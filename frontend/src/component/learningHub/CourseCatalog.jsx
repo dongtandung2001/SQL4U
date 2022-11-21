@@ -119,9 +119,10 @@ function App({ location }) {
 
 class CoursesCard extends Component {
   state = { data: [] };
-  componentDidMount() {
-    this.setState({ data: coursesCard });
-  }
+  componentDidMount = async () => {
+    const { data } = await courseService.getCourses();
+    this.setState({ data });
+  };
   render() {
     const location = this.props.location;
 
