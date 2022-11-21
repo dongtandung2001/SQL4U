@@ -9,6 +9,7 @@ import "./learningHub.css";
 import { withRouter } from "../withRouter";
 import { coursesCard } from "./data";
 import { Link } from "react-router-dom";
+import * as courseService from "../../services/courseService";
 
 {
   /*Using show() for showing each course card */
@@ -16,34 +17,34 @@ import { Link } from "react-router-dom";
 
 function Show({ arr }) {
   return (
-    <section className="coursesCard">
+    <section className='coursesCard'>
       <div></div>
-      <div className="container grid2">
+      <div className='container grid2'>
         {arr.map((val) => (
-          <div key={val.id} className="items">
-            <div className="content flex">
-              <div className="left">
-                <div className="img">
-                  <img src="../images/courses/c1.png" alt="" />
+          <div key={val._id} className='items'>
+            <div className='content flex'>
+              <div className='left'>
+                <div className='img'>
+                  <img src='../images/courses/c1.png' alt='' />
                 </div>
               </div>
-              <div className="text">
+              <div className='text'>
                 <h1>{val.coursesName}</h1>
-                <div className="rate">
-                  <i className="fa fa-star blue"></i>
-                  <i className="fa fa-star blue"></i>
-                  <i className="fa fa-star blue"></i>
-                  <i className="fa fa-star blue"></i>
-                  <i className="fa fa-star blue"></i>
-                  <label htmlFor="">(5.0)</label>
+                <div className='rate'>
+                  <i className='fa fa-star blue'></i>
+                  <i className='fa fa-star blue'></i>
+                  <i className='fa fa-star blue'></i>
+                  <i className='fa fa-star blue'></i>
+                  <i className='fa fa-star blue'></i>
+                  <label htmlFor=''>(5.0)</label>
                 </div>
-                <div className="details">
+                <div className='details'>
                   <>
-                    <div className="box">
-                      <div className="dimg">
-                        <img src="./images/team/man-teacher.png" alt="" />
+                    <div className='box'>
+                      <div className='dimg'>
+                        <img src='./images/team/man-teacher.png' alt='' />
                       </div>
-                      <div className="para">
+                      <div className='para'>
                         <h4>{val.name}</h4>
                       </div>
                     </div>
@@ -53,7 +54,7 @@ function Show({ arr }) {
               </div>
             </div>
             {/* Link to IndividualCourse component */}
-            <Link className="outline-btn" to={`/catalog/${val.id}`}>
+            <Link className='outline-btn' to={`/catalog/${val._id}`}>
               GO !
             </Link>{" "}
           </div>
@@ -72,16 +73,16 @@ function App({ location }) {
   const [isShown, setIsShown] = useState("all");
   return (
     <div>
-      <button className="topic-button" onClick={() => setIsShown("all")}>
+      <button className='topic-button' onClick={() => setIsShown("all")}>
         All
       </button>
-      <button className="topic-button" onClick={() => setIsShown("basic")}>
+      <button className='topic-button' onClick={() => setIsShown("basic")}>
         Basic Concepts
       </button>
-      <button className="topic-button" onClick={() => setIsShown("relational")}>
+      <button className='topic-button' onClick={() => setIsShown("relational")}>
         Relational Model
       </button>
-      <button className="topic-button" onClick={() => setIsShown("sql")}>
+      <button className='topic-button' onClick={() => setIsShown("sql")}>
         SQL Queries
       </button>
       {/* 👇️ show elements on click */}
@@ -115,15 +116,17 @@ function App({ location }) {
 
 class CoursesCard extends Component {
   state = { data: [] };
-  componentDidMount() {
-    this.setState({ data: coursesCard });
-  }
+  componentDidMount = async () => {
+    const { data } = await courseService.getCourses();
+    console.log(data);
+    this.setState({ data });
+  };
   render() {
     const location = this.props.location;
 
     return (
       <>
-        <div className="topic container">
+        <div className='topic container'>
           <h2>TOPIC</h2>
           <App location={this.state.data} />
         </div>
