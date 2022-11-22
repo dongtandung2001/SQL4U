@@ -15,7 +15,8 @@ function Show({ arr }) {
           userAvatar={val.userAvatar}
           description={val.description}
           title={val.title}
-          topic={val.topic} />
+          topic={val.topic}
+          date={val.date} />
       </div>
 
     ));   

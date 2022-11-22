@@ -2,47 +2,56 @@ import React, { Component } from "react";
 import Form from "../common/form";
 import { info } from "./question&user";
 
-import Joi from "joi";
+import Joi, { date } from "joi";
 import { withRouter } from "../withRouter";
 
 
 class CreatePost extends Form {
-    state = {
-        count: this.props.value,
-        data: {
-            description: "",
-            topic: "",
-            title:""
-        },
 
-        // topics: [
-        //     { _id: "1", name: "Database Basic" },
-        //     { _id: "2", name: "Basic Data Query" },
-        //     { _id: "3", name: "Intermediate" },
-        //     { _id: "4", name: "Advance SQL" },
-        //     { _id: "5", name: "Technical problems" },
-
-        // ],
-        topics: [
-            { name: "Database Basic" },
-            { name: "Basic Data Query" },
-            { name: "Intermediate" },
-            { name: "Advance SQL" },
-            { name: "Technical problems" },
-
-        ],
-
-        errors: {}
-    };
+   
+       
+        state = {
+            count: this.props.value,
+             data: {
+                description: "",
+                topic: "",
+                title:"",
+                date:`${new Date().getMonth()+1}/${new Date().getDate()}/${new Date().getFullYear()}`,
+            },
+    
+            // topics: [
+            //     { _id: "1", name: "Database Basic" },
+            //     { _id: "2", name: "Basic Data Query" },
+            //     { _id: "3", name: "Intermediate" },
+            //     { _id: "4", name: "Advance SQL" },
+            //     { _id: "5", name: "Technical problems" },
+    
+            // ],
+            topics: [
+                { name: "Database Basic" },
+                { name: "Basic Data Query" },
+                { name: "Intermediate" },
+                { name: "Advance SQL" },
+                { name: "Technical problems" },
+    
+            ],
+    
+            errors: {}
+        };
+    
+     
+    
 
     handleIncrement = e => {
         this.setState({ count: this.state.count + 1 });
+        
     }
 
     schema = Joi.object({
         description: Joi.string().min(10).max(3000).required().label("Question"),
         topic: Joi.string().required(),
-        title: Joi.string().min(10).max(3000).required().label("Title")
+        title: Joi.string().min(10).max(3000).required().label("Title"),
+        date: Joi.required(),
     });
 
     doSubmit = () => {
@@ -54,6 +63,9 @@ class CreatePost extends Form {
         info.push(userPost);
         this.handleIncrement();
         //this.setState();
+        alert("New question is created");
+        this.props.navigate(`/qna`);
+       
 
 
     };
@@ -78,4 +90,4 @@ class CreatePost extends Form {
     }
 }
 
-export default CreatePost;
+export default withRouter(CreatePost);

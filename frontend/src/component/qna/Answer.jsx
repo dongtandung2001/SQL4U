@@ -5,6 +5,7 @@ import Form from "../common/form";
 
 import { info } from "./question&user";
 import Joi from "joi";
+import {withRouter} from "../withRouter";
 
 
 
@@ -13,6 +14,8 @@ class Answer extends Form {
     state = {
         data: {
             reply: "",
+          
+            dateR:`${new Date().getMonth()+1}/${new Date().getDate()}/${new Date().getFullYear()}`,
         },
 
         errors: {}
@@ -21,7 +24,8 @@ class Answer extends Form {
 
     schema = Joi.object({
         reply: Joi.string().min(10).max(3000).required().label("Answer"),
-        // userName: Joi.string().required(),
+     
+        dateR: Joi.required()
     });
 
     doSubmit = () => {
@@ -32,22 +36,12 @@ class Answer extends Form {
         info.forEach(element => {
             if (element._id === this.props._id) {
                 element.replies.push(userAnswer)
+                this.props.navigate(`/qna/${this.props._id}`);
             }
         })
     }
 
-    // answerNe = this.props.question.map ((val) => {
-    //     return (
-            
-    //         <div className="answer">
-    //         <img className="a-userAvatar" src={"https://galaxylands.com.vn/wp-content/uploads/2022/10/tieu-su-ca-si-mono-13.jpg"}></img>
-
-    //         <p className="a-userName">{val.replies.userName}</p>
-    //         <p>{val.reply}</p>
-    //         </div>
-            
-    //     )
-    // });
+    
 
     render() {
         return (
@@ -59,19 +53,7 @@ class Answer extends Form {
                         {this.renderButton("Reply")}
                     </form>
                 </div>
-                {/* <div className="answer-lists">
-                 {info.map((val) =>
-                        <div className="answer">
-                            <img className="a-userAvatar" src={"https://galaxylands.com.vn/wp-content/uploads/2022/10/tieu-su-ca-si-mono-13.jpg"}></img>
-
-                            <p className="a-userName">{val.replies.userName}</p>
-                            <p>{val.replies.reply}</p>
-
-
-                        </div>)} 
-                       
-
-                </div> */}
+                
             </div>
 
 
@@ -80,4 +62,4 @@ class Answer extends Form {
         );
     }
 }
-export default Answer;
+export default withRouter(Answer);
