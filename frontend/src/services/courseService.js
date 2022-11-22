@@ -27,10 +27,10 @@ export function saveCourse(course) {
 
 // add a new project to course
 export function addProject(courseId, projectId) {
-    return httpService.put(apiEndPoint + '/project' + courseId, {id: projectId})
+    return httpService.put(apiEndPoint + '/project/' + courseId, {id: projectId})
 }
 
 // add a new tutorial to course
 export function addTutorial(courseId, tutorialId) {
-    return httpService.put(apiEndPoint + '/tutorial' + courseId, {id: tutorialId})
+    return httpService.put(apiEndPoint + '/tutorial/' + courseId, {id: tutorialId})
 }

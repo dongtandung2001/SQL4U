@@ -23,7 +23,7 @@ export default function TutorialPage() {
   console.log("tutorial", data);
   //location.filter((course) => course.topic === "basic")
   return (
-    <div>
+    <div className="container">
       <div className='tutorial-title'>{data && data.title}</div>
       <div>
         {data &&

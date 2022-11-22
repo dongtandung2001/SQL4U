@@ -14,7 +14,7 @@
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
-    padding-left: 1rem;
+    padding: 1rem 0.5rem 1rem 1rem;
     margin-bottom: 0.8rem;
     border: none;
     border-radius: 1rem;
@@ -53,3 +53,7 @@
     fill: var(--color-primary);
 }
 
+/* PROJECT PAGE */
+.project-detail-p {
+    line-height: 2;
+}
