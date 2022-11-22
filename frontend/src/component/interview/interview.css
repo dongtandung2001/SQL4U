@@ -2,6 +2,12 @@
   width: 250px;
   border-radius: 20px;
 }
+.choose-topic-btn {
+  border: none;
+  background-color: #0E6DFD;
+  color: #fff;
+  text-decoration: underline;
+}
 
 .sidebar-common-questions-btn {
   border: none;
@@ -11,11 +17,12 @@
 .question-header {
   background-color: #C8DCEF;
   width: 100%;
-  margin: 0;
+  margin-bottom: 20px;
   display: table;
 }
 .question {
   background-color: #D9D9D9;
+  color: rgb(81, 81, 81);
 }
 .question-1 {
   margin-top: 20px;
@@ -23,4 +30,28 @@
 
 .answer-button {
   border: none;
+}
+
+.save-btn {
+  border: none;
+  border-radius: 10px;
+  background-color: #d7d7d7;
+  color: #434343;
+  padding: 5px 10px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.content {
+  background-color: #a1c8ec;
+  color: #414141;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0,1,0,1);
+}
+.content.show {
+  background-color: #a1c8ec;
+  height: auto;
+  max-height: 9999px;
+  transition: all 0.5s cubic-bezier(1,0,1,0);
 }
