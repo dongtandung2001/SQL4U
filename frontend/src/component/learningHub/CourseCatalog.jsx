@@ -7,7 +7,7 @@
 import React, { Component, useState } from "react";
 import "./learningHub.css";
 import { withRouter } from "../withRouter";
-import { coursesCard } from "./data";
+// import { coursesCard } from "./data";
 import { Link } from "react-router-dom";
 import logo from "./c1.png";
 import avatar from "./man-teacher.png";
@@ -19,35 +19,36 @@ import * as courseService from "../../services/courseService";
 }
 
 function Show({ arr }) {
+  console.log(arr);
   return (
-    <section className='coursesCard'>
+    <section className="coursesCard">
       <div></div>
-      <div className='container grid2'>
+      <div className="container grid2">
         {arr.map((val) => (
-          <div key={val.id} className='items'>
-            <div className='content flex'>
-              <div className='left'>
-                <div className='img'>
-                  <img src={logo} alt='' />
+          <div key={val._id} className="items">
+            <div className="content-flex">
+              <div className="left">
+                <div className="img">
+                  <img src={logo} alt="" />
                 </div>
               </div>
-              <div className='text'>
+              <div className="text">
                 <h1>{val.name}</h1>
-                <div className='rate'>
-                  <i className='fa fa-star blue'></i>
-                  <i className='fa fa-star blue'></i>
-                  <i className='fa fa-star blue'></i>
-                  <i className='fa fa-star blue'></i>
-                  <i className='fa fa-star blue'></i>
-                  <label htmlFor=''>(5.0)</label>
+                <div className="rate">
+                  <i className="fa fa-star blue"></i>
+                  <i className="fa fa-star blue"></i>
+                  <i className="fa fa-star blue"></i>
+                  <i className="fa fa-star blue"></i>
+                  <i className="fa fa-star blue"></i>
+                  <label htmlFor="">(5.0)</label>
                 </div>
-                <div className='details'>
+                <div className="details">
                   <>
-                    <div className='box'>
-                      <div className='dimg'>
-                        <img src={avatar} alt='' />
+                    <div className="box">
+                      <div className="dimg">
+                        <img src={avatar} alt="" />
                       </div>
-                      <div className='para'>
+                      <div className="para">
                         <h4>{val.teacher}</h4>
                       </div>
                     </div>
@@ -57,7 +58,7 @@ function Show({ arr }) {
               </div>
             </div>
             {/* Link to IndividualCourse component */}
-            <Link className='outline-btn' to={`/catalog/${val._id}`}>
+            <Link className="outline-btn" to={`/catalog/${val._id}`}>
               GO !
             </Link>{" "}
           </div>
@@ -76,16 +77,16 @@ function App({ location }) {
   const [isShown, setIsShown] = useState("all");
   return (
     <div>
-      <button className='topic-button' onClick={() => setIsShown("all")}>
+      <button className="topic-button" onClick={() => setIsShown("all")}>
         All
       </button>
-      <button className='topic-button' onClick={() => setIsShown("basic")}>
+      <button className="topic-button" onClick={() => setIsShown("basic")}>
         Basic Concepts
       </button>
-      <button className='topic-button' onClick={() => setIsShown("relational")}>
+      <button className="topic-button" onClick={() => setIsShown("relational")}>
         Relational Model
       </button>
-      <button className='topic-button' onClick={() => setIsShown("sql")}>
+      <button className="topic-button" onClick={() => setIsShown("sql")}>
         SQL Queries
       </button>
       {/* 👇️ show elements on click */}
@@ -128,7 +129,7 @@ class CoursesCard extends Component {
 
     return (
       <>
-        <div className='topic container'>
+        <div className="topic container">
           <h2>TOPIC</h2>
           <App location={this.state.data} />
         </div>
