@@ -12,21 +12,21 @@ export function getCourse(id) {
 
 
 // edit course
-export function saveCourse(project) {
+export function saveCourse(course) {
     if (course._id) {
-        const body = { ...project };
+        const body = { ...course };
         delete body._id;
-        return httpService.put(apiEndPoint + "/" + project._id, body);
+        return httpService.put(apiEndPoint + "/" + course._id, body);
     }
-    return httpService.post(apiEndPoint, project);
+    return httpService.post(apiEndPoint, course);
 }
 
 // add a new project to course
 export function addProject(courseId, projectId) {
-    return httpService.put(apiEndPoint + '/project' + courseId, projectId)
+    return httpService.put(apiEndPoint + '/project' + courseId, {id: projectId})
 }
 
 // add a new tutorial to course
 export function addTutorial(courseId, tutorialId) {
-    return httpService.put(apiEndPoint + '/tutorial' + courseId, tutorialId)
+    return httpService.put(apiEndPoint + '/tutorial' + courseId, {id: tutorialId})
 }
