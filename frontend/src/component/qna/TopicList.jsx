@@ -8,7 +8,7 @@ function Show({ arr }) {
   return (
     arr.map((val, index) =>
       <div key={index}>
-        
+
         <Question
           _id={val._id}
           userName={val.userName}
@@ -18,7 +18,7 @@ function Show({ arr }) {
           topic={val.topic} />
       </div>
 
-    ));   
+    ));
 }
 
 function TopicNavigation({ location }) {
@@ -116,16 +116,9 @@ class TopicList extends Component {
   }
 
   render() {
-    const location = this.props.location;
-    console.log(location);
+    // const location = this.props.location;
     return (
-
-
-
       <TopicNavigation location={this.state.data} />
-
-
-
     );
   }
 }

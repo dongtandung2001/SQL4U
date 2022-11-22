@@ -19,7 +19,6 @@ const IndividualCourse = (props) => {
     };
     fetch();
   });
-  console.log(data);
 
   // get course information from database
   // const { data: course } = await courseService.getCourse(courseId);

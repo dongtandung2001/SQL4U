@@ -16,7 +16,7 @@ export function saveCourse(course) {
     if (course._id) {
         const body = { ...course };
         delete body._id;
-        // dont send projects + tutorials to api
+         // dont send projects + tutorials to api
         // it has another func for updating those.
         if (body.projects) delete body.projects;
         if (body.tutorials) delete body.tutorials;
@@ -27,10 +27,10 @@ export function saveCourse(course) {
 
 // add a new project to course
 export function addProject(courseId, projectId) {
-    return httpService.put(apiEndPoint + '/project' + courseId, { id: projectId })
+    return httpService.put(apiEndPoint + '/project/' + courseId, {id: projectId})
 }
 
 // add a new tutorial to course
 export function addTutorial(courseId, tutorialId) {
-    return httpService.put(apiEndPoint + '/tutorial' + courseId, { id: tutorialId })
+    return httpService.put(apiEndPoint + '/tutorial/' + courseId, {id: tutorialId})
 }
