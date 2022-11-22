@@ -1,8 +1,12 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+
 import { coursesCard } from "../learningHub/data";
+
 import IndividualProject from "./IndividualProject";
-import * as projectService from '../../services/projectService';
+
+import auth from "../../services/authService";
+
 import "./recommendedProjects.css";
 
 export default function RecommendProject() {
@@ -11,11 +15,9 @@ export default function RecommendProject() {
   const course = coursesCard.find((course) => course.id == courseId);
   const projects = course.projects;
 
-  // const  projectList = async () => {
-  //   const {data} = await projectService.getProjects();
-  //   console.log('hi', {...data});
-  // }
-  // projectList();
+  // get user to determine if its admin
+  const user = auth.getCurrentUser();
+
   /*
   Function delete
   Delete a specific item in an array of data
@@ -44,10 +46,14 @@ export default function RecommendProject() {
   return (
     <div className="container">
       <h2>{course.coursesName}</h2>
-      <div >
+      <div>
         {cards}
+        {user && user.admin && (
+          <Link to={"/project/add/new"}>
+            <button className="btn btn-primary">Add</button>
+          </Link>
+        )}
       </div>
-      
     </div>
   );
 }
