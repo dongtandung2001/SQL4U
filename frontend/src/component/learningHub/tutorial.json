@@ -1,0 +1,281 @@
+{"tutorial": [
+    {"_id": "80101",
+    "title": "Introduction",
+    "contents":[
+        { "header": "Databases",
+        "detail": "Fields and records make up a table\nOne or more tables make up a database" },
+
+        { "header": "Databases vs. Spreadsheets",
+        "detail": "Both store data fields and records\nDatabase tables can have specific relationships to each other\nProgramming Foundations: Databases\nDatabases allow us to manage data and ask questions about data" },
+
+        { "header": "SQL",
+        "detail": "Write a question a computer can understand\nExpress what you mean explicitly\nOften is a series of smaller Questions\nAdopted into many DBMSs" },
+
+        { "header": "SQL Statements",
+        "detail": "A SQL statement is any SQL code that takes some kind of Application\nA SQL query is any statement that returns records" }
+    ]
+  },
+  {
+    "_id": "80102",
+    "title": "Ask for Data from a Database",
+
+    "contents": [
+      { "header": "Ask for data with SELECT", "detail": " " },
+      {
+        "header": "The SQL SELECT Statement",
+        "detail": "The SELECT statement is used to select data from a database.\nThe data returned is stored in a result table, called the result-set."
+      },
+      {
+        "header": "SELECT Syntax",
+        "detail": "SELECT column1, column2, ...\nFROM table_name;"
+      },
+      {
+        "header": "The SQL SELECT DISTINCT Statement",
+        "detail": "The SELECT DISTINCT statement is used to return only distinct (different) values.\nInside a table, a column often contains many duplicate values; and sometimes you only want to list the different (distinct) values."
+      },
+      {
+        "header": "SELECT DISTINCT Syntax",
+        "detail": "SELECT DISTINCT column1, column2, ...\nFROM table_name;"
+      },
+
+      { "header": "Narrow down a query with WHERE", "detail": " " },
+      {
+        "header": "The SQL WHERE Clause",
+        "detail": "The WHERE clause is used to filter records.\nIt is used to extract only those records that fulfill a specified condition."
+      },
+      {
+        "header": "WHERE Syntax",
+        "detail": "SELECT column1, column2, ...\nFROM table_name\nWHERE condition;"
+      },
+
+      { "header": "Adding more criteria", "detail": " " },
+      {
+        "header": "The SQL AND, OR and NOT Operators",
+        "detail": "The WHERE clause can be combined with AND, OR, and NOT operators.\nThe AND and OR operators are used to filter records based on more than one condition:\nThe AND operator displays a record if all the conditions separated by AND are TRUE.\nThe OR operator displays a record if any of the conditions separated by OR is TRUE.\nThe NOT operator displays a record if the condition(s) is NOT TRUE."
+      },
+      {
+        "header": "AND Syntax",
+        "detail": "SELECT column1, column2, ...\nFROM table_name\nWHERE condition1 AND condition2 AND condition3 ...;"
+      },
+      {
+        "header": "OR Syntax",
+        "detail": "SELECT column1, column2, ...\nFROM table_name\nWHERE condition1 OR condition2 OR condition3 ...;"
+      },
+      {
+        "header": "NOT Syntax",
+        "detail": "SELECT column1, column2, ...\nFROM table_name\nWHERE NOT condition;"
+      },
+      {
+        "header": "Combining AND, OR and NOT",
+        "detail": "You can also combine the AND, OR and NOT operators."
+      },
+
+      { "header": "Broadening and limiting responses", "detail": " " },
+      {
+        "header": "The SQL LIKE Operator",
+        "detail": "The LIKE operator is used in a WHERE clause to search for a specified pattern in a column.\nThere are two wildcards often used in conjunction with the LIKE operator:\nThe percent sign (%) represents zero, one, or multiple characters\nThe underscore sign (_) represents one, single character "
+      },
+      {
+        "header": "LIKE Syntax",
+        "detail": "SELECT column1, column2, ...\nFROM table_name\nWHERE columnN LIKE pattern;"
+      },
+
+      { "header": "Organize responses with ORDER BY", "detail": " " },
+      {
+        "header": "The SQL ORDER BY Keyword",
+        "detail": "The ORDER BY keyword is used to sort the result-set in ascending or descending order.\nThe ORDER BY keyword sorts the records in ascending order by default. To sort the records in descending order, use the DESC keyword."
+      },
+      {
+        "header": "ORDER BY Syntax",
+        "detail": "SELECT column1, column2, ...\nFROM table_name\nORDER BY column1, column2, ... ASC|DESC;"
+      }
+      
+    ]
+  },
+  { "_id" : "80103",
+"title": "Ask for Data from Two or More Tables",
+"contents": [
+    {
+        "header": "SQL JOIN",
+        "detail": "A JOIN clause is used to combine rows from two or more tables, based on a related column between them."
+    },
+    { 
+        "header": "Different Types of SQL JOINs",
+        "detail": "(INNER) JOIN: Returns records that have matching values in both tables\nLEFT (OUTER) JOIN: Returns all records from the left table, and the matched records from the right table\nRIGHT (OUTER) JOIN: Returns all records from the right table, and the matched records from the left table\nFULL (OUTER) JOIN: Returns all records when there is a match in either left or right table"
+    },
+    {
+        "header": "SQL INNER JOIN Keyword",
+        "detail": "The INNER JOIN keyword selects records that have matching values in both tables."
+    },
+    {
+        "header": "INNER JOIN Syntax",
+        "detail": "SELECT column_name(s)\nFROM table1\nINNER JOIN table2\nON table1.column_name = table2.column_name;"
+    },
+    {
+        "header": "SQL LEFT JOIN Keyword",
+        "detail": "The LEFT JOIN keyword returns all records from the left table (table1), and the matching records from the right table (table2). The result is 0 records from the right side, if there is no match."
+    },
+    {
+        "header": "LEFT JOIN Syntax",
+        "detail": "SELECT column_name(s)\nFROM table1\nLEFT JOIN table2\nON table1.column_name = table2.column_name;"
+    },
+    {
+        "header": "SQL RIGHT JOIN Keyword",
+        "detail": "The RIGHT JOIN keyword returns all records from the right table (table2), and the matching records from the left table (table1). The result is 0 records from the left side, if there is no match."
+    },
+    {
+        "header": "RIGHT JOIN Syntax",
+        "detail": "SELECT column_name(s)\nFROM table1\nRIGHT JOIN table2\nON table1.column_name = table2.column_name;"
+    },
+    {
+        "header": "SQL FULL OUTER JOIN Keyword",
+        "detail": "The FULL OUTER JOIN keyword returns all records when there is a match in left (table1) or right (table2) table records.\nTip: FULL OUTER JOIN and FULL JOIN are the same."
+    },
+    {
+        "header": "FULL OUTER JOIN Syntax",
+        "detail": "SELECT column_name(s)\nFROM table1\nFULL OUTER JOIN table2\nON table1.column_name = table2.column_name\nWHERE condition;"
+    },
+    {
+        "header": "SQL Self Join",
+        "detail": "A self join is a regular join, but the table is joined with itself."
+    },
+    {
+        "header": "Self Join Syntax",
+        "detail": "SELECT column_name(s)\nFROM table1 T1, table1 T2\nWHERE condition;"
+    }
+]
+ },
+ {
+    "_id": "80104", 
+    "title": "Data Types, Math, and Helpful Features",
+    "contents": [
+        {
+            "header": "Data types in SQL",
+            "detail": "The kind of data stored in a field\nCan be text, numeric, binary, and so on.\nCertain operations are not possible with certain types\n+ Binary types: store short/long binary sequences\n+ Date and time types: store a value that should be treated as date/time data\n+ Number types: stores values as integers of various lengths, floating-point numbers, and so on\n+ Text types: store values intended to be used as text strings in. Fixed or variable numbers of characters\n+ Boolean type: stores a true or false value\n+ Null: represents a field having no value in it whatsoever. Not the same as false, no, or zero"
+        },
+        {
+            "header": "Math in SQL",
+            "detail": "Most basic: use a SELECT statement, such as SELECT 4+2\nSupports arithmetic operations: +, -, *, /, and %.\nAssumes integer operations unless otherwise specified\nSupports comparison operations: >,<,>=,<=,=<,!=,or<>"
+
+        },
+        {
+            "header": "SQL Logical Operators",
+            "detail": "ALL: TRUE if all of the subquery values meet the condition\nAND: TRUE if all the conditions separated by AND is TRUE\nANY: TRUE if any of the subquery values meet the condition\nBETWEEN: TRUE if the operand is within the range of comparisons\nEXISTS: TRUE if the subquery returns one or more records\nIN: TRUE if the operand is equal to one of a list of expressions\nLIKE: TRUE if the operand matches a pattern\nNOT: Displays a record if the condition(s) is NOT TRUE\nOR: TRUE if any of the conditions separated by OR is TRUE\nSOME: TRUE if any of the subquery values meet the condition"
+        },
+        {
+            "header": "Creating aliases with AS",
+            "detail": "SQL aliases are used to give a table, or a column in a table, a temporary name.\nAliases are often used to make column names more readable.\nAn alias only exists for the duration of that query.\nAn alias is created with the AS keyword."
+
+        },
+        {
+            "header": "Alias Column Syntax",
+            "detail": "SELECT column_name AS alias_name\nFROM table_name;"
+        },
+        {
+            "header": "Alias Table Syntax",
+            "detail": "SELECT column_name(s)\nFROM table_name AS alias_name;"
+        }
+    ]
+ },
+ {
+    "_id": "80105", 
+    "title": "Add or Modify Data",
+    "contents": [
+        {
+            "header": "Add data to a table",
+            "detail": ""
+        },
+        {
+            "header": "The SQL INSERT INTO Statement",
+            "detail": "The INSERT INTO statement is used to insert new records in a table."
+        },
+        {
+            "header": "INSERT INTO Syntax",
+            "detail": "It is possible to write the INSERT INTO statement in two ways:\n1. Specify both the column names and the values to be inserted:\nINSERT INTO table_name (column1, column2, column3, ...)\nVALUES (value1, value2, value3, ...);\n2. If you are adding values for all the columns of the table, you do not need to specify the column names in the SQL query. However, make sure the order of the values is in the same order as the columns in the table. Here, the INSERT INTO syntax would be as follows:\nINSERT INTO table_name\nVALUES (value1, value2, value3, ...);"
+        },
+        {
+            "header": "Modify data in a table",
+            "detail": ""
+        },
+        {
+            "header": "The SQL UPDATE Statement",
+            "detail": "The UPDATE statement is used to modify the existing records in a table."
+        },
+        {
+            "header": "UPDATE Syntax",
+            "detail": "UPDATE table_name\nSET column1 = value1, column2 = value2, ...\nWHERE condition;"
+        },
+        {
+            "header": "Removing data from a table",
+            "detail": ""
+        },
+        {
+            "header": "The SQL DELETE Statement",
+            "detail": "The DELETE statement is used to delete existing records in a table."
+        },
+        {
+            "header": "DELETE Syntax",
+            "detail": "DELETE FROM table_name WHERE condition;"
+        }
+    ]
+ },
+ { "_id": "80106", "title": "Conclusion",
+"contents": [
+  {
+      "header": "The SQL UPDATE Statement",
+      "detail": "The UPDATE statement is used to modify the existing records in a table."
+  }
+]},
+{"_id": "10101",
+    "title": "Introduction",
+    "contents":[
+        { "header": "Why use a database",
+        "detail": "Databases let us work with large amounts of data efficiently. They make updating data easy and reliable, and they help to ensure accuracy. They offer security features to control access to information, and they help us avoid redundancy. A database is a structure that stores information in an organized, consistent, reliable, and searchable way. And there are different kinds of databases intended for different use cases." },
+
+        { "header": "What you should know",
+        "detail": " A DBMS is the software, like SQL Server, MySQL or Access, we use to interact with the database. In this course, I'll be talking about databases in general and about the concepts that make relational databases work. You don't need any special software to follow along with the course, and you don't even need a database of your own." },
+
+        { "header": "Understanding databases: Benefits of spreadsheets",
+        "detail": "A database gives us a way to add structure to data and to define rules that the data must follow. The whole point of having data is to be able to use it for something, and a database gives us the tools both to protect data and to use data to answer questions." },
+
+        { "header": "Understanding databases: Benefits of structured data",
+        "detail": " A database can contain more than one table and databases offer the ability to create relationships between tables based on rules you define. We'll see more about this in detail later on. The structure of tables in the database is called the schema. If we start to add a little more information to our Customers and Orders tables, like a unique identifier for each row, now we can connect our orders to our customers and easily find out which dishes a customer has ordered." }
+    ]
+  },
+  {"_id": "10102",
+    "title": "Database foundations",
+    "contents":[
+        { "header": "Relational databases",
+        "detail": "the most common is the relational database, which is named for the way that it organizes data into relations or tables of related data. In a relational database, tables are made up of rows, which represent instances of a given entity, and columns, which represent attributes of each entity. The set of columns is called a relation." },
+
+        { "header": "Keys and unique values",
+        "detail": " value we can use to refer to only one specific row or record. A primary key is the most important key in a table, though there can be others as well. A table doesn't require a primary key, but having one helps to access specific records easily." },
+
+        { "header": "Relationships",
+        "detail": " One to may, many to many, and one to one.\n A relationship starts out as something that exists in the model of the data. It's something we know about how the data will be used when we go to read or modify the data in the database. " },
+
+        { "header": "ACID and transactions",
+        "detail": "A transaction is a set of operations that must all be completed, and if for some reason any of the individual operations aren't completed, no changes are made to the database. Anything that's partially done will be undone. Transactions follow a set of principles outlined by the acronym ACID, which requires that the transactions be atomic, consistent, isolated, and durable. Atomic here means that the transaction is indivisible, that pieces of it can't be separated out." }
+    ]
+  },
+  {"_id": "10103",
+    "title": "Tables",
+    "contents":[
+        { "header": "Modeling and planning a database",
+        "detail": "We'll start by doing a basic needs analysis. What does our database need to store? When you're designing a database, your needs will vary. We've seen examples from our restaurant database in this course, so let's plan out and build that database. In our restaurant, we want to keep track of customers, dishes, events, orders, and reservations." },
+
+        { "header": "Naming tables",
+        "detail": " Fields should be named singularly, because for each record, there's only one piece of data in the field." },
+
+        { "header": "Columns and data types",
+        "detail": "A string represents a collection of characters, or individual letters, numbers, and symbols. For string types and for some other types, the length of the information we're storing becomes important. Databases generally accept a handful of string types, including CHAR, a fixed length of characters, VARCHAR, a variable length of characters up to a certain limit, and longer text fields intended for something like a description. The database needs to know how long these fields are so it can efficiently store the information. " },
+
+        { "header": "Numbers and other types",
+        "detail": "Databases also offer specific data types for different kinds of numbers. These types are for integers, double precision numbers, floating point numbers, decimals of varying length, and more." }
+    ]
+  }
+]}
+        
+    
+   
+   

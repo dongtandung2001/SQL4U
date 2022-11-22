@@ -56,15 +56,17 @@ router.put("/:id", async (req, res) => {
 
 // add project to course
 router.put('/project/:id', async (req, res) => {
-  console.log(req.body.project._id);
   let course = await Course.findById(req.params.id);
   if (!course) return res.status(404).send("There are no courses with the given id");
 
-  let project = await Project.findById(req.body.project._id);
-  // console.log(project);
+  let project = await Project.findById(req.body.id);
+
   if (!project) return res.status(404).send("There are no projects with the given id");
 
-  course.projects.push(req.body.project);
+  course.projects.push({
+    _id: project._id,
+    title: project.title,
+  });
   await course.save();
 
   res.send(course);
@@ -75,10 +77,13 @@ router.put('/tutorial/:id', async (req, res) => {
   let course = await Course.findById(req.params.id);
   if (!course) return res.status(404).send("There are no courses with the given id");
 
-  let tutorial = await Tutorial.findById(req.body.tutorial._id);
+  let tutorial = await Tutorial.findById(req.body.id);
   if (!tutorial) return res.status(404).send("There are no tutorials with the given id");
 
-  course.tutorials.push(req.body.tutorial);
+  course.tutorials.push({
+    _id: tutorial._id,
+    title: tutorial.title
+  });
   await course.save();
 
   res.send(course);

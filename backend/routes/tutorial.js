@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
 
     let tutorial = new Tutorial({
         title: req.body.title,
-        content: req.body.content,
+        contents: req.body.contents,
     });
     tutorial = await tutorial.save();
     res.send(tutorial);
@@ -33,20 +33,27 @@ router.put("/:id", async (req, res) => {
     const { error } = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
+    // update tutorial title
     let tutorial = await Tutorial.findByIdAndUpdate(
         req.params.id,
         {
             title: req.body.title,
-            content: req.body.content,
         },
         { new: true }
     );
 
     if (!tutorial) return res.status(404).send("There are no project with the given id");
+
+    // update tutorial content
+    if (req.body.content) {
+        tutorial.contents.push(req.body.content)
+    }
+    await tutorial.save();
     res.send(tutorial);
 });
 
-router.delete("/id", [auth, admin], async (req, res) => {
+// delete specific tutorial
+router.delete("/:id", [auth, admin], async (req, res) => {
     let tutorial = await Tutorial.findByIdAndDelete(req.params.id);
     if (!tutorial) return res.status(404).send('Does not exist tutorial with a given ID');
     res.send(tutorial);

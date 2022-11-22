@@ -20,10 +20,11 @@ import Logout from "./component/logout/logout";
 import Profile from "./component/profile/profile";
 import NotFound from "./component/not-found/notFound";
 import CourseForm from "./component/learningHub/CourseForm";
-import auth from "./services/authService";
 import PrivateRoutes from "./component/protectedRoutes";
 import QuestionAndAnswer from "./component/qna/QuestionAndAnswer";
+import ProjectForm from './component/project/projectForm';
 
+import auth from "./services/authService";
 
 
 
@@ -35,7 +36,7 @@ class App extends Component {
   }
   render() {
     return (
-      <main style={{paddingLeft: "0", paddingRight: "0"}} className='container-fluid'>
+      <main style={{ paddingLeft: "0", paddingRight: "0" }} className='container-fluid'>
         <NavBar user={this.state.user} />
         {this.state.user && <FeatureNavBar />}
 
@@ -55,9 +56,10 @@ class App extends Component {
           <Route path='/catalog/:courseId/project' element={<RecommendProject />} />
           <Route path='/catalog/:courseId/project/:projectId' element={<ProjectPage />} />
           <Route path='/qna' element={<QnA />} />
-          <Route path='/qna/:id' element={<QuestionAndAnswer/>}/>
+          <Route path='/qna/:id' element={<QuestionAndAnswer />} />
           <Route path='/hub' element={<LearningHub />} />
 
+          <Route path="/project/add/:id" element={<ProjectForm />} />
           <Route path='/catalog/add/:id' element={<CourseForm />} />
           <Route path='/catalog/:courseId' element={<IndividualCourse />} />
           <Route

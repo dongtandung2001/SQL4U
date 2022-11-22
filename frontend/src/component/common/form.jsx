@@ -3,6 +3,7 @@ import Joi from "joi";
 import Input from "./input";
 import Select from "./select";
 import Radio from "./radio";
+import TextArea from "./textarea";
 
 class Form extends Component {
   state = {
@@ -65,7 +66,7 @@ class Form extends Component {
     return (
       <button
         disabled={this.validate()}
-        className='btn btn-primary rounded-pill custom-transition'
+        className="btn btn-primary rounded-pill custom-transition"
       >
         {label}
       </button>
@@ -79,6 +80,19 @@ class Form extends Component {
         name={name}
         label={label}
         type={type}
+        value={data[name]}
+        error={errors[name]}
+        onChange={this.handleChange}
+      />
+    );
+  }
+
+  renderTextArea(name, label) {
+    const { data, errors } = this.state;
+    return (
+      <TextArea
+        name={name}
+        label={label}
         value={data[name]}
         error={errors[name]}
         onChange={this.handleChange}
