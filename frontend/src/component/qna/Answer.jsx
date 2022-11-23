@@ -27,11 +27,10 @@ class Answer extends Form {
     const { data: userAnswer } = { ...this.state };
     // get username of ppl going to reply
     const user = await authService.getCurrentUser();
-    console.log(user);
+
     userAnswer.userName = user.email;
 
     // reply using questionService
-    console.log(question);
     try {
       await questionService.reply(question, userAnswer);
     } catch (error) {

@@ -1,11 +1,11 @@
 import React, { Component, useState } from "react";
-import { info } from "./question&user";
 import { topics } from "./topics";
 import CreatePost from "./CreatePost";
 import Question from "./Question";
 import * as questionService from "../../services/questionService";
+import * as authService from "../../services/authService";
 
-function Show({ arr }) {
+function Show({ arr, user, onDelete }) {
   return arr.map((val) => (
     <div key={val._id}>
       <Question
@@ -16,12 +16,14 @@ function Show({ arr }) {
         title={val.title}
         topic={val.topic}
         date={val.datePosted}
+        user={user}
+        onDelete={onDelete}
       />
     </div>
   ));
 }
 
-function TopicNavigation({ location }) {
+function TopicNavigation({ location, user, onDelete }) {
   const [isShown, setIsShown] = useState("All");
   return (
     <div className="container-fluid body">
@@ -77,7 +79,7 @@ function TopicNavigation({ location }) {
 
           {isShown === "All" && (
             <div>
-              <Show arr={location} />
+              <Show arr={location} user={user} onDelete={onDelete} />
             </div>
           )}
 
@@ -85,6 +87,7 @@ function TopicNavigation({ location }) {
             <div>
               <Show
                 arr={location.filter((val) => val.topic === "Database Basic")}
+                user={user}
               />
             </div>
           )}
@@ -93,6 +96,7 @@ function TopicNavigation({ location }) {
             <div>
               <Show
                 arr={location.filter((val) => val.topic === "Basic Data Query")}
+                user={user}
               />
             </div>
           )}
@@ -101,6 +105,7 @@ function TopicNavigation({ location }) {
             <div>
               <Show
                 arr={location.filter((val) => val.topic === "Intermediate")}
+                user={user}
               />
             </div>
           )}
@@ -109,6 +114,7 @@ function TopicNavigation({ location }) {
             <div>
               <Show
                 arr={location.filter((val) => val.topic === "Advance SQL")}
+                user={user}
               />
             </div>
           )}
@@ -119,6 +125,7 @@ function TopicNavigation({ location }) {
                 arr={location.filter(
                   (val) => val.topic === "Technical problems"
                 )}
+                user={user}
               />
             </div>
           )}
@@ -166,20 +173,26 @@ function TopicNavigation({ location }) {
 }
 
 class TopicList extends Component {
-  state = { data: [] };
+  state = { data: [], user: {} };
   componentDidMount = async () => {
     const { data } = await questionService.getQuestions();
-    const { data: question } = await questionService.getQuestion(
-      "637dc7d6d092c0b6e4eb8d60"
-    );
-    console.log("question", question);
-    console.log("data", data);
-    this.setState({ data });
+    const user = await authService.getCurrentUser();
+    this.setState({ data, user });
+  };
+
+  handleDelete = async () => {
+    console.log("deleted");
   };
 
   render() {
     // const location = this.props.location;
-    return <TopicNavigation location={this.state.data} />;
+    return (
+      <TopicNavigation
+        location={this.state.data}
+        user={this.state.user}
+        onDelete={this.handleDelete}
+      />
+    );
   }
 }
 

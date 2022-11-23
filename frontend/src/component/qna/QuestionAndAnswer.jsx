@@ -6,14 +6,18 @@ import Answer from "./Answer";
 import AnswerList from "./AnswerList";
 import { info } from "./question&user";
 import * as questionService from "../../services/questionService";
+import * as authService from "../../services/authService";
 
 const QuestionAndAnswer = () => {
   const { id } = useParams();
   const [question, setQuestion] = useState(null);
+  const [user, setUser] = useState(null);
   useEffect(() => {
     const fetch = async () => {
       const { data } = await questionService.getQuestion(id);
       setQuestion(data);
+      const user = await authService.getCurrentUser();
+      setUser(user);
     };
     fetch();
   }, []);
@@ -93,6 +97,7 @@ const QuestionAndAnswer = () => {
                 username={reply.userName}
                 reply={reply.reply}
                 date={reply.datePosted}
+                user={user}
               />
             </React.Fragment>
           ))}

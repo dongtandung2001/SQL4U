@@ -34,3 +34,7 @@ export function reply(question, reply) {
     console.log('body', body);
     return httpService.put(apiEndPoint + "/" + question._id, body)
 }
+
+export function deleteQuestion(id) {
+    return httpService.delete(apiEndPoint + "/" + id);
+}
