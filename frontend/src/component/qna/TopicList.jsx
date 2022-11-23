@@ -8,17 +8,18 @@ function Show({ arr }) {
   return (
     arr.map((val, index) =>
       <div key={index}>
-        
+
         <Question
           _id={val._id}
           userName={val.userName}
           userAvatar={val.userAvatar}
           description={val.description}
           title={val.title}
-          topic={val.topic} />
+          topic={val.topic}
+          date={val.date} />
       </div>
 
-    ));   
+    ));
 }
 
 function TopicNavigation({ location }) {
@@ -116,16 +117,9 @@ class TopicList extends Component {
   }
 
   render() {
-    const location = this.props.location;
-    console.log(location);
+    // const location = this.props.location;
     return (
-
-
-
       <TopicNavigation location={this.state.data} />
-
-
-
     );
   }
 }

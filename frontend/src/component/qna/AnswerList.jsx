@@ -6,9 +6,11 @@ export default function AnswerList(props) {
         <div className="answer-lists">
 
             <div className="answer">
+                <div className="answer-info">
                 <img className="a-userAvatar" src={"https://galaxylands.com.vn/wp-content/uploads/2022/10/tieu-su-ca-si-mono-13.jpg"}></img>
 
-                <p className="a-userName">{props.userName}</p>
+                <p className="a-userName">{props.userName}<br /> <span className="date-created">{props.dateR}</span></p>
+                </div>
                 <p>{props.reply}</p>
 
 

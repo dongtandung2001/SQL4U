@@ -93,8 +93,10 @@
 }
 
 .three-dot {
-    margin-top: 10px;
-    margin-left: 10px;
+  
+    margin-top: 15px;
+  
+    margin-right: 10px;
     border: none;
     background-color: #2577C1;
 }
@@ -102,8 +104,21 @@
 .question-content {
     margin: 10px;
     background-color: rgb(211, 211, 211);
-    height: 200px;
+    
+    word-wrap: break-word;
+    text-decoration: none;
+    
 }
+.question-link{
+    text-decoration: none;
+    color: black;
+
+}
+.question-link:hover{
+    color: #2577C1;
+}
+
+
 .topic-chosen{
     margin-left:10px;
     font-style: italic;
@@ -236,3 +251,8 @@ margin: 10px;
     border: 1px solid #2577C1;
     margin-top: 10px;
 }
+
+.date-created{
+    font-weight: lighter;
+}
+
