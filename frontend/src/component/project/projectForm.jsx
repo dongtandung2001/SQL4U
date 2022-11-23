@@ -55,12 +55,11 @@ class ProjectForm extends Form {
     delete project.header;
     delete project.detail;
 
-    console.log('id', this.state._id);
     if(this.state._id) {
       project._id = this.state._id;
     }
     const {data, mode} = await projectService.saveProject(project, { header, detail } );
-    console.log('here',data._id);
+  
     if(mode ==='add') {
       try{
         await courseService.addProject(this.state.courseId, data._id);
