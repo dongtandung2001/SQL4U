@@ -42,7 +42,7 @@ export default function RecommendProject() {
 
   const cards = projectList.map((item) => {
     return (
-      <div key={item.id}>
+      <div key={item._id}>
         <IndividualProject
           id={item._id}
           title={item.title}

@@ -30,6 +30,10 @@ export function addProject(courseId, projectId) {
     return httpService.put(apiEndPoint + '/project/' + courseId, {id: projectId})
 }
 
+export function deleteProject(courseId, projectId) {
+    return httpService.put(apiEndPoint + '/deleteProject/' + courseId, {id: projectId})
+}
+
 // add a new tutorial to course
 export function addTutorial(courseId, tutorialId) {
     return httpService.put(apiEndPoint + '/tutorial/' + courseId, {id: tutorialId})
