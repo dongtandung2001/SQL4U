@@ -24,13 +24,13 @@ export default function TutorialPage() {
   //location.filter((course) => course.topic === "basic")
   return (
     <div className="container">
-      <div className='tutorial-title'>{data && data.title}</div>
+      <div className="tutorial-title">{data && data.title}</div>
       <div>
         {data &&
           data.contents.map((contents, index) => (
-            <li key={index} className='tutorial-title'>
-              <h5 className='tutorial-header'>{contents.header}</h5>
-              <div className='tutorial-detail'>
+            <li key={index} className="tutorial-title">
+              <h5 className="tutorial-header">{contents.header}</h5>
+              <div className="tutorial-detail">
                 {contents.detail.split("\n").map((str) => (
                   <p>{str}</p>
                 ))}

@@ -1,65 +1,58 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-
+import React from "react";
 import Form from "../common/form";
+import Joi from "joi";
 
 import { info } from "./question&user";
-import Joi from "joi";
-import {withRouter} from "../withRouter";
 
-
+import * as questionService from "../../services/questionService";
+import * as authService from "../../services/authService";
+import { withRouter } from "../withRouter";
 
 class Answer extends Form {
+  state = {
+    data: {},
+    errors: {},
+  };
 
-    state = {
-        data: {
-            reply: "",
-          
-            dateR:`${new Date().getMonth()+1}/${new Date().getDate()}/${new Date().getFullYear()}`,
-        },
+  schema = Joi.object({
+    reply: Joi.string().min(10).max(3000).required().label("Answer"),
+  });
 
-        errors: {}
+  doSubmit = async () => {
+    // get question object
+    const question = { ...this.props.question };
+    delete question.replies;
 
-    };
+    // get reply
+    const { data: userAnswer } = { ...this.state };
+    // get username of ppl going to reply
+    const user = await authService.getCurrentUser();
+    console.log(user);
+    userAnswer.userName = user.email;
 
-    schema = Joi.object({
-        reply: Joi.string().min(10).max(3000).required().label("Answer"),
-     
-        dateR: Joi.required()
-    });
-
-    doSubmit = () => {
-        const { data } = this.state;
-        const userAnswer = { ...data };
-        userAnswer.id = info.length;
-        userAnswer.userName = 'Phu';
-        info.forEach(element => {
-            if (element._id === this.props._id) {
-                element.replies.push(userAnswer)
-                this.props.navigate(`/qna/${this.props._id}`);
-            }
-        })
+    // reply using questionService
+    console.log(question);
+    try {
+      await questionService.reply(question, userAnswer);
+    } catch (error) {
+      console.log("error", error);
     }
+    // force render dum em =))
+    // this.props.navigate(`/qna/${this.props.question._id}`);
+    window.location = "/qna/" + this.props.question._id;
+  };
 
-    
-
-    render() {
-        return (
-
-            <div className="answer-content">
-                <div className="anwser">
-                    <form onSubmit={this.handleSumbit}>
-                        {this.renderInput("reply", "Answer")}
-                        {this.renderButton("Reply")}
-                    </form>
-                </div>
-                
-            </div>
-
-
-
-
-        );
-    }
+  render() {
+    return (
+      <div className="answer-content">
+        <div className="anwser">
+          <form onSubmit={this.handleSumbit}>
+            {this.renderTextArea("reply", "Reply")}
+            {this.renderButton("Reply")}
+          </form>
+        </div>
+      </div>
+    );
+  }
 }
 export default withRouter(Answer);
