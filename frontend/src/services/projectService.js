@@ -27,3 +27,8 @@ export async function saveProject(project, content) {
     const {data} = await httpService.post(apiEndPoint, project);
     return {data, mode: "add"};
 }
+
+// delete project with id
+export async function deleteProject(id) {
+    return await httpService.delete(apiEndPoint + '/' + id);
+}
