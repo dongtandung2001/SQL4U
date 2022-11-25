@@ -115,7 +115,7 @@ router.put("/tutorial/:id", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  const course = Course.findByIdAndDelete(req.params.id);
+  const course = await Course.findByIdAndDelete(req.params.id);
   if (!course)
     return res.status(404).send("Does not exist course with the given ID");
   res.send(course);
