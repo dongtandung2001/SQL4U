@@ -32,6 +32,7 @@ function Show({ arr }) {
                   className='btn btn-danger btn-sm ms-0'
                   onClick={async () => {
                     await courseService.deleteCourse(val._id);
+                    window.location = "/catalog";
                   }}
                 >
                   Delete
