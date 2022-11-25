@@ -114,8 +114,8 @@ router.put("/tutorial/:id", async (req, res) => {
   res.send(course);
 });
 
-router.delete("/:id", [auth, admin], async (req, res) => {
-  const course = Course.findByIdAndDelete(req.body.params);
+router.delete("/:id", async (req, res) => {
+  const course = Course.findByIdAndDelete(req.params.id);
   if (!course)
     return res.status(404).send("Does not exist course with the given ID");
   res.send(course);
@@ -124,6 +124,7 @@ router.delete("/:id", [auth, admin], async (req, res) => {
 // get specific course
 router.get("/:id", async (req, res) => {
   const course = await Course.findById(req.params.id);
+
   if (!course)
     return res.status(404).send("There are no course with the given ID");
   res.send(course);
