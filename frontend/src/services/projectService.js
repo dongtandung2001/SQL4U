@@ -15,7 +15,6 @@ export function getProject(id) {
 // save project
 // content: {header: "...", detail: "..."}
 export async function saveProject(project, content) {
-    console.log('service',project._id);
     if (project._id) {
         const body = { ...project };
         delete body._id;

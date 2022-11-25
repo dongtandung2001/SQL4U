@@ -24,10 +24,10 @@ const IndividualCourse = (props) => {
   // const { data: course } = await courseService.getCourse(courseId);
   // const courses = await courseService.getCourse(courseId);
   // const course = coursesCard.find((course) => course.id == courseId);
-  // console.log(course.tutorials);
+  // (course.tutorials);
   // render tutorials in this course
   // const tutorialList = course.tutorials.map((tutorial, index) => {
-  //   console.log(tutorial);
+  //   (tutorial);
   //   return (
   //       <Link
   //         style={{ textDecoration: "none" }}
@@ -39,7 +39,7 @@ const IndividualCourse = (props) => {
   //       </Link>
   //   );
   // });
-  // console.log("list", course.tutorials);
+  // ("list", course.tutorials);
   return (
     <div className='container'>
       <h2>{data && data.name}</h2>

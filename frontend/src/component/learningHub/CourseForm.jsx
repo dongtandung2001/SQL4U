@@ -1,46 +1,78 @@
 import React from "react";
 import Joi from "joi";
 import Form from "../common/form";
-import {coursesCard} from "./data";
 import {withRouter} from "../withRouter";
-import auth from "../../services/authService";
+import * as courseService from '../../services/courseService';
+
 
 class CourseForm extends Form {
   state = {
-    data: {
-    topic: "",
-    coursesName: "",
-    name: "",
-    length:""
-    },
+    data: {},
     errors: {},
+    submitButtonText: "Submit"
   };
 
   schema = Joi.object({
     topic: Joi.string().min(5).max(50).required().label("Topic"),
-    coursesName: Joi.string().min(5).max(50).required().label("Courses Name"),
-    name: Joi.string().min(5).max(50).required().label("Teacher Name"),
+    name: Joi.string().min(5).max(50).required().label("Courses Name"),
+    teacher: Joi.string().min(5).max(50).required().label("Teacher Name"),
     length: Joi.string().min(5).max(255).required().label("Total Time"),
   });
 
-  doSubmit = () => {
+  componentDidMount = async () => {
+    const { id } = this.props.params;
+    if (id === "new") return;
+    
+    const { data: courseObj } = await courseService.getCourse(id);
+
+    this.setState({
+      data: {
+        topic: courseObj.topic,
+        name: courseObj.name,
+        teacher: courseObj.teacher,
+        length: courseObj.length
+      }, 
+      _id: courseObj._id,
+    })
+
+  }
+  doSubmit = async () => {
       const { data } = this.state;
-      console.log(data);
       const course = {...data};
-      course.id = coursesCard.length;
-      coursesCard.push(course);
-      this.props.navigate("/catalog");
+
+      if (this.state._id === "new") {
+        courseService.addNewCourse(course);
+      }
+
+      if (this.state._id !== "new") {
+        course._id = this.state._id;
+        const isSaved = await courseService.saveCourse(course)
+        if (isSaved.statusText === "OK"){
+          this.setState({submitButtonText: "Saved"})
+        }
+      }
   };
+  navigateBack = () => {
+    this.props.navigate("/catalog");
+  }
+  
   render() {
     return (
 <div>
       <form onSubmit={this.handleSumbit}>
         {this.renderInput("topic","Topic")}
-        {this.renderInput("coursesName","Course Name")}
-        {this.renderInput("name","Teacher Name")}
+        {this.renderInput("name","Course Name")}
+        {this.renderInput("teacher","Teacher Name")}
         {this.renderInput("length","Total Time")}
-        {this.renderButton("Submit")}
+        {this.renderButton(`${this.state.submitButtonText}`)}
       </form>
+      <button 
+        className="btn btn-primary rounded-pill custom-transition"
+        style={{marginTop: "8px"}}
+        onClick={this.navigateBack}
+      >
+        Back to Catalog
+      </button>
 </div>
     );
   }

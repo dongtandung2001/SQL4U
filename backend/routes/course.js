@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
   // validate input
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
-
+  
   let course = new Course({
     topic: req.body.topic,
     name: req.body.name,
@@ -42,7 +42,7 @@ router.put("/:id", async (req, res) => {
     req.params.id,
     {
       topic: req.body.topic,
-      name: req.body.name,
+      name: req.body.courseName,
       length: req.body.length,
       teacher: req.body.teacher,
       cover: req.body.cover,
