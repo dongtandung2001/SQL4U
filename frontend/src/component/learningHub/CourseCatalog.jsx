@@ -11,7 +11,7 @@ import { withRouter } from "../withRouter";
 import { Link } from "react-router-dom";
 import logo from "./c1.png";
 import avatar from "./man-teacher.png";
-import { Course } from "./data1";
+import auth from '../../services/authService';
 import * as courseService from "../../services/courseService";
 
 {
@@ -19,7 +19,7 @@ import * as courseService from "../../services/courseService";
 }
 
 function Show({ arr }) {
-  console.log(arr);
+  const user = auth.getCurrentUser();
   return (
     <section className="coursesCard">
       <div></div>
@@ -57,10 +57,17 @@ function Show({ arr }) {
                 </div>
               </div>
             </div>
-            {/* Link to IndividualCourse component */}
-            <Link className="outline-btn" to={`/catalog/${val._id}`}>
-              GO !
-            </Link>{" "}
+            {/* Link to Individual Course component if not admin else to edit course */}
+            {user.admin && (
+              <Link className="btn btn-outline-primary" to={`/catalog/addOrEdit/${val._id}`}>
+                Edit
+              </Link>
+            )}
+            <Link className="btn btn-outline-primary" to={`/catalog/${val._id}`}>
+                GO !
+            </Link>
+        
+            
           </div>
         ))}
       </div>
@@ -75,6 +82,7 @@ When user select a topic, it will pop-up courses related to selected topic
 }
 function App({ location }) {
   const [isShown, setIsShown] = useState("all");
+  
   return (
     <div>
       <button className="topic-button" onClick={() => setIsShown("all")}>
@@ -89,6 +97,7 @@ function App({ location }) {
       <button className="topic-button" onClick={() => setIsShown("sql")}>
         SQL Queries
       </button>
+      
       {/* 👇️ show elements on click */}
 
       {isShown === "all" && (
@@ -126,14 +135,24 @@ class CoursesCard extends Component {
   };
   render() {
     const location = this.props.location;
+    const user = auth.getCurrentUser();
+
+    //Handle add new course
 
     return (
-      <>
-        <div className="topic container">
-          <h2>TOPIC</h2>
-          <App location={this.state.data} />
-        </div>
-      </>
+      <div className="topic container">
+        <h2 style = {{display: "inline-block", margin: "auto 1rem 1rem auto"}}>TOPIC</h2>
+        {  
+          user.admin && 
+          <Link 
+            to ={`/catalog/addOrEdit/new`}
+            className="btn btn-primary rounded-pill custom-transition"
+          >
+            + Add New Course
+            </Link>
+        }
+        <App location={this.state.data} />
+      </div>
     );
   }
 }

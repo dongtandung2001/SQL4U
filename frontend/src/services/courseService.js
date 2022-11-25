@@ -10,6 +10,10 @@ export function getCourse(id) {
     return httpService.get(apiEndPoint + '/' + id);
 }
 
+//add new course
+export async function addNewCourse(course) {
+    return await httpService.post(apiEndPoint, course);
+}
 
 // edit course
 export function saveCourse(course) {
