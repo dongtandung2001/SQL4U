@@ -65,7 +65,6 @@ router.get('/:id', async (req, res) => {
 // delete project by id
 // delete project
 router.delete("/:id", async (req, res) => {
-  console.log(req.params.id)
   const project = await Project.findByIdAndDelete(req.params.id);
   if (!project) return res.status(404).send("There are no project with the given id");
 

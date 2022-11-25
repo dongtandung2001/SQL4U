@@ -10,7 +10,6 @@ import * as tutorialService from "../../services/tutorialService";
 export default function TutorialPage() {
   // const {state} = useLocation();
   const { tutorialId } = useParams();
-  console.log("hi", tutorialId);
 
   const [data, setData] = useState(null);
   useEffect(() => {
@@ -20,7 +19,6 @@ export default function TutorialPage() {
     };
     fetch();
   });
-  console.log("tutorial", data);
   //location.filter((course) => course.topic === "basic")
   return (
     <div className="container">

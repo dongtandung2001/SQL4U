@@ -15,9 +15,7 @@ const QuestionAndAnswer = () => {
     const { id } = useParams();
     const [doDelete,setDoDelete]=useState(info);
     const question = info.find(question => question._id === id);
-    console.log('hi', question);
     const replies = question.replies;
-    console.log(replies);
    
 
 

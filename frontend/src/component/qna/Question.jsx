@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 export default function Question(props) {
 
     // const location = useLocation();
-    // console.log('mes', location);
+    // ('mes', location);
     // const { courseId } = location.state;
     //const [state, setState] = useState({});
 
