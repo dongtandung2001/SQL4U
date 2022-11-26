@@ -89,6 +89,10 @@ router.put("/deleteProject/:id", async (req, res) => {
   let index = course.projects.indexOf(
     (projects) => projects._id === project._id
   );
+  if (index === -1)
+    return res
+      .status(404)
+      .send("There are no project with the given ID in this course");
   course.projects.splice(index, 1);
   await course.save();
 
@@ -109,6 +113,30 @@ router.put("/tutorial/:id", async (req, res) => {
     _id: tutorial._id,
     title: tutorial.title,
   });
+  await course.save();
+
+  res.send(course);
+});
+
+// delete course's tutorial by id
+router.put("/deleteTutorial/:id", async (req, res) => {
+  let course = await Course.findById(req.params.id);
+  if (!course)
+    return res.status(404).send("There are no courses with the given id");
+
+  let tutorial = await Tutorial.findById(req.body.id);
+
+  if (!tutorial)
+    return res.status(404).send("There are no tutorial with the given id");
+
+  let index = course.tutorials.indexOf(
+    (tutorials) => tutorial._id === tutorials._id
+  );
+  if (index === -1)
+    return res
+      .status(404)
+      .send("There are no tutorial with the given ID in this course");
+  course.tutorials.splice(index, 1);
   await course.save();
 
   res.send(course);
