@@ -10,6 +10,10 @@ const interviewSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  topic: {
+    type: String,
+    required: true,
+  }
 });
 
 const Interview = mongoose.model("Interview", interviewSchema);
@@ -18,6 +22,7 @@ function validateInterview(interview) {
   const schema = Joi.object({
     question: Joi.string().required(),
     answer: Joi.string().required(),
+    topic: Joi.string().required(),
   });
   return schema.validate(interview);
 }

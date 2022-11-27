@@ -5,11 +5,13 @@ import * as courseService from "../../services/courseService";
 import { withRouter } from "../withRouter";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import * as tutorialService from "../../services/tutorialService";
 
 const IndividualCourse = (props) => {
   // get id of course
   const { courseId } = useParams();
-
+  const navigate = useNavigate();
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -18,7 +20,7 @@ const IndividualCourse = (props) => {
       setData(data);
     };
     fetch();
-  });
+  }, []);
 
   // get course information from database
   // const { data: course } = await courseService.getCourse(courseId);
@@ -41,26 +43,47 @@ const IndividualCourse = (props) => {
   // });
   // ("list", course.tutorials);
   return (
-    <div className='container'>
+    <div className="container">
+      <button
+        onClick={() => {
+          navigate(`/catalog/${courseId}/tutorial/add/new`);
+        }}
+        className="btn btn-primary m-auto"
+      >
+        New Tutorial
+      </button>
       <h2>{data && data.name}</h2>
       {data &&
         data.tutorials.map((tutorial, index) => (
-          <div>
+          <div key={tutorial._id}>
             <Link
               style={{ textDecoration: "none" }}
-              className='link-dark'
+              className="link-dark"
               to={`/catalog/${courseId}/tutorial/${tutorial._id}`}
             >
               <span style={{ marginRight: "10px" }}>{index + 1}.</span>
               {tutorial.title}
             </Link>
+            <button
+              onClick={async () => {
+                // call delete
+                // delete tutorial ref in course
+                await courseService.deleteTutorial(courseId, tutorial._id);
+                // delete tutorial in database
+                await tutorialService.deleteTutorial(tutorial._id);
+                window.location = `/catalog/${courseId}`;
+              }}
+              className="btn btn-danger"
+            >
+              Delete
+            </button>
           </div>
         ))}
-      <div className='tutorial-project'>
+      <div className="tutorial-project">
         <nav>
           <h3>Recommended Projects</h3>
           <Link to={`/catalog/${courseId}/project`}>
-            <button className='catalog-button'>Recommend Project</button>
+            <button className="catalog-button">Recommend Project</button>
           </Link>
         </nav>
       </div>

@@ -22,6 +22,7 @@ router.post("/", async (req, res) => {
   let interview = new Interview({
     question: req.body.question,
     answer: req.body.answer,
+    topic: req.body.topic,
   });
   interview = await interview.save();
   res.send(interview);
@@ -39,6 +40,7 @@ router.put("/:id", async (req, res) => {
     {
       question: req.body.question,
       answer: req.body.answer,
+      topic: req.body.topic,
     },
     { new: true }
   );

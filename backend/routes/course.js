@@ -86,7 +86,7 @@ router.put("/deleteProject/:id", async (req, res) => {
   if (!project)
     return res.status(404).send("There are no projects with the given id");
 
-  let index = course.projects.indexOf(
+  let index = course.projects.findIndex(
     (projects) => projects._id === project._id
   );
   if (index === -1)
@@ -129,9 +129,7 @@ router.put("/deleteTutorial/:id", async (req, res) => {
   if (!tutorial)
     return res.status(404).send("There are no tutorial with the given id");
 
-  let index = course.tutorials.indexOf(
-    (tutorials) => tutorial._id === tutorials._id
-  );
+  let index = course.tutorials.findIndex((tutorials) => tutorials._id = tutorial._id);
   if (index === -1)
     return res
       .status(404)

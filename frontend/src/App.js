@@ -23,6 +23,7 @@ import CourseForm from "./component/learningHub/CourseForm";
 import PrivateRoutes from "./component/protectedRoutes";
 import QuestionAndAnswer from "./component/qna/QuestionAndAnswer";
 import ProjectForm from './component/project/projectForm';
+import TutorialForm from "./component/learningHub/TutorialForm";
 
 import auth from "./services/authService";
 
@@ -60,6 +61,7 @@ class App extends Component {
           <Route path='/hub' element={<LearningHub />} />
 
           <Route path="/catalog/:courseId/project/add/:id" element={<ProjectForm />} />
+          <Route path="/catalog/:courseId/tutorial/add/:id" element={<TutorialForm />} />
           <Route path='/catalog/addOrEdit/:id' element={<CourseForm />} />
           <Route path='/catalog/:courseId' element={<IndividualCourse />} />
           <Route
