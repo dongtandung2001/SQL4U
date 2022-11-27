@@ -25,6 +25,13 @@ export default function Question(props) {
     title: props.title,
     date: props.date,
   };
+  const topics = [
+    { _id: "beginner", name: "Basic Concepts" },
+    { _id: "rm", name: "Relational Model" },
+    { _id: "fo", name: "File Organization" },
+    { _id: "nosql", name: "NoSQL" },
+    { _id: "sql", name: "SQL" },
+  ];
 
   return (
     <div className="question-post">
@@ -43,7 +50,7 @@ export default function Question(props) {
         </h6>
       </div>
       <div className="topic-chosen">
-        <p>{props.topic}</p>
+        <p>{topics.find((topic) => topic._id === info.topic).name}</p>
       </div>
       <div
         className="question-content"
