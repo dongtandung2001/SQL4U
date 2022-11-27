@@ -61,8 +61,8 @@ router.put("/reply/:id", async (req, res) => {
   let question = await QnA.findById(req.params.id);
   if (!question)
     return res.status(404).send("There are no question with the given id");
-  const replyIndex = question.replies.indexOf(
-    (reply) => reply._id === req.body.id
+  const replyIndex = question.replies.findIndex(
+    (reply) => reply._id.toString() === req.body.id.toString()
   );
   if (replyIndex === -1)
     return res.status(404).send("There are no replies with the given ID");

@@ -52,6 +52,20 @@ router.put("/:id", async (req, res) => {
     res.send(tutorial);
 });
 
+
+// delete a content: {header, detail} of a tutorial by its id
+router.put("/content/:id/", async (req, res) => {
+    let tutorial = await Tutorial.findById(req.params.id);
+    if (!tutorial) return res.status(404).send("There are no tutorials with the given ID");
+
+    const index = tutorial.contents.findIndex(content => content._id.toString() === req.body.id.toString())
+    if (index === -1) return res.status(404).send("There are no contents with the given ID in this project");
+    tutorial.contents.splice(index, 1);
+    await tutorial.save();
+    res.send(tutorial);
+})
+
+
 // delete specific tutorial
 router.delete("/:id", [auth, admin], async (req, res) => {
     let tutorial = await Tutorial.findByIdAndDelete(req.params.id);
