@@ -34,15 +34,19 @@ class TutorialForm extends Form {
   doSubmit = async () => {
     const { courseId } = this.props.params;
     const tutorial = { ...this.state.data };
-    const { header, content } = tutorial;
+    const { header, detail } = tutorial;
     if (tutorial.header) delete tutorial.header;
-    if (tutorial.content) delete tutorial.content;
+    if (tutorial.detail) delete tutorial.detail;
     const { data, method } = await tutorialService.saveTutorial(tutorial, {
       header,
-      content,
+      detail,
     });
-    if (method === "add") await courseService.addTutorial(courseId, data._id);
-    this.props.navigate(`/catalog/${courseId}`);
+    if (method === "add") {
+      await courseService.addTutorial(courseId, data._id);
+      this.props.navigate(`/catalog/${courseId}`);
+    } else {
+      this.props.navigate(`/catalog/${courseId}/tutorial/${tutorial._id}`);
+    }
   };
 
   render() {
