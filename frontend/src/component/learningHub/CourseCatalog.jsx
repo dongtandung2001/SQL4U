@@ -21,15 +21,15 @@ import * as courseService from "../../services/courseService";
 function Show({ arr }) {
   const user = auth.getCurrentUser();
   return (
-    <section className='coursesCard'>
+    <section className="coursesCard">
       <div></div>
-      <div className='container grid2'>
+      <div className="container grid2">
         {arr.map((val) => (
-          <div key={val._id} className='items'>
-            <div className='content-flex'>
+          <div key={val._id} className="items">
+            <div className="content-flex">
               {user.admin && (
                 <button
-                  className='btn btn-danger btn-sm ms-0'
+                  className="btn btn-danger btn-sm ms-0"
                   onClick={async () => {
                     await courseService.deleteCourse(val._id);
                     window.location = "/catalog";
@@ -38,28 +38,28 @@ function Show({ arr }) {
                   Delete
                 </button>
               )}
-              <div className='left'>
-                <div className='img'>
-                  <img src={logo} alt='' />
+              <div className="left">
+                <div className="img">
+                  <img src={logo} alt="" />
                 </div>
               </div>
-              <div className='text'>
+              <div className="text">
                 <h1>{val.name}</h1>
-                <div className='rate'>
-                  <i className='fa fa-star blue'></i>
-                  <i className='fa fa-star blue'></i>
-                  <i className='fa fa-star blue'></i>
-                  <i className='fa fa-star blue'></i>
-                  <i className='fa fa-star blue'></i>
-                  <label htmlFor=''>(5.0)</label>
+                <div className="rate">
+                  <i className="fa fa-star blue"></i>
+                  <i className="fa fa-star blue"></i>
+                  <i className="fa fa-star blue"></i>
+                  <i className="fa fa-star blue"></i>
+                  <i className="fa fa-star blue"></i>
+                  <label htmlFor="">(5.0)</label>
                 </div>
-                <div className='details'>
+                <div className="details">
                   <>
-                    <div className='box'>
-                      <div className='dimg'>
-                        <img src={avatar} alt='' />
+                    <div className="box">
+                      <div className="dimg">
+                        <img src={avatar} alt="" />
                       </div>
-                      <div className='para'>
+                      <div className="para">
                         <h4>{val.teacher}</h4>
                       </div>
                     </div>
@@ -69,10 +69,10 @@ function Show({ arr }) {
               </div>
             </div>
             {/* Link to Individual Course component if not admin else to edit course */}
-            {user.admin && (
+            {user && user.admin && (
               <React.Fragment>
                 <Link
-                  className='btn btn-outline-primary'
+                  className="btn btn-outline-primary"
                   to={`/catalog/addOrEdit/${val._id}`}
                 >
                   Edit
@@ -80,7 +80,7 @@ function Show({ arr }) {
               </React.Fragment>
             )}
             <Link
-              className='btn btn-outline-primary'
+              className="btn btn-outline-primary"
               to={`/catalog/${val._id}`}
             >
               GO !
@@ -102,16 +102,16 @@ function App({ location }) {
 
   return (
     <div>
-      <button className='topic-button' onClick={() => setIsShown("all")}>
+      <button className="topic-button" onClick={() => setIsShown("all")}>
         All
       </button>
-      <button className='topic-button' onClick={() => setIsShown("basic")}>
+      <button className="topic-button" onClick={() => setIsShown("basic")}>
         Basic Concepts
       </button>
-      <button className='topic-button' onClick={() => setIsShown("relational")}>
+      <button className="topic-button" onClick={() => setIsShown("relational")}>
         Relational Model
       </button>
-      <button className='topic-button' onClick={() => setIsShown("sql")}>
+      <button className="topic-button" onClick={() => setIsShown("sql")}>
         SQL Queries
       </button>
 
@@ -157,14 +157,14 @@ class CoursesCard extends Component {
     //Handle add new course
 
     return (
-      <div className='topic container'>
+      <div className="topic container">
         <h2 style={{ display: "inline-block", margin: "auto 1rem 1rem auto" }}>
           TOPIC
         </h2>
         {user.admin && (
           <Link
             to={`/catalog/addOrEdit/new`}
-            className='btn btn-primary rounded-pill custom-transition'
+            className="btn btn-primary rounded-pill custom-transition"
           >
             + Add New Course
           </Link>

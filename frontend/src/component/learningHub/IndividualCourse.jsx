@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as tutorialService from "../../services/tutorialService";
+import * as authService from "../../services/authService";
 
 const IndividualCourse = (props) => {
   // get id of course
@@ -22,36 +23,19 @@ const IndividualCourse = (props) => {
     fetch();
   }, []);
 
-  // get course information from database
-  // const { data: course } = await courseService.getCourse(courseId);
-  // const courses = await courseService.getCourse(courseId);
-  // const course = coursesCard.find((course) => course.id == courseId);
-  // (course.tutorials);
-  // render tutorials in this course
-  // const tutorialList = course.tutorials.map((tutorial, index) => {
-  //   (tutorial);
-  //   return (
-  //       <Link
-  //         style={{ textDecoration: "none" }}
-  //         className='link-dark'
-  //         to={`/catalog/${courseId}/tutorial/${tutorial._id}`}
-  //       >
-  //         <span style={{ marginRight: "10px" }}>{index + 1}.</span>
-  //         {tutorial.title}
-  //       </Link>
-  //   );
-  // });
-  // ("list", course.tutorials);
+  const user = authService.getCurrentUser();
   return (
     <div className="container">
-      <button
-        onClick={() => {
-          navigate(`/catalog/${courseId}/tutorial/add/new`);
-        }}
-        className="btn btn-primary m-auto"
-      >
-        New Tutorial
-      </button>
+      {user && user.admin && (
+        <button
+          onClick={() => {
+            navigate(`/catalog/${courseId}/tutorial/add/new`);
+          }}
+          className="btn btn-primary m-auto"
+        >
+          New Tutorial
+        </button>
+      )}
       <h2>{data && data.name}</h2>
       {data &&
         data.tutorials.map((tutorial, index) => (
@@ -64,19 +48,21 @@ const IndividualCourse = (props) => {
               <span style={{ marginRight: "10px" }}>{index + 1}.</span>
               {tutorial.title}
             </Link>
-            <button
-              onClick={async () => {
-                // call delete
-                // delete tutorial ref in course
-                await courseService.deleteTutorial(courseId, tutorial._id);
-                // delete tutorial in database
-                await tutorialService.deleteTutorial(tutorial._id);
-                window.location = `/catalog/${courseId}`;
-              }}
-              className="btn btn-danger"
-            >
-              Delete
-            </button>
+            {user && user.admin && (
+              <button
+                onClick={async () => {
+                  // call delete
+                  // delete tutorial ref in course
+                  await courseService.deleteTutorial(courseId, tutorial._id);
+                  // delete tutorial in database
+                  await tutorialService.deleteTutorial(tutorial._id);
+                  window.location = `/catalog/${courseId}`;
+                }}
+                className="btn btn-danger"
+              >
+                Delete
+              </button>
+            )}
           </div>
         ))}
       <div className="tutorial-project">

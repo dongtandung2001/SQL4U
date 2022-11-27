@@ -27,6 +27,13 @@ export async function saveTutorial(tutorial, content) {
     return { data, method: "add" };
 }
 
+// delete content of a project
+// content :{header, detail}
+export function deleteContent(tutorialId, contentId) {
+    return httpService.put(apiEndPoint + "/content/" + tutorialId, { id: contentId });
+}
+
+
 export function deleteTutorial(tutorialId) {
     return httpService.delete(apiEndPoint + "/" + tutorialId)
 }
