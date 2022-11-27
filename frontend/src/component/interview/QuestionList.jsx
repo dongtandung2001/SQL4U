@@ -1,8 +1,9 @@
 import "./interview.css";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import * as interviewService from "../../services/interviewService";
 
-function QuestionList() {
+function QuestionList({ user, onDelete }) {
   const [selected, setSelected] = useState(null);
   const [question, setQuestion] = useState(null);
   useEffect(() => {
@@ -27,9 +28,19 @@ function QuestionList() {
             <div className="question">
               <h3>
                 Q{i + 1}. {item.question}
-                <span>
-                  <button className="btn btn-danger">Delete</button>
-                </span>
+                {user && user.admin && (
+                  <span>
+                    <Link to={`/interview/${item._id}`}>
+                      <button className="btn btn-primary">Edit</button>
+                    </Link>
+                    <button
+                      onClick={() => onDelete(item._id)}
+                      className="btn btn-danger"
+                    >
+                      Delete
+                    </button>
+                  </span>
+                )}
               </h3>
             </div>
             <div className="text-end text-black-50 mx-4 answer-container">
