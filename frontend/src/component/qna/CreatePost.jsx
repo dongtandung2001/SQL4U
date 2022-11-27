@@ -20,11 +20,11 @@ class CreatePost extends Form {
 
     // ],
     topics: [
-      { _id: "Database Basic", name: "Database Basic" },
-      { _id: "Basic Data Query", name: "Basic Data Query" },
-      { _id: "Intermediate", name: "Intermediate" },
-      { _id: "Advance SQL", name: "Advance SQL" },
-      { _id: "Technical problems", name: "Technical problems" },
+      { _id: "beginner", name: "Basic Concepts" },
+      { _id: "rm", name: "Relational Model" },
+      { _id: "fo", name: "File Organization" },
+      { _id: "nosql", name: "NoSQL" },
+      { _id: "sql", name: "SQL" },
     ],
 
     errors: {},
