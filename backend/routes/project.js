@@ -34,7 +34,6 @@ router.put("/:id", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-
   // update project information
   let project = await Project.findByIdAndUpdate(
     req.params.id,
@@ -44,11 +43,12 @@ router.put("/:id", async (req, res) => {
     },
     { new: true }
   );
-  if (!project) return res.status(404).send("There are no project with the given id");
+  if (!project)
+    return res.status(404).send("There are no project with the given id");
 
   //  update project's detail
   if (req.body.content) {
-    project.contents.push(req.body.content)
+    project.contents.push(req.body.content);
   }
   await project.save();
 
@@ -56,16 +56,19 @@ router.put("/:id", async (req, res) => {
 });
 
 // get specific project
-router.get('/:id', async (req, res) => {
+router.get("/:id", async (req, res) => {
   const project = await Project.findById(req.params.id);
-  if (!project) return res.status(404).send('There are no projects with the given ID');
+  if (!project)
+    return res.status(404).send("There are no projects with the given ID");
   res.send(project);
-})
+});
 
-// delete project
+// delete project by id
 router.delete("/:id", async (req, res) => {
-  const project = await Project.findOneAndDelete(req.params.id);
-  if (!project) return res.status(404).send("There are no project with the given id");
+  const project = await Project.findByIdAndDelete(req.params.id);
+  if (!project)
+    return res.status(404).send("There are no project with the given id");
+
   res.send(project);
-})
+});
 module.exports = router;

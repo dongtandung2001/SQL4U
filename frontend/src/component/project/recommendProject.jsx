@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 
 import { coursesCard } from "../learningHub/data";
@@ -6,76 +6,47 @@ import { coursesCard } from "../learningHub/data";
 import IndividualProject from "./IndividualProject";
 
 import auth from "../../services/authService";
-
+import * as courseService from "../../services/courseService";
 import "./recommendedProjects.css";
 
 export default function RecommendProject() {
-  const [projectData, setProjectData] = useState([
-    {
-      title: "Project 1",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla erat, dictum quis sodales quis, lobortis ac arcu. Nunc ac vehicula velit, sit amet tincidunt metus. Phasellus vehicula id lectus non viverra. Aliquam tincidunt justo quis ante laoreet pellentesque. Fusce porta felis nec velit maximus maximus. Aenean varius erat est, vitae feugiat elit placerat id. Ut odio sapien, bibendum in mauris sit amet, blandit posuere tellus. Sed dapibus lacinia tortor et porta. Curabitur sit amet orci scelerisque, hendrerit ante ac, euismod sem. Donec elementum et quam at tristique.",
-    },
-    {
-      title: "Project 2",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla erat, dictum quis sodales quis, lobortis ac arcu. Nunc ac vehicula velit, sit amet tincidunt metus. Phasellus vehicula id lectus non viverra. Aliquam tincidunt justo quis ante laoreet pellentesque. Fusce porta felis nec velit maximus maximus. Aenean varius erat est, vitae feugiat elit placerat id. Ut odio sapien, bibendum in mauris sit amet, blandit posuere tellus. Sed dapibus lacinia tortor et porta. Curabitur sit amet orci scelerisque, hendrerit ante ac, euismod sem. Donec elementum et quam at tristique.",
-    },
-    {
-      title: "Project 3",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla erat, dictum quis sodales quis, lobortis ac arcu. Nunc ac vehicula velit, sit amet tincidunt metus. Phasellus vehicula id lectus non viverra. Aliquam tincidunt justo quis ante laoreet pellentesque. Fusce porta felis nec velit maximus maximus. Aenean varius erat est, vitae feugiat elit placerat id. Ut odio sapien, bibendum in mauris sit amet, blandit posuere tellus. Sed dapibus lacinia tortor et porta. Curabitur sit amet orci scelerisque, hendrerit ante ac, euismod sem. Donec elementum et quam at tristique.",
-    },
-    {
-      title: "Project 4",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla erat, dictum quis sodales quis, lobortis ac arcu. Nunc ac vehicula velit, sit amet tincidunt metus. Phasellus vehicula id lectus non viverra. Aliquam tincidunt justo quis ante laoreet pellentesque. Fusce porta felis nec velit maximus maximus. Aenean varius erat est, vitae feugiat elit placerat id. Ut odio sapien, bibendum in mauris sit amet, blandit posuere tellus. Sed dapibus lacinia tortor et porta. Curabitur sit amet orci scelerisque, hendrerit ante ac, euismod sem. Donec elementum et quam at tristique.",
-    },
-    {
-      title: "Project 5",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla erat, dictum quis sodales quis, lobortis ac arcu. Nunc ac vehicula velit, sit amet tincidunt metus. Phasellus vehicula id lectus non viverra. Aliquam tincidunt justo quis ante laoreet pellentesque. Fusce porta felis nec velit maximus maximus. Aenean varius erat est, vitae feugiat elit placerat id. Ut odio sapien, bibendum in mauris sit amet, blandit posuere tellus. Sed dapibus lacinia tortor et porta. Curabitur sit amet orci scelerisque, hendrerit ante ac, euismod sem. Donec elementum et quam at tristique.",
-    },
-    {
-      title: "Project 6",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla erat, dictum quis sodales quis, lobortis ac arcu. Nunc ac vehicula velit, sit amet tincidunt metus. Phasellus vehicula id lectus non viverra. Aliquam tincidunt justo quis ante laoreet pellentesque. Fusce porta felis nec velit maximus maximus. Aenean varius erat est, vitae feugiat elit placerat id. Ut odio sapien, bibendum in mauris sit amet, blandit posuere tellus. Sed dapibus lacinia tortor et porta. Curabitur sit amet orci scelerisque, hendrerit ante ac, euismod sem. Donec elementum et quam at tristique.",
-    },
-    {
-      title: "Project 7",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla erat, dictum quis sodales quis, lobortis ac arcu. Nunc ac vehicula velit, sit amet tincidunt metus. Phasellus vehicula id lectus non viverra. Aliquam tincidunt justo quis ante laoreet pellentesque. Fusce porta felis nec velit maximus maximus. Aenean varius erat est, vitae feugiat elit placerat id. Ut odio sapien, bibendum in mauris sit amet, blandit posuere tellus. Sed dapibus lacinia tortor et porta. Curabitur sit amet orci scelerisque, hendrerit ante ac, euismod sem. Donec elementum et quam at tristique.",
-    },
-  ]);
-
+  const [projectList, setProjectList] = useState([]);
+  const [course, setCourse] = useState({});
   const { courseId } = useParams();
-
-  const course = coursesCard.find((course) => course.id == courseId);
-  const projects = course.projects;
-
-  // get user to determine if its admin
   const user = auth.getCurrentUser();
+  
+  useEffect( () => {
+    //Fetch course using course ID
+    const getCourseList = async () => {
+      const { data } = await courseService.getCourse(courseId);
+      setCourse(data);
+      setProjectList(data.projects);
+    }
+    getCourseList();
+  });
+  // get user to determine if its admin
+  
 
   /*
   Function delete
   Delete a specific item in an array of data
   */
-  const handleDelete = (id, e) => {
-    e.preventDefault();
-    let currentData = projectData;
-    if (id > -1) {
-      currentData.splice(id, 1);
-    }
-    setProjectData([...currentData]);
-  };
+  // const handleDelete = (id, e) => {
+  //   e.preventDefault();
+  //   let currentData = projectData;
+  //   if (id > -1) {
+  //     currentData.splice(id, 1);
+  //   }
+  //   setProjectData([...currentData]);
+  // };
 
-  const cards = projects.map((item) => {
+  const cards = projectList.map((item) => {
     return (
-      <div key={item.id}>
+      <div key={item._id}>
         <IndividualProject
-          id={item.id}
+          id={item._id}
           title={item.title}
-          handleDelete={handleDelete}
+          // handleDelete={handleDelete}
         />
       </div>
     );
@@ -83,11 +54,11 @@ export default function RecommendProject() {
 
   return (
     <div className="container">
-      <h2>{course.coursesName}</h2>
+      <h2>{course.name}</h2>
       <div>
         {cards}
         {user && user.admin && (
-          <Link to={"/project/add/new"}>
+          <Link to={`/catalog/${courseId}/project/add/new`}>
             <button className="btn btn-primary">Add</button>
           </Link>
         )}

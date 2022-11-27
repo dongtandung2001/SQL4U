@@ -14,13 +14,10 @@ export function getQuestion(id) {
 
 // update question description + title
 // question : {}
-export function saveProject(question) {
+export function saveQuestion(question) {
     if (question._id) {
         const body = { ...question };
         delete body._id;
-        delete body.replies;
-        delete body.userName;
-        delete body.topic;
         return httpService.put(apiEndPoint + "/" + question._id, body);
     }
     return httpService.post(apiEndPoint, question);
@@ -31,9 +28,13 @@ export function saveProject(question) {
 export function reply(question, reply) {
     const body = { ...question };
     delete body._id;
-    delete body.replies;
-    delete body.userName;
-    delete body.topic;
+    delete body.datePosted;
+    delete body.__v;
     body.reply = reply;
+    console.log('body', body);
     return httpService.put(apiEndPoint + "/" + question._id, body)
+}
+
+export function deleteQuestion(id) {
+    return httpService.delete(apiEndPoint + "/" + id);
 }

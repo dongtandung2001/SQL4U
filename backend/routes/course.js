@@ -50,18 +50,21 @@ router.put("/:id", async (req, res) => {
     { new: true }
   );
 
-  if (!course) return res.status(404).send("There are no course with the given id");
+  if (!course)
+    return res.status(404).send("There are no course with the given id");
   res.send(course);
 });
 
 // add project to course
-router.put('/project/:id', async (req, res) => {
+router.put("/project/:id", async (req, res) => {
   let course = await Course.findById(req.params.id);
-  if (!course) return res.status(404).send("There are no courses with the given id");
+  if (!course)
+    return res.status(404).send("There are no courses with the given id");
 
   let project = await Project.findById(req.body.id);
 
-  if (!project) return res.status(404).send("There are no projects with the given id");
+  if (!project)
+    return res.status(404).send("There are no projects with the given id");
 
   course.projects.push({
     _id: project._id,
@@ -70,37 +73,89 @@ router.put('/project/:id', async (req, res) => {
   await course.save();
 
   res.send(course);
-})
+});
+
+// delete course's project by id
+router.put("/deleteProject/:id", async (req, res) => {
+  let course = await Course.findById(req.params.id);
+  if (!course)
+    return res.status(404).send("There are no courses with the given id");
+
+  let project = await Project.findById(req.body.id);
+
+  if (!project)
+    return res.status(404).send("There are no projects with the given id");
+
+  let index = course.projects.indexOf(
+    (projects) => projects._id === project._id
+  );
+  if (index === -1)
+    return res
+      .status(404)
+      .send("There are no project with the given ID in this course");
+  course.projects.splice(index, 1);
+  await course.save();
+
+  res.send(course);
+});
 
 // add tutorial to course
-router.put('/tutorial/:id', async (req, res) => {
+router.put("/tutorial/:id", async (req, res) => {
   let course = await Course.findById(req.params.id);
-  if (!course) return res.status(404).send("There are no courses with the given id");
+  if (!course)
+    return res.status(404).send("There are no courses with the given id");
 
   let tutorial = await Tutorial.findById(req.body.id);
-  if (!tutorial) return res.status(404).send("There are no tutorials with the given id");
+  if (!tutorial)
+    return res.status(404).send("There are no tutorials with the given id");
 
   course.tutorials.push({
     _id: tutorial._id,
-    title: tutorial.title
+    title: tutorial.title,
   });
   await course.save();
 
   res.send(course);
-})
+});
 
-router.delete('/:id', [auth, admin], async (req, res) => {
-  const course = Course.findByIdAndDelete(req.body.params);
-  if (!course) return res.status(404).send("Does not exist course with the given ID");
+// delete course's tutorial by id
+router.put("/deleteTutorial/:id", async (req, res) => {
+  let course = await Course.findById(req.params.id);
+  if (!course)
+    return res.status(404).send("There are no courses with the given id");
+
+  let tutorial = await Tutorial.findById(req.body.id);
+
+  if (!tutorial)
+    return res.status(404).send("There are no tutorial with the given id");
+
+  let index = course.tutorials.indexOf(
+    (tutorials) => tutorial._id === tutorials._id
+  );
+  if (index === -1)
+    return res
+      .status(404)
+      .send("There are no tutorial with the given ID in this course");
+  course.tutorials.splice(index, 1);
+  await course.save();
+
   res.send(course);
-})
+});
+
+router.delete("/:id", async (req, res) => {
+  const course = await Course.findByIdAndDelete(req.params.id);
+  if (!course)
+    return res.status(404).send("Does not exist course with the given ID");
+  res.send(course);
+});
 
 // get specific course
-router.get('/:id', async (req, res) => {
+router.get("/:id", async (req, res) => {
   const course = await Course.findById(req.params.id);
-  if (!course) return res.status(404).send('There are no course with the given ID');
-  res.send(course);
-})
 
+  if (!course)
+    return res.status(404).send("There are no course with the given ID");
+  res.send(course);
+});
 
 module.exports = router;

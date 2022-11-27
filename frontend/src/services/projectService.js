@@ -14,13 +14,20 @@ export function getProject(id) {
 
 // save project
 // content: {header: "...", detail: "..."}
-export function saveProject(project, content) {
+export async function saveProject(project, content) {
     if (project._id) {
         const body = { ...project };
         delete body._id;
         if (body.contents) delete body.contents;
         body.content = content;
-        return httpService.put(apiEndPoint + "/" + project._id, body);
+        const {data} = await httpService.put(apiEndPoint + "/" + project._id, body);
+        return {data, mode: "update"};
     }
-    return httpService.post(apiEndPoint, project);
+    const {data} = await httpService.post(apiEndPoint, project);
+    return {data, mode: "add"};
+}
+
+// delete project with id
+export async function deleteProject(id) {
+    return await httpService.delete(apiEndPoint + '/' + id);
 }

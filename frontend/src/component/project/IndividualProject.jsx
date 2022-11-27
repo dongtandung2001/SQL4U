@@ -4,15 +4,27 @@ import { AiFillDelete } from "react-icons/ai";
 import { Link, useParams } from "react-router-dom";
 import "./recommendedProjects.css";
 import auth from "../../services/authService";
+import * as projectService from '../../services/projectService';
+import * as courseService from '../../services/courseService';
 
 export default function IndividualProject(props) {
   const { courseId } = useParams();
-  // const [state, setState] = useState({});
+  const [user, setUser] = useState({});
 
-  // useEffect(() => {
-  //   const user = auth.getCurrentUser();
-  //   setState(user);
-  // }, []);
+  useEffect( () => {
+    const getUser = async () => {
+      const user = await auth.getCurrentUser();
+      setUser(user);
+    }
+    getUser();
+  }, []);
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    await courseService.deleteProject(courseId, props.id);
+    await projectService.deleteProject(props.id);
+    
+  }
 
   const thisProject = {
     id: props.id,
@@ -27,22 +39,19 @@ export default function IndividualProject(props) {
       >
         {props.title}
       </Link>
-      {/* {state.admin ? (
-        <button
-          type="button"
-          className="check-button"
-          onClick={(e) => props.handleDelete(props.id, e)}
+      {user.admin ? (
+        <button 
+          className="btn btn-outline-primary btn-sm"
+          onClick={handleDelete}
         >
-          <AiFillDelete className="check-icon" />
+            Delete
         </button>
       ) : (
         <button type="button" className="check-button">
           <BsFillCheckCircleFill className="check-icon" />
         </button>
-      )} */}
-      <button type="button" className="check-button">
-        <BsFillCheckCircleFill className="check-icon" />
-      </button>
+      )}
+      
     </div>
   );
 }

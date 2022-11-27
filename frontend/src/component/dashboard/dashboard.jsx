@@ -12,7 +12,6 @@ import DashboardChart from "./dashboardChart";
 // import "bootstrap/dist/css/bootstrap.min.css";
 // import * as Poop from './dashboardBox';
 
-// console.log("Admin").onClick;
 
 const Dashboard = () => {
   // const bob = [{}, 1, "e"];
@@ -21,7 +20,6 @@ const Dashboard = () => {
 
   const handleEdit = (arg) => {
     setIsEdit(arg);
-    // console.log(bob);
   };
 
   return (
