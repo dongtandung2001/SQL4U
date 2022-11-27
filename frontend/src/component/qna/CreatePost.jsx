@@ -30,11 +30,23 @@ class CreatePost extends Form {
     errors: {},
   };
 
-  handleIncrement = (e) => {
-    this.setState({ count: this.state.count + 1 });
+  componentDidMount = async () => {
+    const { id } = this.props.params;
+    if (id) {
+      const { data: question } = await questionService.getQuestion(id);
+      this.setState({
+        data: {
+          _id: question._id,
+          topic: question.topic,
+          title: question.title,
+          description: question.description,
+        },
+      });
+    }
   };
 
   schema = Joi.object({
+    _id: Joi.string(),
     description: Joi.string().min(10).max(3000).required().label("Question"),
     topic: Joi.string().required(),
     title: Joi.string().min(10).max(3000).required().label("Title"),
@@ -44,7 +56,7 @@ class CreatePost extends Form {
     const userPost = { ...this.state.data };
     const user = await authService.getCurrentUser();
     userPost.userName = user.email;
-    questionService.saveQuestion(userPost);
+    await questionService.saveQuestion(userPost);
     // alert("New question is created");
     window.location = "/qna";
   };

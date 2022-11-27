@@ -81,7 +81,7 @@ router.get("/:id", async (req, res) => {
 
 // delete question, only admin can use this api
 router.delete("/:id", [auth, admin], async (req, res) => {
-  const question = await QnA.findOneAndDelete(req.params.id);
+  const question = await QnA.findByIdAndDelete(req.params.id);
   if (!question)
     return res.status(404).send("There are no questions with the given id");
   res.send(question);

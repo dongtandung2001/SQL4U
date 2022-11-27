@@ -27,6 +27,7 @@ import TutorialForm from "./component/learningHub/TutorialForm";
 import InterviewQuestionForm from "./component/interview/questionForm";
 
 import auth from "./services/authService";
+import CreatePost from "./component/qna/CreatePost";
 
 
 
@@ -72,6 +73,7 @@ class App extends Component {
 
           <Route path='/qna' element={<QnA />} />
           <Route path='/qna/:id' element={<QuestionAndAnswer />} />
+          <Route path='/qna/edit/:id' element={<CreatePost />} />
 
           <Route path='/hub' element={<LearningHub />} />
 

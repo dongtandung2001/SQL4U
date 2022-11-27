@@ -1,5 +1,7 @@
 import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
+import * as authService from "../../services/authService";
+import * as qnaService from "../../services/questionService";
 
 export default function Question(props) {
   // const location = useLocation();
@@ -11,6 +13,8 @@ export default function Question(props) {
   //     const user = auth.getCurrentUser();
   //     setState(user)
   // }, []);
+
+  const user = authService.getCurrentUser();
 
   const info = {
     _id: props._id,
