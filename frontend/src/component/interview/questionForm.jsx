@@ -34,6 +34,7 @@ class InterviewQuestionForm extends Form {
         _id: interviewQuestion._id,
         question: interviewQuestion.question,
         answer: interviewQuestion.answer,
+        topic: interviewQuestion.topic,
       },
     });
   };
@@ -52,7 +53,7 @@ class InterviewQuestionForm extends Form {
   };
   render() {
     return (
-      <div className="container-fluid">
+      <div className='container-fluid'>
         <form onSubmit={this.handleSumbit} style={{ height: "15rem" }}>
           {this.renderSelect("topic", "Topic", this.state.topics)}
           {this.renderInput("question", "Question")}
