@@ -13,6 +13,8 @@ import logo from "./c1.png";
 import avatar from "./man-teacher.png";
 import auth from "../../services/authService";
 import * as courseService from "../../services/courseService";
+import Pagination from "../common/pagination";
+import { paginate } from "../../util/paginate";
 
 {
   /*Using show() for showing each course card */
@@ -97,22 +99,64 @@ function Show({ arr }) {
 When user select a topic, it will pop-up courses related to selected topic
 */
 }
-function App({ location }) {
+function App({ location, onPageChange }) {
   const [isShown, setIsShown] = useState("all");
 
   return (
     <div>
-      <button className="topic-button" onClick={() => setIsShown("all")}>
+      <button
+        className="topic-button"
+        onClick={() => {
+          setIsShown("all");
+          onPageChange("all");
+        }}
+      >
         All
       </button>
-      <button className="topic-button" onClick={() => setIsShown("basic")}>
+      <button
+        className="topic-button"
+        onClick={() => {
+          onPageChange("beginner");
+          setIsShown("beginner");
+        }}
+      >
         Basic Concepts
       </button>
-      <button className="topic-button" onClick={() => setIsShown("relational")}>
+      <button
+        className="topic-button"
+        onClick={() => {
+          setIsShown("rm");
+          onPageChange("rm");
+        }}
+      >
         Relational Model
       </button>
-      <button className="topic-button" onClick={() => setIsShown("sql")}>
-        SQL Queries
+      <button
+        className="topic-button"
+        onClick={() => {
+          setIsShown("fo");
+          onPageChange("fo");
+        }}
+      >
+        File Organization
+      </button>
+      <button
+        className="topic-button"
+        onClick={() => {
+          setIsShown("nosql");
+          onPageChange("nosql");
+        }}
+      >
+        NoSQL
+      </button>
+      <button
+        className="topic-button"
+        onClick={() => {
+          setIsShown("sql");
+          onPageChange("sql");
+        }}
+      >
+        SQL
       </button>
 
       {/* 👇️ show elements on click */}
@@ -123,16 +167,26 @@ function App({ location }) {
         </div>
       )}
 
-      {isShown === "basic" && (
-        <div>
-          <Show arr={location.filter((course) => course.topic === "basic")} />
-        </div>
-      )}
-      {isShown === "relational" && (
+      {isShown === "beginner" && (
         <div>
           <Show
-            arr={location.filter((course) => course.topic === "relational")}
+            arr={location.filter((course) => course.topic === "beginner")}
           />
+        </div>
+      )}
+      {isShown === "rm" && (
+        <div>
+          <Show arr={location.filter((course) => course.topic === "rm")} />
+        </div>
+      )}
+      {isShown === "fo" && (
+        <div>
+          <Show arr={location.filter((course) => course.topic === "fo")} />
+        </div>
+      )}
+      {isShown === "nosql" && (
+        <div>
+          <Show arr={location.filter((course) => course.topic === "nosql")} />
         </div>
       )}
       {isShown === "sql" && (
@@ -145,17 +199,32 @@ function App({ location }) {
 }
 
 class CoursesCard extends Component {
-  state = { data: [] };
+  state = { data: [], pageSize: 6, currentPage: 1, currentTopic: "all" };
+
   componentDidMount = async () => {
     const { data } = await courseService.getCourses();
     this.setState({ data });
   };
+
+  handleChange = (page) => {
+    this.setState({ currentPage: page });
+  };
+
+  onPageChange = (topic) => {
+    this.setState({ currentTopic: topic });
+  };
+
   render() {
-    const location = this.props.location;
     const user = auth.getCurrentUser();
+    const filtered = this.state.data.filter(
+      (course) => course.topic === this.state.currentTopic
+    );
 
-    //Handle add new course
-
+    const courses = paginate(
+      this.state.data,
+      this.state.currentPage,
+      this.state.pageSize
+    );
     return (
       <div className="topic container">
         <h2 style={{ display: "inline-block", margin: "auto 1rem 1rem auto" }}>
@@ -169,7 +238,17 @@ class CoursesCard extends Component {
             + Add New Course
           </Link>
         )}
-        <App location={this.state.data} />
+        <App location={courses} onPageChange={this.onPageChange} />
+        <Pagination
+          itemsCount={
+            this.state.currentTopic === "all"
+              ? this.state.data.length
+              : filtered.length
+          }
+          pageSize={this.state.pageSize}
+          onPageChange={this.handleChange}
+          currentPage={this.state.currentPage}
+        />
       </div>
     );
   }

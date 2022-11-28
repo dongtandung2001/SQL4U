@@ -8,9 +8,12 @@ import QuestionList from "./QuestionList";
 import { Link } from "react-router-dom";
 import * as authService from "../../services/authService";
 import * as interviewService from "../../services/interviewService";
+import Pagination from "../common/pagination";
+import { paginate } from "../../util/paginate";
 
 class InterviewQuestion extends Component {
   state = {
+    data: [],
     topics: [
       { _id: "beginner", name: "Basic Concepts" },
       { _id: "rm", name: "Relational Model" },
@@ -18,6 +21,9 @@ class InterviewQuestion extends Component {
       { _id: "nosql", name: "NoSQL" },
       { _id: "sql", name: "SQL" },
     ],
+    currentTopic: "all",
+    currentPage: 1,
+    pageSize: 10,
   };
 
   handleDelete = async (id) => {
@@ -26,56 +32,100 @@ class InterviewQuestion extends Component {
     window.location = "/interview";
   };
 
+  handleChange = (page) => {
+    this.setState({ currentPage: page });
+  };
+
+  handleTopicChange = (topic) => {
+    this.setState({ currentTopic: topic });
+  };
+
   componentDidMount = async () => {
     const user = authService.getCurrentUser();
+    const { data } = await interviewService.getInterviewQuestions();
     this.setState({ user });
+    this.setState({ data: data });
   };
 
   render() {
-    const { user } = this.state;
-    return (
-      <>
-        <div className="container-fluid grid my-1">
-          <div className="row">
-            <div className="h-100 col-3 p-5 bg-primary text-light grid text-center border border-dark">
-              <div>
-                <img src={Interview} className="interview-image" />
-              </div>
-              <div className="display-4">Topic</div>
-              {this.state.topics.map((topic) => (
-                <h4 key={topic._id}>{topic.name}</h4>
-              ))}
-              <div className="h5">
-                <button className="sidebar-common-questions-btn bg-light text-danger">
-                  <BsFillBookmarkHeartFill />
-                </button>{" "}
-                Common Questions
-              </div>
-            </div>
-            <div className="col-9 p-7 bg-primary text-light border border-dark container-fluid">
-              {user && user.admin && (
-                <Link to={`/interview/new`}>
-                  <button className="btn btn-secondary">New Question</button>
-                </Link>
-              )}
-              <div className="question-header container-fluid">
-                <div className="h2 my-3 text-dark text-center">
-                  Interview Questions
-                </div>
-                <div className="h3 my-3 text-dark text-center">SQL</div>
-              </div>
+    const { user, data } = this.state;
 
-              <QuestionList user={user} onDelete={this.handleDelete} />
+    // filter
+    const filtered = data.filter(
+      (course) => course.topic === this.state.currentTopic
+    );
+
+    // paginate
+    const question = paginate(
+      this.state.data,
+      this.state.currentPage,
+      this.state.pageSize
+    );
+    return (
+      <div className="container-fluid grid my-1">
+        <div className="row">
+          <div className="h-100 col-3 p-5 bg-primary text-light grid text-center border border-dark">
+            <div>
+              <img src={Interview} className="interview-image" />
+            </div>
+            <div className="display-4">
+              <button
+                onClick={() => this.handleTopicChange("all")}
+                className="btn btn-primary"
+              >
+                <h1>TOPIC</h1>
+              </button>
+            </div>
+            {this.state.topics.map((topic) => (
+              <h4 key={topic._id}>
+                <button
+                  onClick={() => this.handleTopicChange(topic._id)}
+                  className="btn btn-primary"
+                >
+                  {topic.name}
+                </button>
+              </h4>
+            ))}
+            <div className="h5">
+              <button className="sidebar-common-questions-btn bg-light text-danger">
+                <BsFillBookmarkHeartFill />
+              </button>{" "}
+              Common Questions
             </div>
           </div>
+          <div className="col-9 p-7 bg-primary text-light border border-dark container-fluid">
+            {user && user.admin && (
+              <Link to={`/interview/new`}>
+                <button className="btn btn-secondary">New Question</button>
+              </Link>
+            )}
+            <div className="question-header container-fluid">
+              <div className="h2 my-3 text-dark text-center">
+                Interview Questions
+              </div>
+              <div className="h3 my-3 text-dark text-center">SQL</div>
+            </div>
+
+            <QuestionList
+              user={user}
+              onDelete={this.handleDelete}
+              question={
+                this.state.currentTopic === "all" ? this.state.data : filtered
+              }
+            />
+            <Pagination
+              itemsCount={
+                this.state.currentTopic === "all"
+                  ? this.state.data.length
+                  : filtered.length
+              }
+              pageSize={this.state.pageSize}
+              onPageChange={this.handleChange}
+              currentPage={this.state.currentPage}
+            />
+          </div>
         </div>
-        {/* <button type="button" className="btn btn-primary mx-1">
-          Search
-        </button>
-        <button type="button" className="btn btn-secondary mx-1">
-          Edit
-        </button> */}
-      </>
+      </div>
     );
   }
 }

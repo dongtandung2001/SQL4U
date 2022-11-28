@@ -3,16 +3,16 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import * as interviewService from "../../services/interviewService";
 
-function QuestionList({ user, onDelete }) {
+function QuestionList({ user, onDelete, question }) {
   const [selected, setSelected] = useState(null);
-  const [question, setQuestion] = useState(null);
-  useEffect(() => {
-    const fetch = async () => {
-      const { data } = await interviewService.getInterviewQuestions();
-      setQuestion(data);
-    };
-    fetch();
-  }, []);
+  // const [question, setQuestion] = useState(null);
+  // useEffect(() => {
+  //   const fetch = async () => {
+  //     const { data } = await interviewService.getInterviewQuestions();
+  //     setQuestion(data);
+  //   };
+  //   fetch();
+  // }, []);
 
   const toggle = (i) => {
     if (selected === i) {

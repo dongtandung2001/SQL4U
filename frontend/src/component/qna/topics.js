@@ -1,27 +1,7 @@
 export const topics = [
-    {
-        id: 1,
-        link: '#',
-        topic: 'Database Basic'
-    },
-    {
-        id: 2,
-        link: '#',
-        topic: 'Basic Data Query'
-    },
-    {
-        id: 3,
-        link: '#',
-        topic: 'Intermediate'
-    },
-    {
-        id: 4,
-        link: '#',
-        topic: 'Advance SQL'
-    },
-    {
-        id: 5,
-        link: '#',
-        topic: 'Technical problems'
-    },
+    { _id: "beginner", name: "Basic Concepts" },
+    { _id: "rm", name: "Relational Model" },
+    { _id: "fo", name: "File Organization" },
+    { _id: "nosql", name: "NoSQL" },
+    { _id: "sql", name: "SQL" },
 ];
