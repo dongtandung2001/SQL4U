@@ -45,6 +45,10 @@ class TutorialForm extends Form {
       await courseService.addTutorial(courseId, data._id);
       this.props.navigate(`/catalog/${courseId}`);
     } else {
+      // delete tutorial ref in course
+      await courseService.deleteTutorial(courseId, tutorial._id);
+      // add tutorial ref again in course
+      await courseService.addTutorial(courseId, tutorial._id);
       this.props.navigate(`/catalog/${courseId}/tutorial/${tutorial._id}`);
     }
   };
