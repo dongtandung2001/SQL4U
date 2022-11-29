@@ -6,6 +6,7 @@ const express = require("express");
 const { Course } = require("../models/course");
 const { Project } = require("../models/project");
 const { Interview } = require("../models/interview");
+const auth = require("../middleware/auth");
 const router = express.Router();
 
 router.post("/", async (req, res) => {
@@ -142,6 +143,12 @@ router.put("/:id", async (req, res) => {
   user.password = await bcrypt.hash(user.password, salt);
   await user.save();
   res.send(_.pick(user, ["_id", "email"]));
+});
+
+// get current user
+router.get("/me", auth, async (req, res) => {
+  const user = await User.findById(req.user._id).select("-password");
+  res.send(user);
 });
 
 module.exports = router;
