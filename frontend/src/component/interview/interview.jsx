@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import "./interview.css";
 import { FaAngleUp } from "react-icons/fa";
 import { FaAngleDown } from "react-icons/fa";
-import { BsFillBookmarkHeartFill } from "react-icons/bs";
+import { BsQuestionCircleFill } from "react-icons/bs";
+import { BsSuitHeartFill } from "react-icons/bs";
 import Interview from "./interview.png";
 import QuestionList from "./QuestionList";
 import { Link } from "react-router-dom";
@@ -64,7 +65,7 @@ class InterviewQuestion extends Component {
     return (
       <div className="container-fluid grid my-1">
         <div className="row">
-          <div className="h-100 col-3 p-5 bg-primary text-light grid text-center border border-dark">
+          <div className="h-100 col-3 p-5 bg-primary text-opacity-100 grid text-center border border-dark sidebar-container">
             <div>
               <img src={Interview} className="interview-image" />
             </div>
@@ -87,11 +88,17 @@ class InterviewQuestion extends Component {
               </h4>
             ))}
             <div className="h5">
-              <button className="sidebar-common-questions-btn bg-light text-danger">
-                <BsFillBookmarkHeartFill />
-              </button>{" "}
-              Common Questions
-            </div>
+                <button className="sidebar-common-questions-btn">
+                  <BsQuestionCircleFill />
+                </button>{" "}
+                Common Questions
+              </div>
+              <div className="h5">
+                <button className="sidebar-common-questions-btn">
+                  <BsSuitHeartFill />
+                </button>{" "}
+                Saved Questions
+              </div>
           </div>
           <div className="col-9 p-7 bg-primary text-light border border-dark container-fluid">
             {user && user.admin && (
