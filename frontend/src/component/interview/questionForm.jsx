@@ -4,7 +4,6 @@ import Joi from "joi";
 import Form from "../common/form";
 import { withRouter } from "../withRouter";
 import * as interviewService from "../../services/interviewService";
-import * as courseService from "../../services/courseService";
 
 class InterviewQuestionForm extends Form {
   state = {
@@ -53,7 +52,7 @@ class InterviewQuestionForm extends Form {
   };
   render() {
     return (
-      <div className='container-fluid'>
+      <div className="container-fluid">
         <form onSubmit={this.handleSumbit} style={{ height: "15rem" }}>
           {this.renderSelect("topic", "Topic", this.state.topics)}
           {this.renderInput("question", "Question")}

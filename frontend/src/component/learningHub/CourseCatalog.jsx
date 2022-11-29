@@ -16,10 +16,6 @@ import * as courseService from "../../services/courseService";
 import Pagination from "../common/pagination";
 import { paginate } from "../../util/paginate";
 
-{
-  /*Using show() for showing each course card */
-}
-
 function Show({ arr }) {
   const user = auth.getCurrentUser();
   return (
@@ -94,11 +90,6 @@ function Show({ arr }) {
   );
 }
 
-{
-  /*
-When user select a topic, it will pop-up courses related to selected topic
-*/
-}
 function App({ location, onPageChange }) {
   const [isShown, setIsShown] = useState("all");
 
@@ -211,7 +202,7 @@ class CoursesCard extends Component {
   };
 
   onPageChange = (topic) => {
-    this.setState({ currentTopic: topic });
+    this.setState({ currentTopic: topic, currentPage: 1 });
   };
 
   render() {
@@ -220,11 +211,16 @@ class CoursesCard extends Component {
       (course) => course.topic === this.state.currentTopic
     );
 
-    const courses = paginate(
-      this.state.data,
-      this.state.currentPage,
-      this.state.pageSize
-    );
+    let courses;
+    if (filtered.length === 0) {
+      courses = paginate(
+        this.state.data,
+        this.state.currentPage,
+        this.state.pageSize
+      );
+    } else {
+      courses = paginate(filtered, this.state.currentPage, this.state.pageSize);
+    }
     return (
       <div className="topic container">
         <h2 style={{ display: "inline-block", margin: "auto 1rem 1rem auto" }}>
