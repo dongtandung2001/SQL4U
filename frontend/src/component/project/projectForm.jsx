@@ -1,6 +1,5 @@
 import React from "react";
 import Joi from "joi";
-import { data } from "./projects";
 import Form from "../common/form";
 import { withRouter } from "../withRouter";
 import * as projectService from "../../services/projectService";
@@ -70,6 +69,9 @@ class ProjectForm extends Form {
         console.log(ex.response);
       }
     } else {
+      // update project ref in course
+      await courseService.deleteProject(this.state.courseId, project._id);
+      await courseService.addProject(this.state.courseId, project._id);
       window.location = `/catalog/${this.state.courseId}/project/${project._id}`;
     }
 

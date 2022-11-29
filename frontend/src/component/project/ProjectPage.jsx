@@ -19,7 +19,7 @@ export default function ProjectPage() {
       setProjectContents(projectObj.contents);
     };
     getProject();
-  });
+  }, [projectId]);
 
   return (
     <div className="container">
@@ -63,6 +63,9 @@ export default function ProjectPage() {
           <button className="btn btn-primary">Edit</button>
         </Link>
       )}
+      <Link to={`/catalog/${courseId}/project`}>
+        <button className="btn btn-primary">Go back</button>
+      </Link>
     </div>
   );
 }
