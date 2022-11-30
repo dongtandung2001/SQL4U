@@ -6,18 +6,12 @@ import Pagination from "../common/pagination";
 import { paginate } from "../../util/paginate";
 import * as questionService from "../../services/questionService";
 import * as authService from "../../services/authService";
-import Pagination from "./pagination";
 
 
+function Show({ arr, user, onDelete }) {
 
-function Show({ arr, user, onDelete}) {
 
-  
-  //console.log(getTotalPost);
-  
-  
-
-  return arr.slice(indexOfFirstPost,indexOfLastPost).map((val) => (
+  return arr.map((val) => (
     <div key={val._id}>
       <Question
         _id={val._id}
@@ -30,31 +24,13 @@ function Show({ arr, user, onDelete}) {
         user={user}
         onDelete={onDelete}
       />
-      
+
     </div>
   ));
 }
 
-// function TopicNavigation({ location, user, onDelete }) {
-//   const [isShown, setIsShown] = useState("All"); 
-  
-//   const [currentPage, setCurrentPage]= useState(1);
-//   const [postsPerPage] = useState(2);
 
-  
-//   const indexOfLastPost = currentPage * postsPerPage;
-//   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  
-  
-//   const arrLength=3;
-//   //console.log(Show().length);
 
-//   const paginate = pageNumber=> setCurrentPage(pageNumber);
-
-  
-  
-
- 
 function TopicNavigation({
   location,
   user,
@@ -135,22 +111,18 @@ function TopicNavigation({
           {isShown === "all" && (
             <div>
               <Show arr={location} user={user} onDelete={onDelete}
-              // indexOfFirstPost={indexOfFirstPost}
-              // indexOfLastPost={indexOfLastPost}
-               />
+
+              />
             </div>
           )}
 
           {isShown === "sql" && (
             <div>
-              
+
               <Show
                 arr={location.filter((val) => val.topic === "sqll")}
                 user={user}
-                // indexOfFirstPost={indexOfFirstPost}
-                // indexOfLastPost={indexOfLastPost}
-                
-                
+
               />
             </div>
           )}
@@ -160,9 +132,7 @@ function TopicNavigation({
               <Show
                 arr={location.filter((val) => val.topic === "nosql")}
                 user={user}
-                // indexOfFirstPost={indexOfFirstPost}
-                // indexOfLastPost={indexOfLastPost}
-                
+
               />
             </div>
           )}
@@ -172,9 +142,7 @@ function TopicNavigation({
               <Show
                 arr={location.filter((val) => val.topic === "beginner")}
                 user={user}
-                // indexOfFirstPost={indexOfFirstPost}
-                // indexOfLastPost={indexOfLastPost}
-                
+
               />
             </div>
           )}
@@ -184,9 +152,7 @@ function TopicNavigation({
               <Show
                 arr={location.filter((val) => val.topic === "fo")}
                 user={user}
-                // indexOfFirstPost={indexOfFirstPost}
-                // indexOfLastPost={indexOfLastPost}
-                
+
               />
             </div>
           )}
@@ -196,14 +162,12 @@ function TopicNavigation({
               <Show
                 arr={location.filter((val) => val.topic === "rm")}
                 user={user}
-                // indexOfFirstPost={indexOfFirstPost}
-                // indexOfLastPost={indexOfLastPost}
-                
+
               />
             </div>
           )}
 
-        {/* <Pagination postsPerPage={postsPerPage} totalPosts={arrLength} paginate={paginate}/> */}
+          
           <Pagination
             itemsCount={itemsCount}
             pageSize={pageSize}
@@ -212,14 +176,14 @@ function TopicNavigation({
           />
         </div>
 
-        <div className="col-sm-2"> content</div>
+        <div className="col-sm-2"></div>
       </div>
     </div>
   );
 }
 
 class TopicList extends Component {
-  state = { data: [], user: {},};
+  state = { data: [], user: {}, };
   state = {
     data: [],
     user: {},

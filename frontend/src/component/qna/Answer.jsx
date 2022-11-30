@@ -1,9 +1,6 @@
 import React from "react";
 import Form from "../common/form";
 import Joi from "joi";
-
-import { info } from "./question&user";
-
 import * as questionService from "../../services/questionService";
 import * as authService from "../../services/authService";
 import { withRouter } from "../withRouter";
