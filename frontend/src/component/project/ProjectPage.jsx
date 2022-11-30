@@ -2,14 +2,23 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import * as projectService from "../../services/projectService";
+import * as userService from '../../services/userService';
 
 import auth from "../../services/authService";
 
 export default function ProjectPage() {
+  const [user, setUser] = useState({})
   const [project, setProject] = useState({});
   const [projectContents, setProjectContents] = useState([]);
   const { projectId, courseId } = useParams();
-  const user = auth.getCurrentUser();
+  const [finishBtnText, setFinishBtnText] = useState("")
+  const [finishButtonStyle, setFinisButtonStyle] = useState({});
+
+  //style
+  const finishStyle = {
+    backgroundColor: "#0d6efd",
+    color: "#fff"
+  }
 
   useEffect(() => {
     //Fetch project using projectID
@@ -18,8 +27,31 @@ export default function ProjectPage() {
       setProject(projectObj);
       setProjectContents(projectObj.contents);
     };
+    const isFinished = async () => {
+      const {data: user} = await userService.getUser(localStorage.getItem('token'));
+      setUser(user);
+      console.log(user)
+      if (user.finishedProject.some(project => project._id === projectId)) {
+        setFinishBtnText("✅ Finished");
+        setFinisButtonStyle({backgroundColor: "#0d6efd", color: "#fff", fill: "#0d6efd"})
+      } else {
+        setFinishBtnText("Finish");
+      }
+    }
     getProject();
+    isFinished();
   }, [projectId]);
+
+  //Handling click event
+  const finishProject = async () => {
+    await userService.finishProject(user._id, projectId);
+    setFinishBtnText("✅ Finished");
+  }
+
+  const unFinishProject = async () => {
+    await userService.uncheckFinishProject(user._id, projectId);
+    setFinishBtnText("Finish");
+  }
 
   return (
     <div className="container">
@@ -54,13 +86,21 @@ export default function ProjectPage() {
           );
         })}
       {user && !user.admin && (
-        <button type="submit" className="btn btn-outline-primary">
-          Finished
+        <button 
+          type="submit" 
+          style = {finishButtonStyle}
+          className="btn btn-outline-primary me-2" 
+          onClick={() => {
+            return (
+              finishBtnText === "Finish" ? finishProject() : unFinishProject()
+            );
+          }}>
+          {finishBtnText}
         </button>
       )}
       {user && user.admin && (
         <Link to={`/catalog/${courseId}/project/add/${projectId}`}>
-          <button className="btn btn-primary">Edit</button>
+          <button className="btn btn-primary me-2">Edit</button>
         </Link>
       )}
       <Link to={`/catalog/${courseId}/project`}>
