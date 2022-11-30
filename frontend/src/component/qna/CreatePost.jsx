@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import Form from "../common/form";
-import { info } from "./question&user";
-
 import Joi from "joi";
 import { withRouter } from "../withRouter";
 import * as questionService from "../../services/questionService";
@@ -11,14 +9,6 @@ class CreatePost extends Form {
     count: this.props.value,
     data: {},
 
-    // topics: [
-    //     { _id: "1", name: "Database Basic" },
-    //     { _id: "2", name: "Basic Data Query" },
-    //     { _id: "3", name: "Intermediate" },
-    //     { _id: "4", name: "Advance SQL" },
-    //     { _id: "5", name: "Technical problems" },
-
-    // ],
     topics: [
       { _id: "beginner", name: "Basic Concepts" },
       { _id: "rm", name: "Relational Model" },
