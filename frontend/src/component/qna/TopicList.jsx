@@ -2,6 +2,8 @@ import React, { Component, useState } from "react";
 import { topics } from "./topics";
 import CreatePost from "./CreatePost";
 import Question from "./Question";
+import Pagination from "../common/pagination";
+import { paginate } from "../../util/paginate";
 import * as questionService from "../../services/questionService";
 import * as authService from "../../services/authService";
 
@@ -23,8 +25,17 @@ function Show({ arr, user, onDelete }) {
   ));
 }
 
-function TopicNavigation({ location, user, onDelete }) {
-  const [isShown, setIsShown] = useState("All");
+function TopicNavigation({
+  location,
+  user,
+  onDelete,
+  itemsCount,
+  pageSize,
+  onChange,
+  currentPage,
+  onPageChange,
+}) {
+  const [isShown, setIsShown] = useState("all");
   return (
     <div className="container-fluid body">
       <div className="row">
@@ -38,17 +49,30 @@ function TopicNavigation({ location, user, onDelete }) {
             />
           </div>
           <div className="topic-list">
-            <h2 className="topic" onClick={() => setIsShown("All")}>
+            <h2
+              className="topic"
+              onClick={() => {
+                onPageChange("all");
+                setIsShown("all");
+              }}
+            >
               ----TOPIC----
             </h2>
             <ul className="list-group list-group-flush">
               {topics.map((val) => (
                 <li
                   key={val.id}
-                  className="list-group-item"
-                  onClick={() => setIsShown(val.topic)}
+                  className={
+                    isShown === val._id
+                      ? "list-group-item active"
+                      : "list-group-item "
+                  }
+                  onClick={() => {
+                    onPageChange(val._id);
+                    setIsShown(val._id);
+                  }}
                 >
-                  {val.topic}
+                  {val.name}
                 </li>
               ))}
             </ul>
@@ -77,93 +101,63 @@ function TopicNavigation({ location, user, onDelete }) {
             </svg>
           </div>
 
-          {isShown === "All" && (
+          {isShown === "all" && (
             <div>
               <Show arr={location} user={user} onDelete={onDelete} />
             </div>
           )}
 
-          {isShown === "Database Basic" && (
+          {isShown === "sql" && (
             <div>
               <Show
-                arr={location.filter((val) => val.topic === "Database Basic")}
+                arr={location.filter((val) => val.topic === "sqll")}
                 user={user}
               />
             </div>
           )}
 
-          {isShown === "Basic Data Query" && (
+          {isShown === "nosql" && (
             <div>
               <Show
-                arr={location.filter((val) => val.topic === "Basic Data Query")}
+                arr={location.filter((val) => val.topic === "nosql")}
                 user={user}
               />
             </div>
           )}
 
-          {isShown === "Intermediate" && (
+          {isShown === "beginner" && (
             <div>
               <Show
-                arr={location.filter((val) => val.topic === "Intermediate")}
+                arr={location.filter((val) => val.topic === "beginner")}
                 user={user}
               />
             </div>
           )}
 
-          {isShown === "Advance SQL" && (
+          {isShown === "fo" && (
             <div>
               <Show
-                arr={location.filter((val) => val.topic === "Advance SQL")}
+                arr={location.filter((val) => val.topic === "fo")}
                 user={user}
               />
             </div>
           )}
 
-          {isShown === "Technical problems" && (
+          {isShown === "rm" && (
             <div>
               <Show
-                arr={location.filter(
-                  (val) => val.topic === "Technical problems"
-                )}
+                arr={location.filter((val) => val.topic === "rm")}
                 user={user}
               />
             </div>
           )}
 
-          <nav aria-label="..." className="pagination">
-            <ul className="pagination">
-              <li className="page-item disabled">
-                <a
-                  className="page-link"
-                  href="#"
-                  tabIndex="-1"
-                  aria-disabled="true"
-                >
-                  Previous
-                </a>
-              </li>
-              <li className="page-item">
-                <a className="page-link" href="#">
-                  1
-                </a>
-              </li>
-              <li className="page-item active" aria-current="page">
-                <a className="page-link" href="#">
-                  2
-                </a>
-              </li>
-              <li className="page-item">
-                <a className="page-link" href="#">
-                  3
-                </a>
-              </li>
-              <li className="page-item">
-                <a className="page-link" href="#">
-                  Next
-                </a>
-              </li>
-            </ul>
-          </nav>
+          <Pagination
+            itemsCount={itemsCount}
+            pageSize={pageSize}
+            onPageChange={onChange}
+            currentPage={currentPage}
+          />
         </div>
 
         <div className="col-sm-2"> content</div>
@@ -173,7 +167,13 @@ function TopicNavigation({ location, user, onDelete }) {
 }
 
 class TopicList extends Component {
-  state = { data: [], user: {} };
+  state = {
+    data: [],
+    user: {},
+    pageSize: 6,
+    currentPage: 1,
+    currentTopic: "all",
+  };
   componentDidMount = async () => {
     const { data } = await questionService.getQuestions();
     const user = await authService.getCurrentUser();
@@ -184,13 +184,40 @@ class TopicList extends Component {
     console.log("deleted");
   };
 
+  handleChange = (page) => {
+    this.setState({ currentPage: page });
+  };
+
+  onPageChange = (topic) => {
+    this.setState({ currentTopic: topic });
+  };
+
   render() {
-    // const location = this.props.location;
+    // filter
+    const filtered = this.state.data.filter(
+      (course) => course.topic === this.state.currentTopic
+    );
+    // paginate
+    const qna = paginate(
+      this.state.data,
+      this.state.currentPage,
+      this.state.pageSize
+    );
+    console.log(this.state.currentTopic);
     return (
       <TopicNavigation
-        location={this.state.data}
+        location={qna}
         user={this.state.user}
         onDelete={this.handleDelete}
+        itemsCount={
+          this.state.currentTopic === "all"
+            ? this.state.data.length
+            : filtered.length
+        }
+        pageSize={this.state.pageSize}
+        onChange={this.handleChange}
+        currentPage={this.state.currentPage}
+        onPageChange={this.onPageChange}
       />
     );
   }

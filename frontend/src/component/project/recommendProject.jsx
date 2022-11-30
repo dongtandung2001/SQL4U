@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 
-import { coursesCard } from "../learningHub/data";
-
 import IndividualProject from "./IndividualProject";
 
 import auth from "../../services/authService";
@@ -10,22 +8,22 @@ import * as courseService from "../../services/courseService";
 import "./recommendedProjects.css";
 
 export default function RecommendProject() {
-  const [projectList, setProjectList] = useState([]);
-  const [course, setCourse] = useState({});
   const { courseId } = useParams();
+  const [course, setCourse] = useState({});
+  const [projectList, setProjectList] = useState([]);
   const user = auth.getCurrentUser();
-  
-  useEffect( () => {
+
+  useEffect(() => {
     //Fetch course using course ID
     const getCourseList = async () => {
       const { data } = await courseService.getCourse(courseId);
       setCourse(data);
       setProjectList(data.projects);
-    }
+    };
+
     getCourseList();
-  });
+  }, [courseId]);
   // get user to determine if its admin
-  
 
   /*
   Function delete
@@ -62,6 +60,10 @@ export default function RecommendProject() {
             <button className="btn btn-primary">Add</button>
           </Link>
         )}
+
+        <Link to={`/catalog/${courseId}`}>
+          <button className="btn btn-primary">Go Back</button>
+        </Link>
       </div>
     </div>
   );

@@ -4,7 +4,6 @@ import Joi from "joi";
 import Form from "../common/form";
 import { withRouter } from "../withRouter";
 import * as interviewService from "../../services/interviewService";
-import * as courseService from "../../services/courseService";
 
 class InterviewQuestionForm extends Form {
   state = {
@@ -34,6 +33,7 @@ class InterviewQuestionForm extends Form {
         _id: interviewQuestion._id,
         question: interviewQuestion.question,
         answer: interviewQuestion.answer,
+        topic: interviewQuestion.topic,
       },
     });
   };

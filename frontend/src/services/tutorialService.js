@@ -19,7 +19,7 @@ export async function saveTutorial(tutorial, content) {
         const body = { ...tutorial };
         delete body._id;
         if (body.contents) delete body.contents;
-        body.content = content;
+        if (content.header && content.detail) body.content = content;
         return httpService.put(apiEndPoint + "/" + tutorial._id, body)
     }
     // add

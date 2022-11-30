@@ -19,7 +19,7 @@ class CourseForm extends Form {
   };
 
   schema = Joi.object({
-    topic: Joi.string().min(5).max(50).required().label("Topic"),
+    topic: Joi.string().max(50).required().label("Topic"),
     name: Joi.string().min(5).max(50).required().label("Courses Name"),
     teacher: Joi.string().min(5).max(50).required().label("Teacher Name"),
     length: Joi.string().min(5).max(255).required().label("Total Time"),
