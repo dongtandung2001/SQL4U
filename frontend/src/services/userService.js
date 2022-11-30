@@ -17,3 +17,23 @@ export function getUser(token) {
         }
     })
 }
+
+// finish a project
+export function finishProject(userId, projectId) {
+    return httpService.post(apiEndPoint + "/project/" + userId, { id: projectId });
+}
+
+// uncheck finished project
+export function uncheckFinishProject(userId, projectId) {
+    return httpService.put(apiEndPoint + "/project/" + userId, { id: projectId });
+}
+
+// save an interview question
+export function saveQuestion(userId, questionId) {
+    return httpService.post(apiEndPoint + "/interview/" + userId, { id: questionId });
+}
+
+// unsave an interview question project
+export function unsaveQuestion(userId, questionId) {
+    return httpService.put(apiEndPoint + "/interview/" + userId, { id: questionId });
+}

@@ -1,9 +1,8 @@
 import "./interview.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import * as interviewService from "../../services/interviewService";
 
-function QuestionList({ user, onDelete, question }) {
+function QuestionList({ user, onDelete, question, onSave, onUnsave, topic }) {
   const [selected, setSelected] = useState(null);
   // const [question, setQuestion] = useState(null);
   // useEffect(() => {
@@ -54,7 +53,22 @@ function QuestionList({ user, onDelete, question }) {
                 {item.answer}
               </div>
             </div>
-            <button className="text-center mx-4 save-btn">Save Question</button>
+            {topic !== "saved" && (
+              <button
+                onClick={() => onSave(item._id)}
+                className="text-center mx-4 save-btn"
+              >
+                Save Question
+              </button>
+            )}
+            {topic === "saved" && (
+              <button
+                onClick={() => onUnsave(item._id)}
+                className="text-center mx-4 save-btn"
+              >
+                Unsave Question
+              </button>
+            )}
           </div>
         ))}
     </div>
