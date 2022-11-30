@@ -53,3 +53,9 @@ export function addTutorial(courseId, tutorialId) {
     id: tutorialId,
   });
 }
+
+export function deleteTutorial(courseId, tutorialId) {
+  return httpService.put(apiEndPoint + "/deleteTutorial/" + courseId, {
+    id: tutorialId,
+  });
+}

@@ -55,6 +55,18 @@ router.put("/:id", async (req, res) => {
   res.send(project);
 });
 
+// delete a content: {header, detail} of a project by its id
+router.put("/content/:id/", async (req, res) => {
+  let project = await Project.findById(req.params.id);
+  if (!project) return res.status(404).send("There are no projcets with the given ID");
+
+  const index = project.contents.findIndex(content => content._id.toString() === req.body.id.toString())
+  if (index === -1) return res.status(404).send("There are no contents with the given ID in this project");
+  project.contents.splice(index, 1);
+  await project.save();
+  res.send(project);
+})
+
 // get specific project
 router.get("/:id", async (req, res) => {
   const project = await Project.findById(req.params.id);

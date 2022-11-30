@@ -19,12 +19,18 @@ export async function saveProject(project, content) {
         const body = { ...project };
         delete body._id;
         if (body.contents) delete body.contents;
-        body.content = content;
-        const {data} = await httpService.put(apiEndPoint + "/" + project._id, body);
-        return {data, mode: "update"};
+        if (content.header && content.detail) body.content = content;
+        const { data } = await httpService.put(apiEndPoint + "/" + project._id, body);
+        return { data, mode: "update" };
     }
-    const {data} = await httpService.post(apiEndPoint, project);
-    return {data, mode: "add"};
+    const { data } = await httpService.post(apiEndPoint, project);
+    return { data, mode: "add" };
+}
+
+// delete content of a project
+// content :{header, detail}
+export function deleteContent(projectId, contentId) {
+    return httpService.put(apiEndPoint + "/content/" + projectId, { id: contentId });
 }
 
 // delete project with id

@@ -23,8 +23,11 @@ import CourseForm from "./component/learningHub/CourseForm";
 import PrivateRoutes from "./component/protectedRoutes";
 import QuestionAndAnswer from "./component/qna/QuestionAndAnswer";
 import ProjectForm from './component/project/projectForm';
+import TutorialForm from "./component/learningHub/TutorialForm";
+import InterviewQuestionForm from "./component/interview/questionForm";
 
 import auth from "./services/authService";
+import CreatePost from "./component/qna/CreatePost";
 
 
 
@@ -53,13 +56,14 @@ class App extends Component {
           <Route path='/profile' element={<Profile />} />
 
           <Route path='/interview' element={<InterviewQuestion />} />
+          <Route path='/interview/:id' element={<InterviewQuestionForm />} />
+
+
+          <Route path='/catalog' element={<CoursesCard />} />
           <Route path='/catalog/:courseId/project' element={<RecommendProject />} />
           <Route path='/catalog/:courseId/project/:projectId' element={<ProjectPage />} />
-          <Route path='/qna' element={<QnA />} />
-          <Route path='/qna/:id' element={<QuestionAndAnswer />} />
-          <Route path='/hub' element={<LearningHub />} />
-
           <Route path="/catalog/:courseId/project/add/:id" element={<ProjectForm />} />
+          <Route path="/catalog/:courseId/tutorial/add/:id" element={<TutorialForm />} />
           <Route path='/catalog/addOrEdit/:id' element={<CourseForm />} />
           <Route path='/catalog/:courseId' element={<IndividualCourse />} />
           <Route
@@ -67,7 +71,13 @@ class App extends Component {
             element={<TutorialPage />}
           />
 
-          <Route path='/catalog' element={<CoursesCard />} />
+          <Route path='/qna' element={<QnA />} />
+          <Route path='/qna/:id' element={<QuestionAndAnswer />} />
+          <Route path='/qna/edit/:id' element={<CreatePost />} />
+
+          <Route path='/hub' element={<LearningHub />} />
+
+
           <Route path='/not-found' element={<NotFound />} />
 
           <Route path='/' element={<Navigate to={"/"} />} />

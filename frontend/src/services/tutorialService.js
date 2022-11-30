@@ -13,15 +13,27 @@ export function getTutorial(id) {
 }
 
 // save tutorial
-export function saveTutorial(tutorial, content) {
+export async function saveTutorial(tutorial, content) {
     // update
     if (tutorial._id) {
         const body = { ...tutorial };
         delete body._id;
         if (body.contents) delete body.contents;
-        body.content = content;
-        return httpService.put(apiEndPoint + "/" + tutorial._id, body);
+        if (content.header && content.detail) body.content = content;
+        return httpService.put(apiEndPoint + "/" + tutorial._id, body)
     }
     // add
-    return httpService.post(apiEndPoint, tutorial);
+    const { data } = await httpService.post(apiEndPoint, tutorial)
+    return { data, method: "add" };
+}
+
+// delete content of a project
+// content :{header, detail}
+export function deleteContent(tutorialId, contentId) {
+    return httpService.put(apiEndPoint + "/content/" + tutorialId, { id: contentId });
+}
+
+
+export function deleteTutorial(tutorialId) {
+    return httpService.delete(apiEndPoint + "/" + tutorialId)
 }
