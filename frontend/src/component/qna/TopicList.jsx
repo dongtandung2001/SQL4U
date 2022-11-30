@@ -17,7 +17,7 @@ function Show({ arr, user, onDelete}) {
   
   
 
-  return arr.slice(indexOfFirstPost,indexOfLastPost).map((val) => (
+  return arr.map((val) => (
     <div key={val._id}>
       <Question
         _id={val._id}
@@ -35,21 +35,21 @@ function Show({ arr, user, onDelete}) {
   ));
 }
 
-function TopicNavigation({ location, user, onDelete }) {
-  const [isShown, setIsShown] = useState("All"); 
+// function TopicNavigation({ location, user, onDelete }) {
+//   const [isShown, setIsShown] = useState("All"); 
   
-  const [currentPage, setCurrentPage]= useState(1);
-  const [postsPerPage] = useState(2);
+//   const [currentPage, setCurrentPage]= useState(1);
+//   const [postsPerPage] = useState(2);
 
   
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+//   const indexOfLastPost = currentPage * postsPerPage;
+//   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   
   
-  const arrLength=3;
-  //console.log(Show().length);
+//   const arrLength=3;
+//   //console.log(Show().length);
 
-  const paginate = pageNumber=> setCurrentPage(pageNumber);
+//   const paginate = pageNumber=> setCurrentPage(pageNumber);
 
   
   
