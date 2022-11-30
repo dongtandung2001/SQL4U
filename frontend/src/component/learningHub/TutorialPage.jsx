@@ -35,6 +35,15 @@ export default function TutorialPage() {
           Edit
         </button>
       )}
+      {"   "}
+      <button
+        onClick={() => {
+          navigate(`/catalog/${courseId}`);
+        }}
+        className="btn btn-primary"
+      >
+        Go Back
+      </button>
       <div className="tutorial-title">{data && data.title}</div>
       <div>
         {data &&
