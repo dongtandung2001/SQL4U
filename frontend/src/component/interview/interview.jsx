@@ -7,8 +7,8 @@ import { BsSuitHeartFill } from "react-icons/bs";
 import Interview from "./interview.png";
 import QuestionList from "./QuestionList";
 import { Link } from "react-router-dom";
-import * as authService from "../../services/authService";
 import * as interviewService from "../../services/interviewService";
+import * as userService from "../../services/userService";
 import Pagination from "../common/pagination";
 import { paginate } from "../../util/paginate";
 
@@ -24,7 +24,7 @@ class InterviewQuestion extends Component {
     ],
     currentTopic: "all",
     currentPage: 1,
-    pageSize: 10,
+    pageSize: 4,
   };
 
   handleDelete = async (id) => {
@@ -37,13 +37,37 @@ class InterviewQuestion extends Component {
     this.setState({ currentPage: page });
   };
 
-  handleTopicChange = (topic) => {
-    this.setState({ currentTopic: topic });
+  handleTopicChange = async (topic) => {
+    if (topic === "saved") {
+      const response = await Promise.all(
+        this.state.user.savedQuestion.map(async (question) => {
+          const { data } = await interviewService.getInterviewQuestion(
+            question._id
+          );
+          return data;
+        })
+      );
+      this.setState({ saved: response });
+    }
+    this.setState({ currentTopic: topic, currentPage: 1 });
+  };
+
+  handleSave = async (questionId) => {
+    await userService.saveQuestion(this.state.user._id, questionId);
+    window.location = "/interview";
+  };
+
+  handleUnsave = async (questionId) => {
+    await userService.unsaveQuestion(this.state.user._id, questionId);
+    window.location = "/interview";
+    this.setState({ currentTopic: "saved" });
   };
 
   componentDidMount = async () => {
-    const user = authService.getCurrentUser();
     const { data } = await interviewService.getInterviewQuestions();
+    const { data: user } = await userService.getUser(
+      localStorage.getItem("token")
+    );
     this.setState({ user });
     this.setState({ data: data });
   };
@@ -52,13 +76,19 @@ class InterviewQuestion extends Component {
     const { user, data } = this.state;
 
     // filter
-    const filtered = data.filter(
+    let filtered = data.filter(
       (course) => course.topic === this.state.currentTopic
     );
+    if (this.state.currentTopic === "all" && filtered.length === 0)
+      filtered = this.state.data;
+
+    if (this.state.currentTopic === "saved") {
+      filtered = this.state.saved;
+    }
 
     // paginate
     const question = paginate(
-      this.state.data,
+      filtered,
       this.state.currentPage,
       this.state.pageSize
     );
@@ -88,17 +118,14 @@ class InterviewQuestion extends Component {
               </h4>
             ))}
             <div className="h5">
-                <button className="sidebar-common-questions-btn">
-                  <BsQuestionCircleFill />
-                </button>{" "}
-                Common Questions
-              </div>
-              <div className="h5">
-                <button className="sidebar-common-questions-btn">
-                  <BsSuitHeartFill />
-                </button>{" "}
+              <button
+                onClick={() => this.handleTopicChange("saved")}
+                className="sidebar-common-questions-btn"
+              >
+                <BsSuitHeartFill />
                 Saved Questions
-              </div>
+              </button>{" "}
+            </div>
           </div>
           <div className="col-9 p-7 bg-primary text-light border border-dark container-fluid">
             {user && user.admin && (
@@ -116,9 +143,10 @@ class InterviewQuestion extends Component {
             <QuestionList
               user={user}
               onDelete={this.handleDelete}
-              question={
-                this.state.currentTopic === "all" ? this.state.data : filtered
-              }
+              question={question}
+              onSave={this.handleSave}
+              onUnsave={this.handleUnsave}
+              topic={this.state.currentTopic}
             />
             <Pagination
               itemsCount={
