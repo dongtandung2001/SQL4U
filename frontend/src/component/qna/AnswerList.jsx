@@ -13,21 +13,22 @@ export default function AnswerList(props) {
           Delete
         </button>
       )}
-      <div className="answer">
+      <div className="answer-a">
+          <div className="answer-img">
+        <img
+          className="a-userAvatar"
+          src={
+            "https://galaxylands.com.vn/wp-content/uploads/2022/10/tieu-su-ca-si-mono-13.jpg"
+          }
+        ></img></div>
         <div className="answer-info">
-          <img
-            className="a-userAvatar"
-            src={
-              "https://galaxylands.com.vn/wp-content/uploads/2022/10/tieu-su-ca-si-mono-13.jpg"
-            }
-          ></img>
-
           <p className="a-userName">
             {props.username}
-            <br /> <span className="date-created">{}</span>
+            <br /> <span className="date-created">{ }</span>
           </p>
+
+          <p className="reply-text">{props.reply}</p>
         </div>
-        <p>{props.reply}</p>
       </div>
     </div>
   );

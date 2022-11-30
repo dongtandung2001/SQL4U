@@ -92,14 +92,33 @@ const QuestionAndAnswer = () => {
               )}
             </div>
           </div>
-          <div className="question-content individual-question">
+          <div className="individual-question">
             <p className="question-value">
               <span className="topic-input">Topic: {question.topic}</span>
               <br />
               <span className="title-input">Title: {question.title}</span>
               <br />
-              Question: {question.description}
+             <span className="question-des">{question.description}</span>
             </p>
+          </div>
+          <div className="divider">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              className="bi bi-chevron-double-down"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fillRule="evenodd"
+                d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+              />
+              <path
+                fillRule="evenodd"
+                d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+              />
+            </svg>
           </div>
           <Answer question={question} />
           {question.replies.map((reply) => (
@@ -112,6 +131,7 @@ const QuestionAndAnswer = () => {
               />
             </React.Fragment>
           ))}
+          
           {/* <Answer/>
            */}
         </div>
