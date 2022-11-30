@@ -27,7 +27,7 @@ function TopicNavigation({ location, user, onDelete }) {
   const [isShown, setIsShown] = useState("All");
   return (
     <div className="container-fluid body">
-      <div className="row g-4">
+      <div className="row">
         <div className="col-sm-3 topic-col">
           <div className="topic-logo">
             <img

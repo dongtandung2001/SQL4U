@@ -50,7 +50,7 @@ export default function Question(props) {
         </h6>
       </div>
       <div className="topic-chosen">
-        <p>{topics.find((topic) => topic._id === info.topic).name}</p>
+        <p>{topics.find((topic) => topic._id === info.topic.name)}</p>
       </div>
       <div
         className="question-content"
