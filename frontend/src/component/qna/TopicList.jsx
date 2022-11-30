@@ -4,9 +4,18 @@ import CreatePost from "./CreatePost";
 import Question from "./Question";
 import * as questionService from "../../services/questionService";
 import * as authService from "../../services/authService";
+import Pagination from "./pagination";
 
-function Show({ arr, user, onDelete }) {
-  return arr.map((val) => (
+
+
+function Show({ arr, user, onDelete}) {
+
+  
+  //console.log(getTotalPost);
+  
+  
+
+  return arr.slice(indexOfFirstPost,indexOfLastPost).map((val) => (
     <div key={val._id}>
       <Question
         _id={val._id}
@@ -19,12 +28,31 @@ function Show({ arr, user, onDelete }) {
         user={user}
         onDelete={onDelete}
       />
+      
     </div>
   ));
 }
 
 function TopicNavigation({ location, user, onDelete }) {
-  const [isShown, setIsShown] = useState("All");
+  const [isShown, setIsShown] = useState("All"); 
+  
+  const [currentPage, setCurrentPage]= useState(1);
+  const [postsPerPage] = useState(2);
+
+  
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  
+  
+  const arrLength=3;
+  //console.log(Show().length);
+
+  const paginate = pageNumber=> setCurrentPage(pageNumber);
+
+  
+  
+
+ 
   return (
     <div className="container-fluid body">
       <div className="row">
@@ -80,15 +108,23 @@ function TopicNavigation({ location, user, onDelete }) {
 
           {isShown === "All" && (
             <div>
-              <Show arr={location} user={user} onDelete={onDelete} />
+              <Show arr={location} user={user} onDelete={onDelete}
+              // indexOfFirstPost={indexOfFirstPost}
+              // indexOfLastPost={indexOfLastPost}
+               />
             </div>
           )}
 
           {isShown === "Database Basic" && (
             <div>
+              
               <Show
                 arr={location.filter((val) => val.topic === "Database Basic")}
                 user={user}
+                // indexOfFirstPost={indexOfFirstPost}
+                // indexOfLastPost={indexOfLastPost}
+                
+                
               />
             </div>
           )}
@@ -98,6 +134,9 @@ function TopicNavigation({ location, user, onDelete }) {
               <Show
                 arr={location.filter((val) => val.topic === "Basic Data Query")}
                 user={user}
+                // indexOfFirstPost={indexOfFirstPost}
+                // indexOfLastPost={indexOfLastPost}
+                
               />
             </div>
           )}
@@ -107,6 +146,9 @@ function TopicNavigation({ location, user, onDelete }) {
               <Show
                 arr={location.filter((val) => val.topic === "Intermediate")}
                 user={user}
+                // indexOfFirstPost={indexOfFirstPost}
+                // indexOfLastPost={indexOfLastPost}
+                
               />
             </div>
           )}
@@ -116,6 +158,9 @@ function TopicNavigation({ location, user, onDelete }) {
               <Show
                 arr={location.filter((val) => val.topic === "Advance SQL")}
                 user={user}
+                // indexOfFirstPost={indexOfFirstPost}
+                // indexOfLastPost={indexOfLastPost}
+                
               />
             </div>
           )}
@@ -127,44 +172,14 @@ function TopicNavigation({ location, user, onDelete }) {
                   (val) => val.topic === "Technical problems"
                 )}
                 user={user}
+                // indexOfFirstPost={indexOfFirstPost}
+                // indexOfLastPost={indexOfLastPost}
+                
               />
             </div>
           )}
 
-          <nav aria-label="..." className="pagination">
-            <ul className="pagination">
-              <li className="page-item disabled">
-                <a
-                  className="page-link"
-                  href="#"
-                  tabIndex="-1"
-                  aria-disabled="true"
-                >
-                  Previous
-                </a>
-              </li>
-              <li className="page-item">
-                <a className="page-link" href="#">
-                  1
-                </a>
-              </li>
-              <li className="page-item active" aria-current="page">
-                <a className="page-link" href="#">
-                  2
-                </a>
-              </li>
-              <li className="page-item">
-                <a className="page-link" href="#">
-                  3
-                </a>
-              </li>
-              <li className="page-item">
-                <a className="page-link" href="#">
-                  Next
-                </a>
-              </li>
-            </ul>
-          </nav>
+        {/* <Pagination postsPerPage={postsPerPage} totalPosts={arrLength} paginate={paginate}/> */}
         </div>
 
         <div className="col-sm-2"> content</div>
@@ -174,7 +189,7 @@ function TopicNavigation({ location, user, onDelete }) {
 }
 
 class TopicList extends Component {
-  state = { data: [], user: {} };
+  state = { data: [], user: {},};
   componentDidMount = async () => {
     const { data } = await questionService.getQuestions();
     const user = await authService.getCurrentUser();
