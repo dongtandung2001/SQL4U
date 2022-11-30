@@ -22,6 +22,14 @@ const QuestionAndAnswer = () => {
     fetch();
   }, [id]);
 
+  const topics = [
+    { _id: "beginner", name: "Basic Concepts" },
+    { _id: "rm", name: "Relational Model" },
+    { _id: "fo", name: "File Organization" },
+    { _id: "nosql", name: "NoSQL" },
+    { _id: "sql", name: "SQL" },
+  ];
+
   return (
     <div>
       {question && (
@@ -93,11 +101,19 @@ const QuestionAndAnswer = () => {
           </div>
           <div className='individual-question'>
             <p className='question-value'>
-              <span className='topic-input'>Topic: {question.topic}</span>
+              <span className='topic-input'>
+                Topic:{" "}
+                {topics.find((topic) => topic._id === question.topic).name}
+              </span>
               <br />
               <span className='title-input'>Title: {question.title}</span>
               <br />
-              <span className='question-des'>{question.description}</span>
+              <span className='question-des'>
+                Description:{" "}
+                {question.description.split("\n").map((q) => (
+                  <p key={Math.random}>{q}</p>
+                ))}
+              </span>
             </p>
           </div>
           <div className='divider'>
