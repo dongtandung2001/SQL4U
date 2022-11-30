@@ -7,7 +7,10 @@ import { paginate } from "../../util/paginate";
 import * as questionService from "../../services/questionService";
 import * as authService from "../../services/authService";
 
+
 function Show({ arr, user, onDelete }) {
+
+
   return arr.map((val) => (
     <div key={val._id}>
       <Question
@@ -21,9 +24,12 @@ function Show({ arr, user, onDelete }) {
         user={user}
         onDelete={onDelete}
       />
+
     </div>
   ));
 }
+
+
 
 function TopicNavigation({
   location,
@@ -38,7 +44,8 @@ function TopicNavigation({
   const [isShown, setIsShown] = useState("all");
   return (
     <div className="container-fluid body">
-      <div className="row g-4">
+      <div className="row">
+
         <div className="col-sm-3 topic-col">
           <div className="topic-logo">
             <img
@@ -103,15 +110,19 @@ function TopicNavigation({
 
           {isShown === "all" && (
             <div>
-              <Show arr={location} user={user} onDelete={onDelete} />
+              <Show arr={location} user={user} onDelete={onDelete}
+
+              />
             </div>
           )}
 
           {isShown === "sql" && (
             <div>
+
               <Show
                 arr={location.filter((val) => val.topic === "sqll")}
                 user={user}
+
               />
             </div>
           )}
@@ -121,6 +132,7 @@ function TopicNavigation({
               <Show
                 arr={location.filter((val) => val.topic === "nosql")}
                 user={user}
+
               />
             </div>
           )}
@@ -130,6 +142,7 @@ function TopicNavigation({
               <Show
                 arr={location.filter((val) => val.topic === "beginner")}
                 user={user}
+
               />
             </div>
           )}
@@ -139,6 +152,7 @@ function TopicNavigation({
               <Show
                 arr={location.filter((val) => val.topic === "fo")}
                 user={user}
+
               />
             </div>
           )}
@@ -148,10 +162,12 @@ function TopicNavigation({
               <Show
                 arr={location.filter((val) => val.topic === "rm")}
                 user={user}
+
               />
             </div>
           )}
 
+          
           <Pagination
             itemsCount={itemsCount}
             pageSize={pageSize}
@@ -160,13 +176,14 @@ function TopicNavigation({
           />
         </div>
 
-        <div className="col-sm-2"> content</div>
+        <div className="col-sm-2"></div>
       </div>
     </div>
   );
 }
 
 class TopicList extends Component {
+  state = { data: [], user: {}, };
   state = {
     data: [],
     user: {},
