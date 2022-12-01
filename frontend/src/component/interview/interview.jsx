@@ -71,7 +71,21 @@ class InterviewQuestion extends Component {
     this.setState({ user });
     this.setState({ data: data });
   };
-
+  renderCurrTopic() {
+    if(this.state.currentTopic === 'beginner') {
+      return <div>Basic Concepts</div>;
+    } else if(this.state.currentTopic === 'rm') {
+      return <div>Relational Model</div>;
+    } else if(this.state.currentTopic === 'fo') {
+      return <div>File Organization</div>;
+    } else if(this.state.currentTopic === 'nosql') {
+      return <div>NoSQL</div>;
+    } else if(this.state.currentTopic === 'sql') {
+      return <div>SQL</div>;
+    } else if(this.state.currentTopic === 'all') {
+      return <div>All Topics</div>;
+    }
+  }
   render() {
     const { user, data } = this.state;
 
@@ -92,6 +106,7 @@ class InterviewQuestion extends Component {
       this.state.currentPage,
       this.state.pageSize
     );
+
     return (
       <div className="container-fluid  my-1 interview-div">
         <div className="row">
@@ -105,7 +120,7 @@ class InterviewQuestion extends Component {
                 onClick={() => this.handleTopicChange("all")}
                 className="btn btn-primary"
               >
-                <h2>TOPIC</h2>
+                <h2>TOPICS</h2>
               </button>
             </div>
             {this.state.topics.map((topic) => (

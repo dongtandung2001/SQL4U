@@ -34,7 +34,7 @@ function QuestionList({ user, onDelete, question, onSave, onUnsave, topic }) {
                     </Link>
                     <button
                       onClick={() => onDelete(item._id)}
-                      className="btn btn-danger"
+                      className="btn btn-danger btn-sm"
                     >
                       Delete
                     </button>
@@ -42,7 +42,7 @@ function QuestionList({ user, onDelete, question, onSave, onUnsave, topic }) {
                 )}
               </h3>
             </div>
-            <div className="text-end text-black-50 mx-4 answer-container">
+            <div className="text-end text-black mx-4 answer-container">
               Answer
               <button className="answer-button mx-2" onClick={() => toggle(i)}>
                 {selected === i ? "-" : "+"}

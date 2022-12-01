@@ -2,7 +2,7 @@
   background-color: rgba(104, 187, 227, 0.5);
 }
 .interview-image {
-  width: 250px;
+  width: 220px;
   border-radius: 20px;
 }
 .sidebar-container {
@@ -28,9 +28,14 @@
 .question-header {
   background-color: rgba(104, 187, 227, 0.5);
   width: 100%;
-  margin-top: 15px;
+  margin: 15px 0;
   display: table;
   border-radius: 15px;
+}
+.question-container {
+  background-color: rgb(126, 173, 220);
+  padding: 5px 5px;
+  border-radius: 5px;
 }
 .question {
   background-color: #fff;
@@ -40,9 +45,11 @@
   border-radius: 15px;
   box-shadow:  rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
   color: rgb(81, 81, 81);
+  border-radius: 5px;
 }
-.question-1 {
-  margin-top: 20px;
+
+.answer-container {
+  margin-left: auto;
 }
 
 .answer-button {
@@ -69,15 +76,18 @@
 }
 
 .content {
-  background-color: #a1c8ec;
+  background-color: #a2b2c1;
   color: #414141;
   max-height: 0;
   overflow: hidden;
   transition: all 0.5s cubic-bezier(0,1,0,1);
+  border-radius: 5px;
+  margin-bottom: 5px;
 }
 .content.show {
-  background-color: #a1c8ec;
+  background-color: #d4c364;
   height: auto;
   max-height: 9999px;
   transition: all 0.5s cubic-bezier(1,0,1,0);
+  margin-bottom: 5px;
 }
