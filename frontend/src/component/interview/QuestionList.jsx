@@ -20,17 +20,17 @@ function QuestionList({ user, onDelete, question, onSave, onUnsave, topic }) {
     setSelected(i);
   };
   return (
-    <div className="question-container">
+    <div className="">
       {question &&
         question.map((item, i) => (
-          <div className="q" key={item._id}>
-            <div className="question">
+          <div className="question" key={item._id}>
+            <div>
               <h3>
                 Q{i + 1}. {item.question}
                 {user && user.admin && (
                   <span>
                     <Link to={`/interview/${item._id}`}>
-                      <button className="btn btn-primary">Edit</button>
+                      <button className="btn btn-primary ms-2 me-2">Edit</button>
                     </Link>
                     <button
                       onClick={() => onDelete(item._id)}

@@ -15,6 +15,30 @@ html {
   transition: 400ms all ease;
 }
 
+main {
+  min-height: 100vh;
+  display:flex; 
+  flex-direction: column;
+}
+
+header {
+  min-height: 11rem;
+}
+
+footer{ 
+  min-height: 10rem; 
+}
+
+article {
+  flex : 1;
+}
+
+.container, .container-fluid {
+  min-height: "150vh";
+}
+
+
+
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;

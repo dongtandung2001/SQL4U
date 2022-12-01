@@ -93,25 +93,26 @@ class InterviewQuestion extends Component {
       this.state.pageSize
     );
     return (
-      <div className="container-fluid grid my-1">
+      <div className="container-fluid  my-1 interview-div">
         <div className="row">
-          <div className="h-100 col-3 p-5 bg-primary text-opacity-100 grid text-center border border-dark sidebar-container">
+          <div className="col-3 p-5 text-opacity-100 grid text-center sidebar-container">
             <div>
               <img src={Interview} className="interview-image" />
             </div>
-            <div className="display-4">
+            <div className="display-4 mb-3 mt-3">
               <button
+                style={{width: "15rem"}}
                 onClick={() => this.handleTopicChange("all")}
                 className="btn btn-primary"
               >
-                <h1>TOPIC</h1>
+                <h2>TOPIC</h2>
               </button>
             </div>
             {this.state.topics.map((topic) => (
               <h4 key={topic._id}>
                 <button
                   onClick={() => this.handleTopicChange(topic._id)}
-                  className="btn btn-primary"
+                  className="btn btn-outline-primary topic-list-btn"
                 >
                   {topic.name}
                 </button>
@@ -127,17 +128,16 @@ class InterviewQuestion extends Component {
               </button>{" "}
             </div>
           </div>
-          <div className="col-9 p-7 bg-primary text-light border border-dark container-fluid">
+          <div className="col-9 p-7 text-light container-fluid">
             {user && user.admin && (
               <Link to={`/interview/new`}>
-                <button className="btn btn-secondary">New Question</button>
+                <button style={{fontWeight: "bold"}} className="btn btn-outline-primary">New Question</button>
               </Link>
             )}
-            <div className="question-header container-fluid">
-              <div className="h2 my-3 text-dark text-center">
+            <div className="question-header container-fluid mb-3">
+              <div className="h2 my-3 text-center">
                 Interview Questions
               </div>
-              <div className="h3 my-3 text-dark text-center">SQL</div>
             </div>
 
             <QuestionList
