@@ -1,14 +1,15 @@
+.interview-div {
+  background-color: rgba(104, 187, 227, 0.5);
+}
 .interview-image {
   width: 220px;
   border-radius: 20px;
 }
 .sidebar-container {
-  background-color: rgba(60, 148, 206, 0.757);
+  background-color: rgba(104, 187, 227, 0.3);
 }
 .choose-topic-btn {
   border: none;
-  background-color: #0E6DFD;
-  color: #fff;
   text-decoration: underline;
 }
 
@@ -19,8 +20,13 @@
   color: rgb(146, 44, 146);
 }
 
+.topic-list-btn {
+  width: 15rem;
+  background-color: #fff;
+}
+
 .question-header {
-  background-color: #C8DCEF;
+  background-color: rgba(104, 187, 227, 0.5);
   width: 100%;
   margin: 15px 0;
   display: table;
@@ -32,7 +38,12 @@
   border-radius: 5px;
 }
 .question {
-  background-color: #D9D9D9;
+  background-color: #fff;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 15px;
+  box-shadow:  rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
   color: rgb(81, 81, 81);
   border-radius: 5px;
 }
@@ -43,20 +54,25 @@
 
 .answer-button {
   border: none;
-  width: 20px;
-  height: auto;
-  background-color: #ccc;
-  border-radius: 5px;
+  width: 1.5rem;
+  background-color: rgba(104, 187, 227, 0.2);;
+  border-radius: 50%;
 }
 
 .save-btn {
   border: none;
   border-radius: 10px;
-  background-color: #d7d7d7;
-  color: #434343;
+  background-color: rgba(104, 187, 227, 0.2);
+  color: rgb(66, 116, 255);
   padding: 5px 10px;
   font-weight: bold;
   margin-bottom: 10px;
+  transition : 200ms all ease;
+}
+
+.save-btn:hover {
+  background-color: rgba(104, 187, 227, 0.4);
+  color: rgb(255, 255, 255);
 }
 
 .content {

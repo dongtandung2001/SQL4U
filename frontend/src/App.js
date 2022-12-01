@@ -40,63 +40,71 @@ class App extends Component {
     return (
       <main
         style={{ paddingLeft: "0", paddingRight: "0" }}
-        className='container-fluid'
+        
       >
-        <NavBar user={this.state.user} />
-        {this.state.user && <FeatureNavBar />}
+        <header>
+          <NavBar user={this.state.user} />
+          {this.state.user && <FeatureNavBar />}
+        </header>
 
-        <Routes>
-          <Route element={<PrivateRoutes />}>
-            <Route element={<Dashboard />} path='/' />
+        <article>
+          <Routes>
+            <Route element={<PrivateRoutes />}>
+              <Route element={<Dashboard />} path='/' />
 
-            <Route path='/interview' element={<InterviewQuestion />} />
-            <Route path='/interview/:id' element={<InterviewQuestionForm />} />
+              <Route path='/interview' element={<InterviewQuestion />} />
+              <Route path='/interview/:id' element={<InterviewQuestionForm />} />
 
-            <Route path='/catalog' element={<CoursesCard />} />
-            <Route
-              path='/catalog/:courseId/project'
-              element={<RecommendProject />}
-            />
-            <Route
-              path='/catalog/:courseId/project/:projectId'
-              element={<ProjectPage />}
-            />
-            <Route
-              path='/catalog/:courseId/project/add/:id'
-              element={<ProjectForm />}
-            />
-            <Route
-              path='/catalog/:courseId/tutorial/add/:id'
-              element={<TutorialForm />}
-            />
-            <Route path='/catalog/addOrEdit/:id' element={<CourseForm />} />
-            <Route path='/catalog/:courseId' element={<IndividualCourse />} />
-            <Route
-              path='/catalog/:courseId/tutorial/:tutorialId'
-              element={<TutorialPage />}
-            />
+              <Route path='/catalog' element={<CoursesCard />} />
+              <Route
+                path='/catalog/:courseId/project'
+                element={<RecommendProject />}
+              />
+              <Route
+                path='/catalog/:courseId/project/:projectId'
+                element={<ProjectPage />}
+              />
+              <Route
+                path='/catalog/:courseId/project/add/:id'
+                element={<ProjectForm />}
+              />
+              <Route
+                path='/catalog/:courseId/tutorial/add/:id'
+                element={<TutorialForm />}
+              />
+              <Route path='/catalog/addOrEdit/:id' element={<CourseForm />} />
+              <Route path='/catalog/:courseId' element={<IndividualCourse />} />
+              <Route
+                path='/catalog/:courseId/tutorial/:tutorialId'
+                element={<TutorialPage />}
+              />
 
-            <Route path='/qna' element={<QnA />} />
-            <Route path='/qna/:id' element={<QuestionAndAnswer />} />
-            <Route path='/qna/edit/:id' element={<CreatePost />} />
+              <Route path='/qna' element={<QnA />} />
+              <Route path='/qna/:id' element={<QuestionAndAnswer />} />
+              <Route path='/qna/edit/:id' element={<CreatePost />} />
 
-            <Route path='/hub' element={<LearningHub />} />
-          </Route>
-          {/* <Route path='/' element={<Dashboard />} /> */}
-          <Route path='/about' element={<About />} />
-          <Route path='/contact' element={<Contact />} />
+              <Route path='/hub' element={<LearningHub />} />
+            </Route>
+            {/* <Route path='/' element={<Dashboard />} /> */}
+            <Route path='/about' element={<About />} />
+            <Route path='/contact' element={<Contact />} />
 
-          <Route path='/logout' element={<Logout />} />
-          <Route path='/profile' element={<Profile />} />
+            <Route path='/logout' element={<Logout />} />
+            <Route path='/profile' element={<Profile />} />
 
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/not-found' element={<NotFound />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/not-found' element={<NotFound />} />
 
-          <Route path='/' element={<Navigate to={"/"} />} />
-          <Route path='*' element={<Navigate to={"not-found"} />} />
-        </Routes>
-        <Footer />
+            <Route path='/' element={<Navigate to={"/"} />} />
+            <Route path='*' element={<Navigate to={"not-found"} />} />
+          </Routes>
+        </article>
+        
+        <footer>
+          <Footer />
+        </footer>
+
       </main>
     );
   }
