@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&family=Poppins:wght@300;500&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -7,21 +7,33 @@
   box-sizing: border-box;
   list-style: none;
   text-decoration: none;
-  font-family: 'Roboto',sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
+  transition: 400ms all ease;
 }
 
 ::-webkit-scrollbar {
-  display: none;
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(104, 187, 227, 0.5);;
+  box-shadow: 0 0 1px 1px #bbb, inset 0 0 7px rgba(0,0,0,0.3);
+  border: none;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: linear-gradient(left, #96A6BF, #63738C);
+  box-shadow: inset 0 0 1px 1px #5C6670;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(left, #8391A6, #536175);
 }
 
-h1 {
+h1, h5 {
   font-weight: 500;
-}
-
-.custom-transition{
-  transition: 400ms all ease;
 }

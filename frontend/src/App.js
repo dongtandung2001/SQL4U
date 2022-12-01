@@ -2,6 +2,7 @@ import "./App.css";
 import { Routes, Route, Navigate } from "react-router-dom";
 import React, { Component } from "react";
 import NavBar from "./component/navbar/navbar";
+import Footer from "./component/footer/footer";
 import FeatureNavBar from "./component/featureNavBar/featureNavBar";
 import Dashboard from "./component/dashboard/dashboard";
 import About from "./component/about/about";
@@ -95,6 +96,7 @@ class App extends Component {
           <Route path='/' element={<Navigate to={"/"} />} />
           <Route path='*' element={<Navigate to={"not-found"} />} />
         </Routes>
+        <Footer />
       </main>
     );
   }

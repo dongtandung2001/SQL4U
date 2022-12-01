@@ -55,5 +55,14 @@
 
 /* PROJECT PAGE */
 .project-detail-p {
-    line-height: 2;
+    line-height: 1.2;
+}
+
+.project-content-div {
+    background-color: rgba(0,0,0,0.03);
+    padding: 1rem 2rem 1rem;
+    border: none;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
 }

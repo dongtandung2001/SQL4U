@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import * as projectService from "../../services/projectService";
 import * as userService from '../../services/userService';
 
-import auth from "../../services/authService";
-
 export default function ProjectPage() {
   const [user, setUser] = useState({})
   const [project, setProject] = useState({});
@@ -28,12 +26,12 @@ export default function ProjectPage() {
       setProjectContents(projectObj.contents);
     };
     const isFinished = async () => {
-      const {data: user} = await userService.getUser(localStorage.getItem('token'));
+      const { data: user } = await userService.getUser(localStorage.getItem('token'));
       setUser(user);
       console.log(user)
       if (user.finishedProject.some(project => project._id === projectId)) {
         setFinishBtnText("✅ Finished");
-        setFinisButtonStyle({backgroundColor: "#0d6efd", color: "#fff", fill: "#0d6efd"})
+        setFinisButtonStyle({ backgroundColor: "#0d6efd", color: "#fff", fill: "#0d6efd" })
       } else {
         setFinishBtnText("Finish");
       }
@@ -58,38 +56,43 @@ export default function ProjectPage() {
       {/* Render project name */}
       <h1 style={{ color: "#4891d5" }}>{project.title}</h1>
       {/* Render project contents */}
-      {project &&
-        projectContents.map((item) => {
-          return (
-            <div>
-              <h5 style={{ color: "#89b3da" }}>
-                {item.header}{" "}
-                <span>
-                  {user && user.admin && (
-                    <button
-                      onClick={async () => {
-                        await projectService.deleteContent(projectId, item._id);
-                        window.location = `/catalog/${courseId}/project/${projectId}`;
-                      }}
-                      className="btn btn-danger"
-                    >
-                      Delete
-                    </button>
-                  )}
-                </span>
-              </h5>
-              <p className="project-detail-p">
-                {item.detail.replaceAll(/\\/g, "")[0].toUpperCase() +
-                  item.detail.replaceAll(/\\/g, "").slice(1)}
-              </p>
-            </div>
-          );
-        })}
+      <div className="project-content-div">
+        {project &&
+          projectContents.map((item) => {
+            return (
+              <div>
+                <h5 style={{ color: "#89b3da" }}>
+                  {item.header}{" "}
+                  <span>
+                    {user && user.admin && (
+                      <button
+                        onClick={async () => {
+                          await projectService.deleteContent(projectId, item._id);
+                          window.location = `/catalog/${courseId}/project/${projectId}`;
+                        }}
+                        className="btn btn-danger"
+                      >
+                        Delete
+                      </button>
+                    )}
+                  </span>
+                </h5>
+                {item.detail.split('\n').map((str) => {
+                  return (<p className="project-detail-p">
+                    {str}
+                  </p>)
+                })}
+
+              </div>
+            );
+          })}
+      </div>
+
       {user && !user.admin && (
-        <button 
-          type="submit" 
-          style = {finishButtonStyle}
-          className="btn btn-outline-primary me-2" 
+        <button
+          type="submit"
+          style={finishButtonStyle}
+          className="btn btn-outline-primary me-2"
           onClick={() => {
             return (
               finishBtnText === "Finish" ? finishProject() : unFinishProject()

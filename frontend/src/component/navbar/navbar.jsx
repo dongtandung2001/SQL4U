@@ -16,7 +16,7 @@ const NavBar = ({ user }) => {
           <p className="fs-6 text-primary ">Online Education & Learning</p>
         </h1>
         <div className="navbar-nav ms-auto">
-          <Link
+          {/* <Link
             className="nav-item nav-link mt-2"
             aria-current="page"
             to="/about"
@@ -29,7 +29,9 @@ const NavBar = ({ user }) => {
             to="/contact"
           >
             Contact
-          </Link>
+          </Link> */}
+          <a href="#footer" className="nav-item nav-link mt-2" aria-current="page">About</a>
+          <a href="#footer" className="nav-item nav-link mt-2" aria-current="page">Contact</a>
 
           {!user && (
             <React.Fragment>
