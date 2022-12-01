@@ -56,17 +56,27 @@ router.put("/:id", async (req, res) => {
   res.send(question);
 });
 
-// delete reply
+// delete/edit reply
 router.put("/reply/:id", async (req, res) => {
+  // get question
   let question = await QnA.findById(req.params.id);
   if (!question)
     return res.status(404).send("There are no question with the given id");
+  // get reply
   const replyIndex = question.replies.findIndex(
     (reply) => reply._id.toString() === req.body.id.toString()
   );
   if (replyIndex === -1)
     return res.status(404).send("There are no replies with the given ID");
-  question.replies.splice(replyIndex, 1);
+
+  // delete / edit
+  if (req.body.reply) {
+    // edit
+    question.replies[replyIndex].reply = req.body.reply;
+  } else {
+    // delete
+    question.replies.splice(replyIndex, 1);
+  }
   await question.save();
   res.send(question);
 });
@@ -80,7 +90,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // delete question, only admin can use this api
-router.delete("/:id", [auth, admin], async (req, res) => {
+router.delete("/:id", [auth], async (req, res) => {
   const question = await QnA.findByIdAndDelete(req.params.id);
   if (!question)
     return res.status(404).send("There are no questions with the given id");
