@@ -1,0 +1,17 @@
+.footer-div {
+    background-color: rgba(104, 187, 227, 1);
+    color: #fff;
+    margin-top: 0.2rem;
+}
+
+.footer-div a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    line-height: 2;
+    cursor: pointer;
+}
+
+.copy-right-div {
+    background-color: rgb(88, 178, 223);
+}

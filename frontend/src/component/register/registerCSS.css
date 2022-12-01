@@ -12,6 +12,7 @@
 .slogan--div {
     color: #fff;
     overflow: hidden;
+    text-align: right;
 }
 
 .slogan--div h1, .slogan--div p {

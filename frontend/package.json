@@ -13,6 +13,7 @@
     "joi": "^17.7.0",
     "jwt-decode": "^3.1.2",
     "lodash": "^4.17.21",
+    "mdb-react-ui-kit": "^5.0.0",
     "primeicons": "^6.0.1",
     "primereact": "^8.7.2",
     "query-string": "^7.1.1",
@@ -50,6 +51,3 @@
     ]
   }
 }
-
-
-

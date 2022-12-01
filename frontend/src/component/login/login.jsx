@@ -78,7 +78,7 @@ class Login extends Form {
               <div className="mb-3">
                 {this.renderInput("username", "UserName")}
               </div>
-              <div className="mb-3">
+              <div className="mb-3" style={{fontSize:"2rem"}}>
                 {this.renderInput("password", "Password", "password")}
               </div>
 
