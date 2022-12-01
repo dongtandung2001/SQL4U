@@ -71,7 +71,21 @@ class InterviewQuestion extends Component {
     this.setState({ user });
     this.setState({ data: data });
   };
-
+  renderCurrTopic() {
+    if(this.state.currentTopic === 'beginner') {
+      return <div>Basic Concepts</div>;
+    } else if(this.state.currentTopic === 'rm') {
+      return <div>Relational Model</div>;
+    } else if(this.state.currentTopic === 'fo') {
+      return <div>File Organization</div>;
+    } else if(this.state.currentTopic === 'nosql') {
+      return <div>NoSQL</div>;
+    } else if(this.state.currentTopic === 'sql') {
+      return <div>SQL</div>;
+    } else if(this.state.currentTopic === 'all') {
+      return <div>All Topics</div>;
+    }
+  }
   render() {
     const { user, data } = this.state;
 
@@ -92,6 +106,7 @@ class InterviewQuestion extends Component {
       this.state.currentPage,
       this.state.pageSize
     );
+
     return (
       <div className="container-fluid grid my-1">
         <div className="row">
@@ -104,7 +119,7 @@ class InterviewQuestion extends Component {
                 onClick={() => this.handleTopicChange("all")}
                 className="btn btn-primary"
               >
-                <h1>TOPIC</h1>
+                <h1>TOPICS</h1>
               </button>
             </div>
             {this.state.topics.map((topic) => (
@@ -137,7 +152,7 @@ class InterviewQuestion extends Component {
               <div className="h2 my-3 text-dark text-center">
                 Interview Questions
               </div>
-              <div className="h3 my-3 text-dark text-center">SQL</div>
+              <div className="h3 my-3 text-dark text-center">{this.renderCurrTopic()}</div>
             </div>
 
             <QuestionList

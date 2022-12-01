@@ -25,24 +25,24 @@ function QuestionList({ user, onDelete, question, onSave, onUnsave, topic }) {
         question.map((item, i) => (
           <div className="q" key={item._id}>
             <div className="question">
-              <h3>
+              <h4>
                 Q{i + 1}. {item.question}
                 {user && user.admin && (
                   <span>
                     <Link to={`/interview/${item._id}`}>
-                      <button className="btn btn-primary">Edit</button>
+                      <button className="btn btn-primary btn-sm">Edit</button>
                     </Link>
                     <button
                       onClick={() => onDelete(item._id)}
-                      className="btn btn-danger"
+                      className="btn btn-danger btn-sm"
                     >
                       Delete
                     </button>
                   </span>
                 )}
-              </h3>
+              </h4>
             </div>
-            <div className="text-end text-black-50 mx-4 answer-container">
+            <div className="text-end text-black mx-4 answer-container">
               Answer
               <button className="answer-button mx-2" onClick={() => toggle(i)}>
                 {selected === i ? "-" : "+"}
