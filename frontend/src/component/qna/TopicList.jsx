@@ -38,7 +38,7 @@ function TopicNavigation({
   const [isShown, setIsShown] = useState("all");
   return (
     <div className='container-fluid body'>
-      <div className='row'>
+      <div className='row article-fill-height'>
         <div className='col-sm-3 topic-col'>
           <div className='topic-logo'>
             <img
@@ -78,7 +78,7 @@ function TopicNavigation({
             </ul>
           </div>
         </div>
-        <div className='col-sm-7'>
+        <div className='col-sm-7 pb-2'>
           <CreatePost />
 
           <div className='divider'>

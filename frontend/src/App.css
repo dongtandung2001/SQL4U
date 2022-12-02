@@ -17,24 +17,29 @@ html {
 
 main {
   min-height: 100vh;
-  display:flex; 
+  display: flex; 
   flex-direction: column;
 }
 
 header {
-  min-height: 11rem;
+  min-height: 20vh;
+}
+
+article {
+  min-height: 80vh;
+}
+
+.article-fill-height {
+  min-height: 80vh;
+  height: 100%;
 }
 
 footer{ 
-  min-height: 10rem; 
+  min-height: 10rem;
 }
 
 article {
   flex : 1;
-}
-
-.container, .container-fluid {
-  min-height: "100vh";
 }
 
 ::-webkit-scrollbar {
@@ -58,4 +63,13 @@ article {
 
 h1, h5 {
   font-weight: 500;
+}
+
+@media screen and (max-width: 600px) {
+  .container, .container-fluid {
+    padding: 0;
+  }
+  main {
+    font-size: 12px;
+  }
 }

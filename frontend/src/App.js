@@ -40,7 +40,7 @@ class App extends Component {
     return (
       <main
         style={{ paddingLeft: "0", paddingRight: "0" }}
-        
+        className="container-fluid"
       >
         <header>
           <NavBar user={this.state.user} />
