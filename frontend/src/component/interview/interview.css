@@ -1,12 +1,12 @@
 .interview-div {
-  background-color: rgba(104, 187, 227, 0.5);
+  background-color: rgba(104, 187, 227, 0.6);
 }
 .interview-image {
   width: 220px;
   border-radius: 20px;
 }
 .sidebar-container {
-  background-color: rgba(104, 187, 227, 0.3);
+  background-color: rgba(255, 255, 255, 0.37);
 }
 .choose-topic-btn {
   border: none;
@@ -37,8 +37,14 @@
   padding: 5px 5px;
   border-radius: 5px;
 }
+
 .question {
-  background-color: #e1e1e1;
+  background-color: #fff;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 15px;
+  box-shadow:  rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
   color: rgb(81, 81, 81);
   border-radius: 5px;
 }
