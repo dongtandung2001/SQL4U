@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import "./interview.css";
-import { FaAngleUp } from "react-icons/fa";
-import { FaAngleDown } from "react-icons/fa";
-import { BsQuestionCircleFill } from "react-icons/bs";
 import { BsSuitHeartFill } from "react-icons/bs";
 import Interview from "./interview.png";
 import QuestionList from "./QuestionList";
@@ -24,7 +21,7 @@ class InterviewQuestion extends Component {
     ],
     currentTopic: "all",
     currentPage: 1,
-    pageSize: 4,
+    pageSize: 6,
   };
 
   handleDelete = async (id) => {
@@ -72,17 +69,17 @@ class InterviewQuestion extends Component {
     this.setState({ data: data });
   };
   renderCurrTopic() {
-    if(this.state.currentTopic === 'beginner') {
+    if (this.state.currentTopic === "beginner") {
       return <div>Basic Concepts</div>;
-    } else if(this.state.currentTopic === 'rm') {
+    } else if (this.state.currentTopic === "rm") {
       return <div>Relational Model</div>;
-    } else if(this.state.currentTopic === 'fo') {
+    } else if (this.state.currentTopic === "fo") {
       return <div>File Organization</div>;
-    } else if(this.state.currentTopic === 'nosql') {
+    } else if (this.state.currentTopic === "nosql") {
       return <div>NoSQL</div>;
-    } else if(this.state.currentTopic === 'sql') {
+    } else if (this.state.currentTopic === "sql") {
       return <div>SQL</div>;
-    } else if(this.state.currentTopic === 'all') {
+    } else if (this.state.currentTopic === "all") {
       return <div>All Topics</div>;
     }
   }
@@ -112,11 +109,15 @@ class InterviewQuestion extends Component {
         <div className="row article-fill-height">
           <div className="col-sm-3 col-md-3 p-5 text-opacity-100 text-center sidebar-container">
             <div>
-              <img src={Interview} className="interview-image" alt="showingImage"/>
+              <img
+                src={Interview}
+                alt="interview question logo"
+                className="interview-image"
+              />
             </div>
             <div className="display-4 mb-3 mt-3">
               <button
-                style={{width: "15rem"}}
+                style={{ width: "15rem" }}
                 onClick={() => this.handleTopicChange("all")}
                 className="btn btn-primary"
               >
@@ -146,13 +147,16 @@ class InterviewQuestion extends Component {
           <div className="col-sm-9 col-md-7 text-light pb-2">
             {user && user.admin && (
               <Link to={`/interview/new`}>
-                <button style={{fontWeight: "bold"}} className="btn btn-outline-primary mt-1">New Question</button>
+                <button
+                  style={{ fontWeight: "bold" }}
+                  className="btn btn-outline-primary mt-1"
+                >
+                  New Question
+                </button>
               </Link>
             )}
             <div className="question-header container-fluid mb-3">
-              <div className="h2 my-3 text-center">
-                Interview Questions
-              </div>
+              <div className="h2 my-3 text-center">Interview Questions</div>
             </div>
 
             <QuestionList

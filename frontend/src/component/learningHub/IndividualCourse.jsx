@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import { coursesCard } from "./data";
 import * as courseService from "../../services/courseService";
 import { withRouter } from "../withRouter";
 import { useState } from "react";
@@ -21,7 +20,7 @@ const IndividualCourse = (props) => {
       setData(data);
     };
     fetch();
-  }, []);
+  }, [courseId]);
 
   const user = authService.getCurrentUser();
   return (

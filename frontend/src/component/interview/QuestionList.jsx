@@ -1,5 +1,5 @@
 import "./interview.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function QuestionList({ user, onDelete, question, onSave, onUnsave, topic }) {
@@ -26,11 +26,13 @@ function QuestionList({ user, onDelete, question, onSave, onUnsave, topic }) {
           <div className="question" key={item._id}>
             <div>
               <h3>
-                Q{i + 1}. {item.question}
+                {item.question}
                 {user && user.admin && (
                   <span>
                     <Link to={`/interview/${item._id}`}>
-                      <button className="btn btn-primary ms-2 me-2">Edit</button>
+                      <button className="btn btn-primary ms-2 me-2">
+                        Edit
+                      </button>
                     </Link>
                     <button
                       onClick={() => onDelete(item._id)}
