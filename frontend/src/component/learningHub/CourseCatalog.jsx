@@ -222,7 +222,7 @@ class CoursesCard extends Component {
       courses = paginate(filtered, this.state.currentPage, this.state.pageSize);
     }
     return (
-      <div className="topic ps-5 pe-5">
+      <div className="topic ps-5 pe-5 container-fluid">
         <h1 style={{ display: "inline-block", margin: "auto 1rem 1rem auto", color: "#fff"}}>
           TOPIC
         </h1>
