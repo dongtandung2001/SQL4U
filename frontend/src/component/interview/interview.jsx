@@ -108,7 +108,7 @@ class InterviewQuestion extends Component {
     );
 
     return (
-      <div className="container-fluid  my-1 interview-div">
+      <div className="container-fluid interview-div">
         <div className="row">
           <div className="col-3 p-5 text-opacity-100 grid text-center sidebar-container">
             <div>
@@ -146,7 +146,7 @@ class InterviewQuestion extends Component {
           <div className="col-9 p-7 text-light container-fluid">
             {user && user.admin && (
               <Link to={`/interview/new`}>
-                <button style={{fontWeight: "bold"}} className="btn btn-outline-primary">New Question</button>
+                <button style={{fontWeight: "bold"}} className="btn btn-outline-primary mt-1">New Question</button>
               </Link>
             )}
             <div className="question-header container-fluid mb-3">

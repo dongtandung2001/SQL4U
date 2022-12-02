@@ -34,10 +34,8 @@ article {
 }
 
 .container, .container-fluid {
-  min-height: "150vh";
+  min-height: "100vh";
 }
-
-
 
 ::-webkit-scrollbar {
   width: 10px;
