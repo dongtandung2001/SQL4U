@@ -3,7 +3,7 @@ import { BsFillCheckCircleFill } from "react-icons/bs";
 import { Link, useParams } from "react-router-dom";
 import * as projectService from "../../services/projectService";
 import * as courseService from "../../services/courseService";
-import * as userService from '../../services/userService';
+import * as userService from "../../services/userService";
 import "./recommendedProjects.css";
 
 export default function IndividualProject(props) {
@@ -16,15 +16,17 @@ export default function IndividualProject(props) {
   //useEffect
   useEffect(() => {
     const getUser = async () => {
-      const {data: user} = await userService.getUser(localStorage.getItem('token'));
+      const { data: user } = await userService.getUser(
+        localStorage.getItem("token")
+      );
       setUser(user);
       //Color the check icon when it is already finished
-      if (user.finishedProject.some(project => project._id === props.id)) {
-        setCheckButtonStyle({ fill: "#0d6efd"})
+      if (user.finishedProject.some((project) => project._id === props.id)) {
+        setCheckButtonStyle({ fill: "#0d6efd" });
       }
     };
     getUser();
-  }, []);
+  }, [props.id]);
 
   //Handling events
   const handleDelete = async (e) => {
@@ -54,13 +56,17 @@ export default function IndividualProject(props) {
           Delete
         </button>
       ) : (
-        <button type="button" className="check-button" >
-          <BsFillCheckCircleFill 
-            style={isHovering && checkButtonStyle ? {fill: "#fff"}  : checkButtonStyle} 
-            className="check-icon" 
+        <button type="button" className="check-button">
+          <BsFillCheckCircleFill
+            style={
+              isHovering && checkButtonStyle
+                ? { fill: "#fff" }
+                : checkButtonStyle
+            }
+            className="check-icon"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            />
+          />
         </button>
       )}
     </div>

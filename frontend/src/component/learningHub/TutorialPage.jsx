@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./learningHub.css";
 
 // import { tutorial } from "./ tutorial";
@@ -21,7 +21,7 @@ export default function TutorialPage() {
       setData(data);
     };
     fetch();
-  }, []);
+  }, [tutorialId]);
   //location.filter((course) => course.topic === "basic")
   return (
     <div className="container">

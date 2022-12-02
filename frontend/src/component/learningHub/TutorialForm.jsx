@@ -4,7 +4,6 @@ import Form from "../common/form";
 import { withRouter } from "../withRouter";
 import * as courseService from "../../services/courseService";
 import * as tutorialService from "../../services/tutorialService";
-import { useParams } from "react-router-dom";
 
 class TutorialForm extends Form {
   state = {
