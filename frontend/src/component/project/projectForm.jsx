@@ -64,7 +64,8 @@ class ProjectForm extends Form {
     if (mode === "add") {
       try {
         await courseService.addProject(this.state.courseId, data._id);
-        this.props.navigate(`/catalog/${this.state.courseId}/project`);
+        // this.props.navigate(`/catalog/${this.state.courseId}/project`);
+        this.props.navigate(-1);
       } catch (ex) {
         console.log(ex.response);
       }
@@ -72,22 +73,35 @@ class ProjectForm extends Form {
       // update project ref in course
       await courseService.deleteProject(this.state.courseId, project._id);
       await courseService.addProject(this.state.courseId, project._id);
-      window.location = `/catalog/${this.state.courseId}/project/${project._id}`;
+      // window.location = `/catalog/${this.state.courseId}/project/${project._id}`;
+      this.props.navigate(-1);
     }
 
     //
     // courseService.getProject(_id);
   };
+
+  navigateBack = () => {
+    this.props.navigate(-1);
+  };
+
   render() {
     return (
       <div className="container-fluid">
-        <form onSubmit={this.handleSumbit} style={{ height: "15rem" }}>
+        <form onSubmit={this.handleSumbit}>
           {this.renderInput("title", "Title")}
           {this.renderSelect("difficulty", "Difficulty", this.state.difficulty)}
           {this.renderInput("header", "Header")}
           {this.renderTextArea("detail", "Detail")}
           {this.renderButton("Save")}
         </form>
+        <button
+          className="btn btn-primary rounded-pill"
+          style={{ marginTop: "8px", display: "block"}}
+          onClick={this.navigateBack}
+        >
+          Go Back
+        </button>
       </div>
     );
   }
