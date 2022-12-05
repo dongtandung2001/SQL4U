@@ -7,6 +7,7 @@ import FeatureNavBar from "./component/featureNavBar/featureNavBar";
 import Dashboard from "./component/dashboard/dashboard";
 import About from "./component/about/about";
 import InterviewQuestion from "./component/interview/interview";
+import ProjectLandingPage from "./component/project/ProjectLandingPage";
 import RecommendProject from "./component/project/recommendProject";
 import ProjectPage from "./component/project/ProjectPage";
 import QnA from "./component/qna/q&a";
@@ -57,11 +58,15 @@ class App extends Component {
 
               <Route path='/catalog' element={<CoursesCard />} />
               <Route
-                path='/catalog/:courseId/project'
+                path='/projectLandingPage'
+                element={<ProjectLandingPage />}
+              />
+              <Route
+                path='/projectLandingPage/:courseId/project'
                 element={<RecommendProject />}
               />
               <Route
-                path='/catalog/:courseId/project/:projectId'
+                path='/projectLandingPage/:courseId/project/:projectId'
                 element={<ProjectPage />}
               />
               <Route

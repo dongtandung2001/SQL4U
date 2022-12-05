@@ -202,8 +202,6 @@
 
 .tutorial-project {
   background-color: #ffffff;
-
-  text-align: center;
   color: #2788E4;
 }
 
@@ -211,7 +209,7 @@
   border: 2px solid #4891d5;
   background-color: #89b3da;
   padding: 10px;
-  border-radius: 50px;
+  color: #fff;
   font-size: 10px;
 }
 

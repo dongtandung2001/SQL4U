@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
 import IndividualProject from "./IndividualProject";
 
@@ -8,6 +8,7 @@ import * as courseService from "../../services/courseService";
 import "./recommendedProjects.css";
 
 export default function RecommendProject() {
+  const navigate = useNavigate();
   const { courseId } = useParams();
   const [course, setCourse] = useState({});
   const [projectList, setProjectList] = useState([]);
@@ -20,7 +21,6 @@ export default function RecommendProject() {
       setCourse(data);
       setProjectList(data.projects);
     };
-
     getCourseList();
   }, [courseId]);
   // get user to determine if its admin
@@ -57,13 +57,10 @@ export default function RecommendProject() {
         {cards}
         {user && user.admin && (
           <Link to={`/catalog/${courseId}/project/add/new`}>
-            <button className="btn btn-primary">Add</button>
+            <button className="btn btn-primary me-2">Add</button>
           </Link>
         )}
-
-        <Link to={`/catalog/${courseId}`}>
-          <button className="btn btn-primary">Go Back</button>
-        </Link>
+        <button className="btn btn-primary" onClick={() => navigate(-1)}>Go Back</button>
       </div>
     </div>
   );

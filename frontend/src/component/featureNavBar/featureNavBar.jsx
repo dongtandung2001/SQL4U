@@ -29,6 +29,15 @@ class FeatureNavBar extends Component {
             <Link
               className="nav-item nav-link mt-2 "
               aria-current="page"
+              to="/projectLandingPage"
+            >
+              <span className={this.getCurrentPage("/projectLandingPage")}>
+                Recommended Projects
+              </span>
+            </Link>
+            <Link
+              className="nav-item nav-link mt-2 "
+              aria-current="page"
               to="/interview"
             >
               <span className={this.getCurrentPage("/interview")}>

@@ -66,9 +66,9 @@ const IndividualCourse = (props) => {
         ))}
       <div className="tutorial-project">
         <nav>
-          <h3>Recommended Projects</h3>
-          <Link to={`/catalog/${courseId}/project`}>
-            <button className="catalog-button">Recommend Project</button>
+          <h3 style={{color: "#000"}}>We Picked Some Projects For You To Practice Your Skills</h3>
+          <Link to={`/projectLandingPage/${courseId}/project`}>
+            <button className="btn btn-md btn-outline-primary">Let's Go {'>>'}</button>
           </Link>
         </nav>
       </div>
