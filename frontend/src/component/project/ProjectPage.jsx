@@ -62,7 +62,7 @@ export default function ProjectPage() {
                       <button
                         onClick={async () => {
                           await projectService.deleteContent(projectId, item._id);
-                          window.location = `/catalog/${courseId}/project/${projectId}`;
+                          window.location = `/projectLandingPage/${courseId}/project/${projectId}`;
                         }}
                         className="btn btn-outline-danger btn-sm ms-2"
                       >

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BsFillCheckCircleFill } from "react-icons/bs";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import * as projectService from "../../services/projectService";
 import * as courseService from "../../services/courseService";
 import * as userService from "../../services/userService";
@@ -9,7 +9,6 @@ import "./recommendedProjects.css";
 export default function IndividualProject(props) {
   //States
   const { courseId } = useParams();
-  const [project, setProject] = useState([]);
   const [prjDifficulty, setPrjDifficulty] = useState("");
   const [user, setUser] = useState({});
   const [checkButtonStyle, setCheckButtonStyle] = useState({});
@@ -40,7 +39,7 @@ export default function IndividualProject(props) {
     e.preventDefault();
     await courseService.deleteProject(courseId, props.id);
     await projectService.deleteProject(props.id);
-    window.location = `/catalog/${courseId}/project`;
+    window.location = `/projectLandingPage/${courseId}/project`;
   };
 
   const handleMouseEnter = () => setIsHovering(true);
