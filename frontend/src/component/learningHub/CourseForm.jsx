@@ -58,7 +58,7 @@ class CourseForm extends Form {
     }
   };
   navigateBack = () => {
-    this.props.navigate("/catalog");
+    this.props.navigate(-1);
   };
 
   render() {

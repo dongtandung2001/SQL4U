@@ -9,6 +9,8 @@ import "./recommendedProjects.css";
 export default function IndividualProject(props) {
   //States
   const { courseId } = useParams();
+  const [project, setProject] = useState([]);
+  const [prjDifficulty, setPrjDifficulty] = useState("");
   const [user, setUser] = useState({});
   const [checkButtonStyle, setCheckButtonStyle] = useState({});
   const [isHovering, setIsHovering] = useState(false);
@@ -25,7 +27,12 @@ export default function IndividualProject(props) {
         setCheckButtonStyle({ fill: "#0d6efd" });
       }
     };
+    const getProject = async () => {
+      const { data: projectObj } = await projectService.getProject(props.id);
+      setPrjDifficulty(projectObj.difficulty.toUpperCase());
+    };
     getUser();
+    getProject();
   }, [props.id]);
 
   //Handling events
@@ -43,10 +50,10 @@ export default function IndividualProject(props) {
   return (
     <div className="project-title-div">
       <Link
-        to={`/catalog/${courseId}/project/${props.id}`}
+        to={`/projectLandingPage/${courseId}/project/${props.id}`}
         className="project-title"
       >
-        {props.title}
+        {props.title} - <span style={{color:"#FFC000"}}>{prjDifficulty}</span>
       </Link>
       {user.admin ? (
         <button

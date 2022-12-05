@@ -12,12 +12,6 @@ export default function ProjectPage() {
   const [finishBtnText, setFinishBtnText] = useState("")
   const [finishButtonStyle, setFinisButtonStyle] = useState({});
 
-  //style
-  const finishStyle = {
-    backgroundColor: "#0d6efd",
-    color: "#fff"
-  }
-
   useEffect(() => {
     //Fetch project using projectID
     const getProject = async () => {
@@ -28,7 +22,7 @@ export default function ProjectPage() {
     const isFinished = async () => {
       const { data: user } = await userService.getUser(localStorage.getItem('token'));
       setUser(user);
-      console.log(user)
+
       if (user.finishedProject.some(project => project._id === projectId)) {
         setFinishBtnText("✅ Finished");
         setFinisButtonStyle({ backgroundColor: "#0d6efd", color: "#fff", fill: "#0d6efd" })
@@ -54,7 +48,7 @@ export default function ProjectPage() {
   return (
     <div className="container">
       {/* Render project name */}
-      <h1 style={{ color: "#4891d5" }}>{project.title}</h1>
+      <h1 id="project-title" style={{ color: "#4891d5" }}>{project.title}</h1>
       {/* Render project contents */}
       <div className="project-content-div">
         {project &&
@@ -70,7 +64,7 @@ export default function ProjectPage() {
                           await projectService.deleteContent(projectId, item._id);
                           window.location = `/catalog/${courseId}/project/${projectId}`;
                         }}
-                        className="btn btn-danger"
+                        className="btn btn-outline-danger btn-sm ms-2"
                       >
                         Delete
                       </button>
@@ -106,9 +100,10 @@ export default function ProjectPage() {
           <button className="btn btn-primary me-2">Edit</button>
         </Link>
       )}
-      <Link to={`/catalog/${courseId}/project`}>
-        <button className="btn btn-primary">Go back</button>
+      <Link to={`/projectLandingPage/${courseId}/project`}>
+        <button className="btn btn-primary me-2">Go back</button>
       </Link>
+      <a href="#project-title" className="btn btn-primary">Go to Top</a>
     </div>
   );
 }
