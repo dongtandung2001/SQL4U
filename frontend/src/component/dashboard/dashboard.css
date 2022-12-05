@@ -130,9 +130,10 @@
 
 /* Global settings */
 .dashBody {
-  background-color: #7badda;
+  background-color: rgba(104, 187, 227, 0.6);
   float: left;
   width: 100%;
+  height: 100%;
   height: 100%;
   position: relative;
 
@@ -235,7 +236,7 @@ i.fa {
 }
 
 .dashboardContent {
-  background-color: #2778c2;
+  background-color: rgba(104, 187, 227, 0.6);
   float: right;
   width: 90%;
   margin-left: 0.05rem;

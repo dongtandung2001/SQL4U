@@ -51,7 +51,7 @@ class App extends Component {
         <article>
           <Routes>
             <Route element={<PrivateRoutes />}>
-              <Route element={<Dashboard />} path='/' />
+              <Route element={<CoursesCard />} path='/' />
 
               <Route path='/interview' element={<InterviewQuestion />} />
               <Route path='/interview/:id' element={<InterviewQuestionForm />} />
@@ -95,7 +95,7 @@ class App extends Component {
             <Route path='/contact' element={<Contact />} />
 
             <Route path='/logout' element={<Logout />} />
-            <Route path='/profile' element={<Profile />} />
+            <Route path='/profile' element={<Dashboard />} />
 
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
@@ -105,7 +105,7 @@ class App extends Component {
             <Route path='*' element={<Navigate to={"not-found"} />} />
           </Routes>
         </article>
-        
+
         <footer>
           <Footer />
         </footer>

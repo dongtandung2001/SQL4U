@@ -7,16 +7,29 @@ import DashboardSection from "./dashboardSection";
 import DashboardBox from "./dashboardBox";
 import DashboardSideBar from "./dashboardSideBar";
 import Button from "../../index.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DashboardChart from "./dashboardChart";
+import * as userService from "../../services/userService";
+import * as courseService from "../../services/courseService";
+import shuffle from "lodash/shuffle";
 // import "bootstrap/dist/css/bootstrap.min.css";
 // import * as Poop from './dashboardBox';
-
 
 const Dashboard = () => {
   // const bob = [{}, 1, "e"];
 
   const [isEdit, setIsEdit] = useState("hello");
+  const [user, setUser] = useState(null);
+  const [courses, setCourses] = useState(null);
+  useEffect(() => {
+    const fetch = async () => {
+      const { data } = await userService.getUser(localStorage.getItem("token"));
+      setUser(data);
+      const { data: courses } = await courseService.getCourses();
+      setCourses(shuffle(courses));
+    };
+    fetch();
+  }, []);
 
   const handleEdit = (arg) => {
     setIsEdit(arg);
@@ -35,20 +48,10 @@ const Dashboard = () => {
       </div>
       <div className="dashboardContent">
         {/* admin buttons */}
-        <button type="button" className="btn btn-secondary btn-sm">
-          Admin
-        </button>
-        <button
-          onClick={() => handleEdit("bye")}
-          type="button"
-          className="btn btn-secondary btn-sm"
-        >
-          Edit {isEdit}
-        </button>
 
         {/* Content begins here */}
         <h1 className="head">Dashboard</h1>
-
+        {/* 
         <div className="dashboardOverview">
           <DashboardSection title={"OVERVIEW"}>
             <div className="dashboardOverviewBoxLeft">
@@ -59,7 +62,7 @@ const Dashboard = () => {
                 title={"Courses in progress"}
                 displayContent={
                   <div className="overviewProgress">
-                    <h5>5</h5>
+                    <h5>6</h5>
                   </div>
                 }
               />
@@ -75,7 +78,7 @@ const Dashboard = () => {
                 }
               />
             </div>
-            {/* <div className="dashboardOverviewBoxBottom">
+            <div className="dashboardOverviewBoxBottom">
               <DashboardBox
                 title={"Study Statisics"}
                 // content={
@@ -84,95 +87,86 @@ const Dashboard = () => {
                 //   </div>
                 // }
               />
-            </div> */}
-          </DashboardSection>
-        </div>
-        <div className="dashboardInterviewQuestions">
-          <DashboardSection
-            title={<a href="/interview">INTERVIEW QUESTIONS</a>}
-          >
-            <div className="dashboardInterviewBox">
-              <DashboardBox
-                icon={
-                  <i className="fa fa-question-circle" aria-hidden="true"></i>
-                }
-                title={"Questions you've viewed"}
-                textContent={"1. Define schema for ..."}
-              />
             </div>
           </DashboardSection>
+        </div> */}
+
+        <div className="dashboardInterviewQuestions">
+          {user && (
+            <DashboardSection
+              title={<a href="/interview">INTERVIEW QUESTIONS</a>}
+            >
+              <div className="dashboardInterviewBox">
+                <DashboardBox
+                  icon={
+                    <i className="fa fa-question-circle" aria-hidden="true"></i>
+                  }
+                  title={"Questions you've saved"}
+                  questions={user.savedQuestion}
+                />
+              </div>
+            </DashboardSection>
+          )}
         </div>
         <div className="dashboardMyCourses">
-          <DashboardSection title={"MY COURSES"}>
-            <div className="dashboardMyCoursesBoxTopLeft">
-              <DashboardBox
-                icon={
-                  <i className="fa fa-graduation-cap" aria-hidden="true"></i>
-                }
-                title={"Database basics"}
-                content={
-                  <div className="progress yellow">
-                    <span className="progress-left">
-                      <span className="progress-bar"></span>
-                    </span>
-                    <span className="progress-right">
-                      <span className="progress-bar"></span>
-                    </span>
-                    <div className="progress-value">37.5%</div>
-                  </div>
-                }
-                // color={<div className="rcornersColor"></div>}
-              />
-            </div>
-            <div className="dashboardMyCoursesBoxTopRight">
-              <DashboardBox
-                icon={
-                  <i className="fa fa-graduation-cap" aria-hidden="true"></i>
-                }
-                title={"Basic Data Query"}
-                content={
-                  <div className="progress blue">
-                    <span className="progress-left">
-                      <span className="progress-bar"></span>
-                    </span>
-                    <span className="progress-right">
-                      <span className="progress-bar"></span>
-                    </span>
-                    <div className="progress-value">90%</div>
-                  </div>
-                }
-              />
-            </div>
-            <div className="dashboardMyCoursesBoxBottomLeft">
-              <DashboardBox
-                icon={
-                  <i className="fa fa-graduation-cap" aria-hidden="true"></i>
-                }
-                title={"Intermediate SQL"}
-                textContent={<a href="#">Start now</a>}
-              />
-            </div>
-            <div className="dashboardMyCoursesBoxBottomRight">
-              <DashboardBox
-                icon={
-                  <i className="fa fa-graduation-cap" aria-hidden="true"></i>
-                }
-                title={"Advanced SQL"}
-                textContent={<a href="#">Start now</a>}
-              />
-            </div>
-          </DashboardSection>
+          {courses && (
+            <DashboardSection title={"Courses you might interested"}>
+              <div className="dashboardMyCoursesBoxTopLeft">
+                <DashboardBox
+                  icon={
+                    <i className="fa fa-graduation-cap" aria-hidden="true"></i>
+                  }
+                  title={
+                    <a href={`/catalog/${courses[0]._id}`}>{courses[0].name}</a>
+                  }
+                  // color={<div className="rcornersColor"></div>}
+                />
+              </div>
+              <div className="dashboardMyCoursesBoxTopRight">
+                <DashboardBox
+                  icon={
+                    <i className="fa fa-graduation-cap" aria-hidden="true"></i>
+                  }
+                  title={
+                    <a href={`/catalog/${courses[1]._id}`}>{courses[1].name}</a>
+                  }
+                />
+              </div>
+              <div className="dashboardMyCoursesBoxBottomLeft">
+                <DashboardBox
+                  icon={
+                    <i className="fa fa-graduation-cap" aria-hidden="true"></i>
+                  }
+                  title={
+                    <a href={`/catalog/${courses[2]._id}`}>{courses[2].name}</a>
+                  }
+                />
+              </div>
+              <div className="dashboardMyCoursesBoxBottomRight">
+                <DashboardBox
+                  icon={
+                    <i className="fa fa-graduation-cap" aria-hidden="true"></i>
+                  }
+                  title={
+                    <a href={`/catalog/${courses[3]._id}`}>{courses[3].name}</a>
+                  }
+                />
+              </div>
+            </DashboardSection>
+          )}
         </div>
         <div className="dashboardFinishedProjects">
-          <DashboardSection title={<a href="/project">FINISHED PROJECTS</a>}>
-            <div className="dashboardFinishedProjectsBox">
-              <DashboardBox
-                icon={<i className="fa fa-trophy" aria-hidden="true"></i>}
-                title={"Completed Projects"}
-                textContent={"1. Appointment Project"}
-              />
-            </div>
-          </DashboardSection>
+          {user && (
+            <DashboardSection title={"FINISHED PROJECTS"}>
+              <div className="dashboardFinishedProjectsBox">
+                <DashboardBox
+                  icon={<i className="fa fa-trophy" aria-hidden="true"></i>}
+                  title={"Completed Projects"}
+                  projects={user.finishedProject}
+                />
+              </div>
+            </DashboardSection>
+          )}
         </div>
         <div className="dashboardQuestions">
           <DashboardSection title={<a href="/qna">QUESTIONS</a>}>
