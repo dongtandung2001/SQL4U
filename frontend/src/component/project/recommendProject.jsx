@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
 
 import IndividualProject from "./IndividualProject";
 
@@ -10,6 +10,7 @@ import "./recommendedProjects.css";
 export default function RecommendProject() {
   const navigate = useNavigate();
   const { courseId } = useParams();
+  const {pathname} = useLocation();
   const [course, setCourse] = useState({});
   const [projectList, setProjectList] = useState([]);
   const user = auth.getCurrentUser();
@@ -50,6 +51,19 @@ export default function RecommendProject() {
     );
   });
 
+  const handleNavigate = () => {
+    
+    const removeFirstSlash = pathname.substring(1);
+    const slashIndex = removeFirstSlash.indexOf('/');
+    const navigateTo = removeFirstSlash.substring(0, slashIndex)
+    if (navigateTo === "projectLandingPage"){
+      navigate(`/${navigateTo}`);
+    } else {
+      navigate(`/${navigateTo}/${courseId}`);
+    }
+    
+  }
+
   return (
     <div className="container">
       <h2>{course.name}</h2>
@@ -60,7 +74,7 @@ export default function RecommendProject() {
             <button className="btn btn-primary me-2">Add</button>
           </Link>
         )}
-        <button className="btn btn-primary" onClick={() => navigate(-1)}>Go Back</button>
+        <button className="btn btn-primary" onClick={handleNavigate}>Go Back</button>
       </div>
     </div>
   );
