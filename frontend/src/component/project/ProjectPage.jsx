@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import * as projectService from "../../services/projectService";
 import * as userService from '../../services/userService';
 
 export default function ProjectPage() {
+  const { projectId, courseId } = useParams();
+  const {pathname} = useLocation();
+  const navigate = useNavigate();
+  //states
   const [user, setUser] = useState({})
   const [project, setProject] = useState({});
-  const [projectContents, setProjectContents] = useState([]);
-  const { projectId, courseId } = useParams();
+  const [projectContents, setProjectContents] = useState([]); 
   const [finishBtnText, setFinishBtnText] = useState("")
   const [finishButtonStyle, setFinisButtonStyle] = useState({});
 
@@ -45,6 +48,19 @@ export default function ProjectPage() {
     setFinishBtnText("Finish");
   }
 
+  const handleNavigate = () => {
+    
+    const removeFirstSlash = pathname.substring(1);
+    const slashIndex = removeFirstSlash.indexOf('/');
+    const navigateTo = removeFirstSlash.substring(0, slashIndex)
+    if (navigateTo === "projectLandingPage"){
+      navigate(`/${navigateTo}/${courseId}/project`);
+    } else {
+      navigate(`/${navigateTo}/${courseId}/project`);
+    }
+    
+  }
+
   return (
     <div className="container">
       {/* Render project name */}
@@ -54,7 +70,7 @@ export default function ProjectPage() {
         {project &&
           projectContents.map((item) => {
             return (
-              <div>
+              <div key={item._id}>
                 <h5 style={{ color: "#89b3da" }}>
                   {item.header}{" "}
                   <span>
@@ -71,8 +87,8 @@ export default function ProjectPage() {
                     )}
                   </span>
                 </h5>
-                {item.detail.split('\n').map((str) => {
-                  return (<p className="project-detail-p">
+                {item.detail.split('\n').map((str, index) => {
+                  return (<p key={index} className="project-detail-p">
                     {str}
                   </p>)
                 })}
@@ -100,9 +116,10 @@ export default function ProjectPage() {
           <button className="btn btn-primary me-2">Edit</button>
         </Link>
       )}
-      <Link to={`/projectLandingPage/${courseId}/project`}>
-        <button className="btn btn-primary me-2">Go back</button>
-      </Link>
+      
+      <button className="btn btn-primary me-2" onClick={handleNavigate}>Go back</button>
+    
+      {/* `/projectLandingPage/${courseId}/project` */}
       <a href="#project-title" className="btn btn-primary">Go to Top</a>
     </div>
   );
