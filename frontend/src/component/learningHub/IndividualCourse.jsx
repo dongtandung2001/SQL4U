@@ -1,16 +1,16 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useLocation, useNavigate } from "react-router-dom";
 import * as courseService from "../../services/courseService";
 import { withRouter } from "../withRouter";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import * as tutorialService from "../../services/tutorialService";
 import * as authService from "../../services/authService";
 
 const IndividualCourse = (props) => {
   // get id of course
   const { courseId } = useParams();
+  const {pathname} = useLocation();
   const navigate = useNavigate();
   const [data, setData] = useState(null);
 
@@ -23,8 +23,14 @@ const IndividualCourse = (props) => {
   }, [courseId]);
 
   const user = authService.getCurrentUser();
+
+  const handleNavigateBack = () => {
+    navigate(`/catalog`);
+    
+  }
   return (
     <div className="container">
+      <button className="btn btn-primary me-2" onClick={handleNavigateBack}>Go back</button>
       {user && user.admin && (
         <button
           onClick={() => {
@@ -67,7 +73,7 @@ const IndividualCourse = (props) => {
       <div className="tutorial-project">
         <nav>
           <h3 style={{color: "#000"}}>We Picked Some Projects For You To Practice Your Skills</h3>
-          <Link to={`/projectLandingPage/${courseId}/project`}>
+          <Link to={`/catalog/${courseId}/project`}>
             <button className="btn btn-md btn-outline-primary">Let's Go {'>>'}</button>
           </Link>
         </nav>

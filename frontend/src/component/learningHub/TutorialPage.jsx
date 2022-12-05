@@ -25,6 +25,14 @@ export default function TutorialPage() {
   //location.filter((course) => course.topic === "basic")
   return (
     <div className="container">
+      <button
+        onClick={() => {
+          navigate(`/catalog/${courseId}`);
+        }}
+        className="btn btn-primary me-2"
+      >
+        Go Back
+      </button>
       {user && user.admin && (
         <button
           onClick={() => {
@@ -35,15 +43,6 @@ export default function TutorialPage() {
           Edit
         </button>
       )}
-      {"   "}
-      <button
-        onClick={() => {
-          navigate(`/catalog/${courseId}`);
-        }}
-        className="btn btn-primary"
-      >
-        Go Back
-      </button>
       <div className="tutorial-title">{data && data.title}</div>
       <div>
         {data &&

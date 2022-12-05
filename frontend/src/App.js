@@ -30,6 +30,7 @@ import InterviewQuestionForm from "./component/interview/questionForm";
 
 import auth from "./services/authService";
 import CreatePost from "./component/qna/CreatePost";
+import IndividualProject from "./component/project/IndividualProject";
 
 class App extends Component {
   state = {};
@@ -55,19 +56,16 @@ class App extends Component {
 
               <Route path='/interview' element={<InterviewQuestion />} />
               <Route path='/interview/:id' element={<InterviewQuestionForm />} />
-
+              {/* Catalog */}
               <Route path='/catalog' element={<CoursesCard />} />
+              <Route path='/catalog/:courseId' element={<IndividualCourse />} />
               <Route
-                path='/projectLandingPage'
-                element={<ProjectLandingPage />}
-              />
-              <Route
-                path='/projectLandingPage/:courseId/project'
+                path='/catalog/:courseId/project'
                 element={<RecommendProject />}
               />
               <Route
-                path='/projectLandingPage/:courseId/project/:projectId'
-                element={<ProjectPage />}
+                path='/catalog/:courseId/project'
+                element={<IndividualProject />}
               />
               <Route
                 path='/catalog/:courseId/project/add/:id'
@@ -78,11 +76,29 @@ class App extends Component {
                 element={<TutorialForm />}
               />
               <Route path='/catalog/addOrEdit/:id' element={<CourseForm />} />
-              <Route path='/catalog/:courseId' element={<IndividualCourse />} />
+              <Route 
+                path='/catalog/:courseId/project/:projectId' 
+                element={<ProjectPage />} 
+                />
               <Route
                 path='/catalog/:courseId/tutorial/:tutorialId'
                 element={<TutorialPage />}
               />
+              {/* Project */}
+              <Route
+                path='/projectLandingPage'
+                element={<ProjectLandingPage />}
+              />
+              <Route
+                path='/projectLandingPage/:courseId/project'
+                element={<RecommendProject />}
+              />
+              
+              <Route
+                path='/projectLandingPage/:courseId/project/:projectId'
+                element={<ProjectPage />}
+              />
+              
 
               <Route path='/qna' element={<QnA />} />
               <Route path='/qna/:id' element={<QuestionAndAnswer />} />
