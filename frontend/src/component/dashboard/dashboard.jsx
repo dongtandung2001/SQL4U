@@ -41,7 +41,7 @@ const Dashboard = () => {
         <DashboardSideBar
           icon={
             <a href="/profile">
-              <i className="fa fa-user-circle" aria-hidden="true"></i>
+              <i className="fa fa-user-circle profile-icon" aria-hidden="true"></i>
             </a>
           }
         />
@@ -155,10 +155,10 @@ const Dashboard = () => {
             </DashboardSection>
           )}
         </div>
-        <div className="dashboardFinishedProjects">
+        <div  className="dashboardFinishedProjects">
           {user && (
             <DashboardSection title={"FINISHED PROJECTS"}>
-              <div className="dashboardFinishedProjectsBox">
+              <div className="dashboardFinishedProjectsBox" >
                 <DashboardBox
                   icon={<i className="fa fa-trophy" aria-hidden="true"></i>}
                   title={"Completed Projects"}
