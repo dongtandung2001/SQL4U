@@ -37,20 +37,20 @@ function TopicNavigation({
 }) {
   const [isShown, setIsShown] = useState("all");
   return (
-    <div className='container-fluid body'>
-      <div className='row article-fill-height'>
-        <div className='col-sm-3 topic-col'>
-          <div className='topic-logo'>
+    <div className="container-fluid body">
+      <div className="row article-fill-height">
+        <div className="col-sm-3 topic-col">
+          <div className="topic-logo">
             <img
-              src='../images/qna/q&a.png'
-              alt='question and answer pic'
-              width='200px'
-              height='100px'
+              src="../images/qna/q&a.png"
+              alt="question and answer pic"
+              width="200px"
+              height="100px"
             />
           </div>
-          <div className='topic-list'>
+          <div className="topic-list">
             <h2
-              className='topic'
+              className="topic"
               onClick={() => {
                 onPageChange("all");
                 setIsShown("all");
@@ -58,10 +58,10 @@ function TopicNavigation({
             >
               ----TOPIC----
             </h2>
-            <ul className='list-group list-group-flush'>
+            <ul className="list-group list-group-flush">
               {topics.map((val) => (
                 <li
-                  key={val.id}
+                  key={val._id}
                   className={
                     isShown === val._id
                       ? "list-group-item active"
@@ -78,25 +78,25 @@ function TopicNavigation({
             </ul>
           </div>
         </div>
-        <div className='col-sm-7 pb-2'>
+        <div className="col-sm-7 pb-2">
           <CreatePost />
 
-          <div className='divider'>
+          <div className="divider">
             <svg
-              xmlns='http://www.w3.org/2000/svg'
-              width='16'
-              height='16'
-              fill='currentColor'
-              className='bi bi-chevron-double-down'
-              viewBox='0 0 16 16'
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              className="bi bi-chevron-double-down"
+              viewBox="0 0 16 16"
             >
               <path
-                fillRule='evenodd'
-                d='M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'
+                fillRule="evenodd"
+                d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
               />
               <path
-                fillRule='evenodd'
-                d='M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'
+                fillRule="evenodd"
+                d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
               />
             </svg>
           </div>
@@ -110,7 +110,7 @@ function TopicNavigation({
           {isShown === "sql" && (
             <div>
               <Show
-                arr={location.filter((val) => val.topic === "sqll")}
+                arr={location.filter((val) => val.topic === "sql")}
                 user={user}
               />
             </div>
@@ -160,7 +160,7 @@ function TopicNavigation({
           />
         </div>
 
-        <div className='col-sm-2'></div>
+        <div className="col-sm-2"></div>
       </div>
     </div>
   );
@@ -189,21 +189,21 @@ class TopicList extends Component {
   };
 
   onPageChange = (topic) => {
-    this.setState({ currentTopic: topic });
+    this.setState({ currentTopic: topic, currentPage: 1 });
   };
 
   render() {
     // filter
-    const filtered = this.state.data.filter(
+    let filtered = this.state.data.filter(
       (course) => course.topic === this.state.currentTopic
     );
+
+    if (this.state.currentTopic === "all" && filtered.length === 0)
+      filtered = this.state.data;
+
     // paginate
-    const qna = paginate(
-      this.state.data,
-      this.state.currentPage,
-      this.state.pageSize
-    );
-    console.log(this.state.currentTopic);
+    const qna = paginate(filtered, this.state.currentPage, this.state.pageSize);
+
     return (
       <TopicNavigation
         location={qna}

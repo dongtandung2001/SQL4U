@@ -76,10 +76,10 @@ class App extends Component {
                 element={<TutorialForm />}
               />
               <Route path='/catalog/addOrEdit/:id' element={<CourseForm />} />
-              <Route 
-                path='/catalog/:courseId/project/:projectId' 
-                element={<ProjectPage />} 
-                />
+              <Route
+                path='/catalog/:courseId/project/:projectId'
+                element={<ProjectPage />}
+              />
               <Route
                 path='/catalog/:courseId/tutorial/:tutorialId'
                 element={<TutorialPage />}
@@ -93,25 +93,25 @@ class App extends Component {
                 path='/projectLandingPage/:courseId/project'
                 element={<RecommendProject />}
               />
-              
+
               <Route
                 path='/projectLandingPage/:courseId/project/:projectId'
                 element={<ProjectPage />}
               />
-              
+
 
               <Route path='/qna' element={<QnA />} />
               <Route path='/qna/:id' element={<QuestionAndAnswer />} />
               <Route path='/qna/edit/:id' element={<CreatePost />} />
 
               <Route path='/hub' element={<LearningHub />} />
+              <Route path='/profile' element={<Dashboard />} />
             </Route>
             {/* <Route path='/' element={<Dashboard />} /> */}
             <Route path='/about' element={<About />} />
             <Route path='/contact' element={<Contact />} />
 
             <Route path='/logout' element={<Logout />} />
-            <Route path='/profile' element={<Dashboard />} />
 
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
