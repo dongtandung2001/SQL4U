@@ -130,10 +130,11 @@
 
 /* Global settings */
 .dashBody {
+  display: flex;
+  flex-direction: row;
   background-color: rgba(104, 187, 227, 0.6);
   float: left;
   width: 100%;
-  height: 100%;
   height: 100%;
   position: relative;
 
@@ -218,22 +219,20 @@ i.fa {
 }
 
 .dashboardSideBar {
-  background-color: red;
-  float: left;
-  width: 10%;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  justify-self: end;
+  width: 8%;
   /* position: relativel */
   /* position: absolute; */
 }
 
-.dashboardSideBarContent i {
-  /* float:left; */
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  margin: 0px 0px 20px 40px;
-  font-size: 50px;
-}
+ .dashboardSideBarContent i {
+  font-size: 3rem;
+  margin-bottom: 1.2rem;
+} 
 
 .dashboardContent {
   background-color: rgba(104, 187, 227, 0.6);
@@ -251,6 +250,7 @@ i.fa {
   width: 100%;
   height: 100%;
   float: left;
+  overflow-y: auto;
 }
 
 .dashboardOverview {
@@ -295,8 +295,6 @@ i.fa {
 }
 
 .dashboardOverviewBoxLeft h5 {
-  /* font-size: 100px; */
-  /* float: left; */
   margin-left: 120px;
 }
 
@@ -414,6 +412,22 @@ i.fa {
   width: 20%;
 }
 
-/* .dashboardQuestionsBox {
-  background-color: #049dff;
-} */
+::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .rcorners {
+    padding: 0.5rem;
+  }
+  .rcorners a, .rcorners p  {
+    font-size: 0.8rem;
+  }
+  .rcorners button {
+    font-size: 0.6rem;
+    padding: 0.5rem;
+  }
+  .dashboardSideBarContent i {
+    font-size: 1.5rem;
+  }
+}
