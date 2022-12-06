@@ -21,7 +21,7 @@ export default function AnswerList(props) {
           <img
             className="a-userAvatar"
             src={
-              "https://galaxylands.com.vn/wp-content/uploads/2022/10/tieu-su-ca-si-mono-13.jpg"
+              "https://www.kindpng.com/picc/m/78-786207_user-avatar-png-user-avatar-icon-png-transparent.png"
             }
             alt="User avatar"
           ></img>
