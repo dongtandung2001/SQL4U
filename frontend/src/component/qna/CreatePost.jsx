@@ -52,6 +52,7 @@ class CreatePost extends Form {
   };
 
   render() {
+    const user = authService.getCurrentUser();
     return (
       <div className="creating-post">
         <div className="avatar">
@@ -61,7 +62,7 @@ class CreatePost extends Form {
             className="user-avartar"
             id="user-avatar"
           />
-          <h6 id="user-name">UserName</h6>
+          <h6 id="user-name">{user.email}</h6>
         </div>
         <form onSubmit={this.handleSumbit}>
           {this.renderInput("title", "Question")}

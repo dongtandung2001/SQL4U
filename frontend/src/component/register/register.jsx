@@ -2,8 +2,8 @@ import React from "react";
 import Joi from "joi";
 
 import Form from "../common/form";
-import './registerCSS.css'
-import databasePic from '../login/loginPage/database-login.png'
+import "./registerCSS.css";
+import databasePic from "../login/loginPage/database-login.png";
 import * as userService from "../../services/userService";
 import * as authService from "../../services/authService";
 class Register extends Form {
@@ -49,22 +49,23 @@ class Register extends Form {
         >
           <div
             style={{
-              backgroundColor: 'rgba(242,243,241,0.5)',
+              backgroundColor: "rgba(242,243,241,0.5)",
               minHeight: "95vh",
               color: "#fff",
-              transparency: '',
-              borderRadius: '0px 20px 20px 0px',
-              boxShadow: '10px 2px 3px 1px rgba(255, 255, 255, .2)',
-              zIndex: '1'
+              transparency: "",
+              borderRadius: "0px 20px 20px 0px",
+              boxShadow: "10px 2px 3px 1px rgba(255, 255, 255, .2)",
+              zIndex: "1",
             }}
             className="col-5 flex-column d-flex justify-content-center align-items-center"
           >
-            <i 
-              className="fa fa-user-circle mb-4" aria-hidden="true"
-              style={{ 
-                      fontSize:'4rem',
-                      color: "#0d6efd"
-                    }}
+            <i
+              className="fa fa-user-circle mb-4"
+              aria-hidden="true"
+              style={{
+                fontSize: "4rem",
+                color: "#0d6efd",
+              }}
             ></i>
             <h2 className="mb-4">Let's start to learn!</h2>
             <form onSubmit={this.handleSumbit} style={{ height: "15rem" }}>
@@ -84,12 +85,18 @@ class Register extends Form {
             </form>
           </div>
           <div className="slogan--div col-7 flex-column d-flex justify-content-center align-items-end">
-            <img src={databasePic} alt="databasepic" className='background-Pic'/>
-            <h1>SQL & NoSQL</h1>
+            <img
+              src={databasePic}
+              alt="databasepic"
+              className="background-Pic"
+            />
+            <h1>SQL4U</h1>
             <p>When you are ahead in data</p>
             <p>You are ahead in the corporate run.</p>
-            <p style={{fontWeight: '500'}}>Join us today!</p>
-            <p style={{fontWeight: '500'}}>To learn more about Database Management System</p>
+            <p style={{ fontWeight: "500" }}>Join us today!</p>
+            <p style={{ fontWeight: "500" }}>
+              To learn more about Database Management System
+            </p>
           </div>
         </div>
       </div>
