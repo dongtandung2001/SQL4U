@@ -81,20 +81,19 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+<a href="https://github.com/dongtandung2001/SQL4U/blob/main/FinalProjectReportGroup4.docx.pdf"><strong>Project Report</strong></a>
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
-
+<!-- Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+ -->
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 ### Built With
 
 * [![React][React.js]][React-url]
+* [![Express][Express.js]][Express-url]
+* [![MongoDB][MongoDB]][MongoDB-url]
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -107,29 +106,41 @@ This is an example of how you may give instructions on setting up your project l
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
+* MongoDB
+  ```
+  https://www.mongodb.com/docs/manual/installation/
+  ```
+* Node.JS
+  ```
+  https://nodejs.org/en/download/
   ```
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
+1. Generate key on https://generate-random.org/api-key-generator?count=1&length=128&type=mixed-numbers&prefix=
 2. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/dongtandung2001/SQL4U.git
    ```
 3. Install NPM packages
+    * backend server
+    ```sh
+    cd backend
+    npm i
+    ```
+    * frontend server
+    ```sh
+    cd frontend
+    npm i
+    ```
+4. Enter your key in `process.env`
    ```sh
-   npm install
+   export sql4u_jwtPrivateKey='Your generated key (constant)'
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+5. Import database
+   ```sh
+   mongorestore -d sql4u path_to_project/SQL4U/sql4u
    ```
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -237,5 +248,7 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [Laravel-url]: https://laravel.com
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
+[Express.js]: https://img.shields.io/badge/Express-0769AD?style=for-the-badge&logo=express&logoColor=white
+[Express-url]: https://expressjs.com/
+[MongoDB]: https://img.shields.io/badge/MongoDb-589636?style=for-the-badge&logo=mongodb&logoColor=white
+[MongoDB-url]: http://mongodb.com/
