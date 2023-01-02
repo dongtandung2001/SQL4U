@@ -66,14 +66,15 @@
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
+        <li><a href="#start-the-website">Start The Website</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+<!--     <li><a href="#usage">Usage</a></li> -->
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
+<!--     <li><a href="#license">License</a></li> -->
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+<!--     <li><a href="#acknowledgments">Acknowledgments</a></li> -->
   </ol>
 </details>
 
@@ -81,11 +82,9 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+This is group 4's final project about building a dynamic online and learning website providing tutorials, projects on Database. 
+This website was originally hosted on AWS. However, due to too much money charged by AWS for hosting services, we had to shut down the server after the project was graded. See the report for more informatino about hosting ( Page 28-35).
 <a href="https://github.com/dongtandung2001/SQL4U/blob/main/FinalProjectReportGroup4.docx.pdf"><strong>Project Report</strong></a>
-
-<!-- Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
- -->
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
 
@@ -93,11 +92,6 @@
 * [![Express][Express.js]][Express-url]
 * [![MongoDB][MongoDB]][MongoDB-url]
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -146,9 +140,9 @@ To get a local copy up and running follow these simple example steps.
 ### Start the website
 
 1. Database
-  ```sh
-  mongod
-  ```
+    ```sh
+    mongod
+    ```
 2. Backend server
 * Start server
   ```sh
@@ -173,7 +167,7 @@ To get a local copy up and running follow these simple example steps.
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+<!-- ## Usage
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
@@ -181,18 +175,17 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
+ -->
 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+- [ ] Learning Hub
+- [ ] Interview Question
+- [ ] Q & A
+- [ ] Recommended Project
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
-
+All features are recapped in the report. ( Page 50 - 64)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -216,33 +209,33 @@ Don't forget to give the project a star! Thanks again!
 
 
 <!-- LICENSE -->
-## License
+<!-- ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
+ -->
 
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Dung (Daniel) Dong - dongtandung2001@gmail.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/dongtandung2001/SQL4U](https://github.com/dongtandung2001/SQL4U)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+<!-- ## Acknowledgments
 
 * []()
 * []()
 * []()
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 
 
