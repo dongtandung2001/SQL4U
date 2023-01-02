@@ -143,6 +143,33 @@ To get a local copy up and running follow these simple example steps.
    ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+### Start the website
+
+1. Database
+  ```sh
+  mongod
+  ```
+2. Backend server
+* Start server
+  ```sh
+  cd backend
+  npm start
+  ```
+3. Frontend server
+* Add proxy to `package.json` to resolve CORS ( don't need to do this when hosting)
+    ```js
+    "proxy": "http://localhost:3900"
+    ```
+* Setting environment variables in `env.development` 
+    ```js
+    REACT_APP_API_URL=/api
+    ```
+* Start server
+  ```sh
+  cd frontend
+  npm start
+  ```
+
 
 
 <!-- USAGE EXAMPLES -->
