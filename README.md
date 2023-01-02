@@ -127,11 +127,7 @@ To get a local copy up and running follow these simple example steps.
     cd frontend
     npm i
     ```
-4. Enter your key in `process.env`
-   ```sh
-   export sql4u_jwtPrivateKey='Your generated key (constant)'
-   ```
-5. Import database
+4. Import database
    ```sh
    mongorestore -d sql4u path_to_project/sql4u
    ```
@@ -144,6 +140,10 @@ To get a local copy up and running follow these simple example steps.
     mongod
     ```
 2. Backend server
+* Enter your key in `process.env`
+   ```sh
+   export sql4u_jwtPrivateKey='Your generated key (constant)'
+   ```
 * Start server
   ```sh
   cd backend
