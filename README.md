@@ -133,7 +133,7 @@ To get a local copy up and running follow these simple example steps.
    ```
 5. Import database
    ```sh
-   mongorestore -d sql4u path_to_project/SQL4U/sql4u
+   mongorestore -d sql4u path_to_project/sql4u
    ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
