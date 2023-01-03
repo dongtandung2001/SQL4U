@@ -184,6 +184,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [ ] Interview Question
 - [ ] Q & A
 - [ ] Recommended Project
+- [ ] Content Management System
 
 All features are recapped in the report. ( Page 50 - 64)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
