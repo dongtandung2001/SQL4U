@@ -83,7 +83,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 This is group 4's final project about building a dynamic online and learning website providing tutorials, projects on Database. 
+
 This website was originally hosted on AWS. However, due to too much money charged by AWS for hosting services, we had to shut down the server after the project was graded. See the report for more informatino about hosting ( Page 28-35).
+
+Backend server is hosted on Render. Frontend server is hosted on Netlify
+
 <a href="https://github.com/dongtandung2001/SQL4U/blob/main/FinalProjectReportGroup4.docx.pdf"><strong>Project Report</strong></a>
 
 ### Built With
