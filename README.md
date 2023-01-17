@@ -41,7 +41,7 @@
     <a href="https://github.com/dongtandung2001/SQL4U"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://www.sql4u.dev/">View Demo</a>
+    <a href="https://www.sql4u.dev/" target="_blank">View Demo</a>
     ·
     <a href="https://github.com/dongtandung2001/SQL4U/issues">Report Bug</a>
     ·
