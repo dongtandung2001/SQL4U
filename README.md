@@ -88,6 +88,11 @@ This website was originally hosted on AWS. However, due to too much money charge
 
 Backend server is hosted on Render. Frontend server is hosted on Netlify
 
+You can create account or use this to login:
+
+    username: cs160-1@gmail.com
+    password: password1
+
 <a href="https://github.com/dongtandung2001/SQL4U/blob/main/FinalProjectReportGroup4.docx.pdf"><strong>Project Report</strong></a>
 
 ### Built With
